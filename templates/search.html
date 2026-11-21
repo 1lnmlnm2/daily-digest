@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}搜索 · {{ site_title }}{% endblock %}
+
+{% block content %}
+  <header class="site-header">
+    <h1>搜索历史归档</h1>
+    <p class="subtitle">在保留期内的历史条目中搜索；索引最多 {{ search_limit }} 条，按发布时间保留较新条目。</p>
+    <p class="stats" id="search-index-meta">索引 {{ search_count }} 条 / 归档 {{ archive_total }} 条</p>
+  </header>
+
+  <main>
+    <section class="search-panel">
+      <form id="search-form" class="search-form" role="search">
+        <label class="search-field">
+          <span>关键词</span>
+          <input id="search-query" type="search" placeholder="标题、摘要、来源、分类或日期" autocomplete="off">
+        </label>
+        <label class="search-field">
+          <span>来源</span>
+          <select id="filter-source"></select>
+        </label>
+        <label class="search-field">
+          <span>分类</span>
+          <select id="filter-category"></select>
+        </label>
+        <label class="search-field">
+          <span>从日期</span>
+          <input id="filter-from" type="date">
+        </label>
+        <label class="search-field">
+          <span>到日期</span>
+          <input id="filter-to" type="date">
+        </label>
+      </form>
+      <p class="search-meta" id="search-meta">正在加载搜索索引…</p>
+      <ul class="item-list" id="search-results"></ul>
+      <p class="empty-state" id="search-empty" hidden>没有匹配的条目。</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>搜索完全在浏览器本地完成，不依赖服务器、数据库或第三方搜索服务。</p>
+  </footer>
+
+  <script src="assets/search.js" defer></script>
+{% endblock %}
