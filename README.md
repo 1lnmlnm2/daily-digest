@@ -2,7 +2,7 @@
 
 一个**完全跑在 GitHub 上**的信息站模板：GitHub Actions 定时抓取公开 RSS，生成静态页面，自动部署到 GitHub Pages。
 
-> 当前仓库已进入 M3 多源阶段（5 个源、`state.json`、按发布时间归档、只推新增）。下面的“单源 / 0 Secret”等描述保留为 M1 的历史部署步骤；M3 的数据口径以 **2.1 归档口径** 和 `config/sources.yml` 为准。
+> 当前仓库已进入 M3 多源阶段（5 个源、`state.json`、按发布时间归档、只推新增）；阶段 4 的归档页与浏览器端静态搜索已在本地实现并通过本地测试，线上待验收。下面的“单源 / 0 Secret”等描述保留为 M1 的历史部署步骤；M3 的数据口径以 **2.1 归档口径** 和 `config/sources.yml` 为准。
 
 - 不需要你的电脑开机，关机也照常运行
 - 不需要服务器、数据库、域名
@@ -46,15 +46,24 @@
 ├─ config/sources.yml                  ★ 订阅源配置：换内容只改这个文件
 ├─ scripts/core.py                     M3 纯函数层：清洗、日期、关键词、限额、状态
 ├─ scripts/fetch.py                    多源抓取、失败保底、状态维护、按发布日期归档
-├─ scripts/build.py                    读数据 + 渲染模板，输出 site/
+├─ scripts/build.py                    读 data/ 生成主页、归档页和搜索索引，输出 site/
 ├─ scripts/notify.py                   只推新增：读 state 的 pending，成功后标 notified
-├─ templates/base.html                 页面骨架（head、样式引用）
+├─ templates/base.html                 页面骨架（head、样式引用、公共导航）
+├─ templates/_nav.html                 公共导航：首页 / 历史归档 / 搜索
 ├─ templates/index.html                首页内容（分类、来源状态、页脚）
+├─ templates/archive_index.html        归档索引页（按日期倒序、显示条目数）
+├─ templates/archive_day.html          单日归档页（历史归档标记、完整条目列表）
+├─ templates/search.html               浏览器端静态搜索页
+├─ assets/search.js                    读取 data/search-index.json 的本地搜索脚本
 ├─ assets/style.css                    样式；改配色只看文件顶部 :root 变量
 ├─ data/latest.json                    本轮展示数据（Actions 会自动提交更新它）
 ├─ data/state.json                     文章状态机与来源健康计数（Actions 自动提交）
 ├─ data/archive/YYYY-MM-DD.json        按文章发布时间（北京时间）归档的历史数据
 ├─ site/                               构建产物（每次重建，不提交到仓库）
+├─ site/archive/index.html             归档索引页产物
+├─ site/archive/YYYY-MM-DD.html        单日归档页产物
+├─ site/search.html                    搜索页产物
+├─ site/data/search-index.json         浏览器端搜索索引（纯文本、最多 2000 条）
 ├─ requirements.txt                    Python 依赖（4 个，版本锁定）
 ├─ .gitignore                          忽略虚拟环境、产物、本地密钥
 ├─ LICENSE                             MIT 许可证
@@ -70,6 +79,37 @@
 - 归档保留本轮成功抓取、通过源级过滤的所有条目（受各源 `max_items` 限制），**不受页面全站 `total_max_items` 截断**；页面只展示全站前 N 条，历史文件可以更完整。
 - 后续抓到较早发布的文章时，会幂等合并进对应历史日期文件；如果它已经见过，状态不会被当成新增，也不会补推。
 - 阶段 4 的归档页和搜索索引必须遍历 `data/archive/` 下的所有日期文件，不能假设只有一个文件。
+
+### 2.2 归档页与静态搜索（阶段 4）
+
+`scripts/build.py` 会遍历 `data/archive/` 下所有 `YYYY-MM-DD.json`，生成：
+
+- `site/archive/index.html`：归档索引，按日期倒序显示可用日期和条目数；
+- `site/archive/YYYY-MM-DD.html`：单日归档页，显示标题、来源、分类、发布时间、摘要和原文链接，并标明“这是历史归档”；
+- `site/search.html` + `site/data/search-index.json`：浏览器端静态搜索，不依赖服务器、数据库或第三方服务。
+
+几个关键约束：
+
+- 归档页展示该日期文件里的全部有效条目，不受首页 `total_max_items: 10` 的展示限额影响；例如有 14 条，就生成 14 条，不会截成 10 条。
+- 所有页面只用相对路径（如 `../index.html`、`archive/index.html`、`assets/style.css`），以适配 GitHub Pages 的 `/daily-digest/` 子路径；不要写死 `/archive/...`。
+- 搜索索引最多 `search_max_items: 2000` 条，按发布时间倒序保留较新的条目；只存 `id/title/summary/source_name/category/published/date/link` 纯文本字段，不写 `state.json`、SendKey 或归档之外的数据。
+- 归档页和搜索页都不修改 `data/archive/`，只读；同一日期文件重复构建的输出应稳定。
+- 过期归档按 `archive_retention_days: 90` 清理，以北京日期计算；只删除完整的 `YYYY-MM-DD.json`，当天和未来日期不删，索引不会指向已删除页面。
+- 缺失、空、损坏或字段不完整的归档文件会被跳过并打印警告，不会让整个站点构建失败。
+- 搜索脚本使用 `createElement` / `textContent` / `replaceChildren` 等安全 DOM API 写入结果，不把 Feed 内容拼进 `innerHTML`。
+
+本地构建和预览：
+
+```powershell
+# 已有 data/latest.json 时直接生成页面
+.\.venv\Scripts\python.exe scripts\build.py
+
+# 搜索页需要 HTTP 访问，不能直接双击 HTML（file:// 下 fetch 会被浏览器拦截）
+.\.venv\Scripts\python.exe -m http.server 8000 --directory site
+# 浏览器打开 http://localhost:8000/
+```
+
+构建日志会输出归档页数量、归档条目数、搜索索引条数和索引体积（例如 `搜索索引：14 条（归档 14 条，上限 2000），8203 B`），便于确认索引没有异常增长。
 
 ---
 
@@ -94,7 +134,7 @@
 3. 把下面 **6 个文件夹** 整个拖进网页的拖拽区域：
    `.github`、`assets`、`config`、`data`、`scripts`、`templates`
 4. 点下方 **Commit changes**（弹窗里再点一次 **Commit changes**）
-5. 回到仓库首页，再点 **Add file** → **Upload files**，把 **5 个根文件** 拖进去：
+5. 回到仓库首页，再点 **Add file** → **Upload files**，把 **4 个根文件** 拖进去：
    `.gitignore`、`LICENSE`、`README.md`、`requirements.txt`
 6. 再点 **Commit changes**
 
@@ -144,6 +184,10 @@
 - [ ] Pages 链接能打开，能看到抓到的标题和摘要
 - [ ] 页面顶部显示「最后更新」时间，且是你运行的时间
 - [ ] 把 `config/sources.yml` 里某个 `url` 故意改错，再跑一次：任务仍然绿勾，页面该源显示「缓存」并注明缓存时间，其余内容不变
+- [ ] 首页的「历史归档」「搜索」入口可打开；`/daily-digest/archive/index.html` 的日期和条目数正确
+- [ ] 任选一个归档页，标题、来源、分类、发布时间、摘要和原文链接都在，且标明「这是历史归档」
+- [ ] `/daily-digest/search.html` 能加载索引；中文关键词、英文大小写、来源/分类/日期筛选都有结果或正确的空结果提示
+- [ ] 搜索索引条数不超过 `search_max_items`，归档页没有被首页 10 条限额截断
 - [ ] 在仓库搜索框搜 `webhook`、`token`、`sk-`、`密码`，搜不到任何明文密钥（本版本本来就没有密钥）
 
 ---
@@ -242,8 +286,10 @@ python -m venv .venv
 # 4. 生成页面
 .\.venv\Scripts\python.exe scripts\build.py
 
-# 5. 用浏览器打开预览
-start site\index.html
+# 5. 启动本地静态服务器预览（不要直接双击 HTML：搜索页需要 HTTP）
+.\.venv\Scripts\python.exe -m http.server 8000 --directory site
+
+# 6. 浏览器打开 http://localhost:8000/
 ```
 
 > 这种写法**不需要激活虚拟环境**，可以避开 PowerShell 的「禁止运行脚本」报错，对新手最省事。
@@ -255,7 +301,8 @@ python3 -m venv .venv
 .venv/bin/pip install -r requirements.txt
 .venv/bin/python scripts/fetch.py
 .venv/bin/python scripts/build.py
-open site/index.html
+.venv/bin/python -m http.server 8000 --directory site
+# 浏览器打开 http://localhost:8000/
 ```
 
 本地调试的小技巧：
