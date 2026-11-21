@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}历史归档 · {{ site_title }}{% endblock %}
+
+{% block content %}
+  <header class="site-header">
+    <h1>历史归档</h1>
+    <p class="subtitle">按文章发布日（北京时间）归档，保留最近 {{ retention_days }} 天。</p>
+    <p class="stats">共 {{ days|length }} 个日期 · {{ archive_total }} 条历史条目</p>
+  </header>
+
+  <main>
+    <section class="archive-list">
+      <div class="category-head">
+        <h2>可用日期</h2>
+        <span class="category-count">按日期倒序</span>
+      </div>
+      {% if days %}
+      <ul class="archive-date-list">
+        {% for day in days %}
+        <li class="archive-date-row">
+          <a href="{{ day["date"] }}.html">{{ day["date"] }}</a>
+          <span class="archive-count">{{ day["count"] }} 条</span>
+        </li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <p class="empty-archive">暂无可用归档。</p>
+      {% endif %}
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>这是历史归档索引，只展示保留期内的日期文件。</p>
+  </footer>
+{% endblock %}
