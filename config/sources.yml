@@ -79,7 +79,7 @@ sources:
     name: 少数派
     home: https://sspai.com
     type: rss
-    url: https://sspai.com/phase5-drill-not-found.xml
+    url: https://sspai.com/feed
     enabled: true
     category: 科技资讯
     max_items: 3
