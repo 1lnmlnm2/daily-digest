@@ -1,9 +1,9 @@
 {
   "schema": 3,
   "pipeline": "m3",
-  "generated_at": "2026-11-21T23:47:30+08:00",
-  "generated_at_utc": "2026-11-21T15:47:30+00:00",
-  "run_url": "https://github.com/1lnmlnm2/daily-digest/actions/runs/44921031669",
+  "generated_at": "2026-11-21T23:54:26+08:00",
+  "generated_at_utc": "2026-11-21T15:54:26+00:00",
+  "run_url": "https://github.com/1lnmlnm2/daily-digest/actions/runs/44921637116",
   "tz_offset": 8,
   "push": {
     "enabled": false,
@@ -21,9 +21,9 @@
   },
   "stats": {
     "source_total": 5,
-    "source_ok": 4,
-    "source_failed": 1,
-    "source_cached": 1,
+    "source_ok": 5,
+    "source_failed": 0,
+    "source_cached": 0,
     "item_total": 10,
     "new_count": 0,
     "archive_files": 2,
@@ -36,14 +36,14 @@
       "id": "sspai",
       "name": "少数派",
       "home": "https://sspai.com",
-      "url": "https://sspai.com/phase5-drill-not-found.xml",
+      "url": "https://sspai.com/feed",
       "type": "rss",
       "category": "科技资讯",
-      "ok": false,
-      "stale": true,
-      "error": "订阅内容解析失败：<unknown>:2:0: syntax error",
-      "updated_at": "2026-11-21T22:32:56+08:00",
-      "stale_since": "2026-11-21T22:32:56+08:00",
+      "ok": true,
+      "stale": false,
+      "error": null,
+      "updated_at": "2026-11-21T23:54:26+08:00",
+      "stale_since": null,
       "item_count": 3,
       "items": [
         {
@@ -56,8 +56,7 @@
           "summary": "上周末，今年正式被列入「全国普通高校学科竞赛排行榜」的2026鸿蒙高校创新赛在南京大学迎来全国总决赛颁奖典礼。华为董事、终端BGCEO何刚出席现场致辞并为获奖选手颁奖。他在现场表示，HarmonyOS",
           "author": "少数派编辑部",
           "published": "2026-11-21T12:00:00+08:00",
-          "date_source": "published",
-          "stale": true
+          "date_source": "published"
         },
         {
           "id": "52a9fd8fe895d552",
@@ -69,8 +68,7 @@
           "summary": "📅本周新预告《克里夫·布斯的惊险再冒险》终极预告11月18日，《好莱坞往事》续集电影《克里夫·布斯的惊险再冒险》发布了终极预告，将于11月25日在北美上映，12月23日上线Netflix。大卫·芬奇执",
           "author": "少数派编辑部",
           "published": "2026-11-20T17:54:01+08:00",
-          "date_source": "published",
-          "stale": true
+          "date_source": "published"
         },
         {
           "id": "0a31ea190e24db47",
@@ -82,24 +80,39 @@
           "summary": "编注：本文首发于「篝火营地」，原作者多边形。少数派经授权后转载，仅对文章格式略作调整。原标题：《侠盗猎车手6》游戏评测：10分｜篝火。作为RockstarGames时隔13年推出的《侠盗猎车手》系列新",
           "author": "篝火营地",
           "published": "2026-11-20T15:34:26+08:00",
-          "date_source": "published",
-          "stale": true
+          "date_source": "published"
         }
       ],
-      "stats": {},
-      "config": {},
+      "stats": {
+        "entries_total": 10,
+        "invalid_entries": 0,
+        "duplicate_entries": 0,
+        "undated_skipped": 0,
+        "future_skipped": 0,
+        "out_of_window": 0,
+        "keyword_excluded": 0,
+        "keyword_not_included": 0,
+        "kept": 3
+      },
+      "config": {
+        "max_items": 3,
+        "lookback_hours": 72.0,
+        "category": "科技资讯",
+        "include_keywords": [],
+        "exclude_keywords": []
+      },
       "health": {
-        "consecutive_failures": 2,
-        "last_success_at": "2026-11-21T22:32:56+08:00",
+        "consecutive_failures": 0,
+        "last_success_at": "2026-11-21T23:54:26+08:00",
         "last_failure_at": "2026-11-21T23:47:30+08:00",
-        "last_alert_at": null,
+        "last_alert_at": "2026-11-21T23:47:44+08:00",
         "alert_active": false,
-        "status": "failing",
-        "last_error": "订阅内容解析失败：<unknown>:2:0: syntax error",
-        "last_attempt_at": "2026-11-21T23:47:30+08:00",
+        "status": "ok",
+        "last_error": null,
+        "last_attempt_at": "2026-11-21T23:54:26+08:00",
         "alert_open": false,
-        "last_status": "failing",
-        "alert_last_attempt_at": null,
+        "last_status": "ok",
+        "alert_last_attempt_at": "2026-11-21T23:47:44+08:00",
         "alert_last_error": null
       }
     },
@@ -113,22 +126,10 @@
       "ok": true,
       "stale": false,
       "error": null,
-      "updated_at": "2026-11-21T23:47:30+08:00",
+      "updated_at": "2026-11-21T23:54:26+08:00",
       "stale_since": null,
       "item_count": 2,
       "items": [
-        {
-          "id": "24f652cfa0c13284",
-          "source_id": "ithome",
-          "source_name": "IT之家",
-          "category": "科技资讯",
-          "title": "1967 款保时捷 912 借电动化喜获新生：输出 304 马力，续航 400 公里",
-          "link": "https://www.ithome.com/1/030/510.htm",
-          "summary": "IT之家 11 月 21 日消息，现如今在海外，让经典车通过电动化改造获得新生的项目不断涌现。外媒 insideevs 今天（21 日）介绍了一辆“复活”的 1967 款保时捷 912，该车由改装厂商 Inverted 经手，改装团队为它装上了电池组和电动机。     改装完成后，车辆外观与原厂 912 毫无二致，经典…",
-          "author": "",
-          "published": "2026-11-21T23:43:31+08:00",
-          "date_source": "published"
-        },
         {
           "id": "70d07a1304e167c9",
           "source_id": "ithome",
@@ -139,6 +140,18 @@
           "summary": "IT之家 11 月 21 日消息，比亚迪腾势汽车在海外重现了大众 20 年前的一则经典广告：一辆柴油 SUV 拖着一架大型喷气式客机。不过，这一次腾势还准备了一项相当惊人的绝活。     20 年前，一辆蓝色大众途锐 V10 柴油版（下图）曾在英国邓斯福机场的跑道上拖动一架重达 155 吨的喷气式客机。     时间来…",
           "author": "",
           "published": "2026-11-21T23:25:36+08:00",
+          "date_source": "published"
+        },
+        {
+          "id": "1ab3ed2ffe95dd45",
+          "source_id": "ithome",
+          "source_name": "IT之家",
+          "category": "科技资讯",
+          "title": "育碧确认：《刺客信条》中国背景手游“代号 JADE”仍在开发",
+          "link": "https://www.ithome.com/1/030/507.htm",
+          "summary": "IT之家 11 月 21 日消息，育碧确认，《刺客信条》系列中国背景手游《刺客信条：代号 JADE》仍在开发中，不过现阶段 仍将主机和 PC 作为业务重点 。  育碧 CFO 弗雷德里克 · 迪盖在上半年业绩电话会议上披露，移动游戏在中长期仍有发展机会，《刺客信条：代号 JADE》就是该系列面向移动平台的作品。“从长期…",
+          "author": "",
+          "published": "2026-11-21T22:47:34+08:00",
           "date_source": "published"
         }
       ],
@@ -162,13 +175,13 @@
       },
       "health": {
         "consecutive_failures": 0,
-        "last_success_at": "2026-11-21T23:47:30+08:00",
+        "last_success_at": "2026-11-21T23:54:26+08:00",
         "last_failure_at": null,
         "last_alert_at": null,
         "alert_active": false,
         "status": "ok",
         "last_error": null,
-        "last_attempt_at": "2026-11-21T23:47:30+08:00",
+        "last_attempt_at": "2026-11-21T23:54:26+08:00",
         "alert_open": false,
         "last_status": "ok",
         "alert_last_attempt_at": null,
@@ -185,7 +198,7 @@
       "ok": true,
       "stale": false,
       "error": null,
-      "updated_at": "2026-11-21T23:47:30+08:00",
+      "updated_at": "2026-11-21T23:54:26+08:00",
       "stale_since": null,
       "item_count": 2,
       "items": [
@@ -234,13 +247,13 @@
       },
       "health": {
         "consecutive_failures": 0,
-        "last_success_at": "2026-11-21T23:47:30+08:00",
+        "last_success_at": "2026-11-21T23:54:26+08:00",
         "last_failure_at": null,
         "last_alert_at": null,
         "alert_active": false,
         "status": "ok",
         "last_error": null,
-        "last_attempt_at": "2026-11-21T23:47:30+08:00",
+        "last_attempt_at": "2026-11-21T23:54:26+08:00",
         "alert_open": false,
         "last_status": "ok",
         "alert_last_attempt_at": null,
@@ -257,7 +270,7 @@
       "ok": true,
       "stale": false,
       "error": null,
-      "updated_at": "2026-11-21T23:47:30+08:00",
+      "updated_at": "2026-11-21T23:54:26+08:00",
       "stale_since": null,
       "item_count": 2,
       "items": [
@@ -306,13 +319,13 @@
       },
       "health": {
         "consecutive_failures": 0,
-        "last_success_at": "2026-11-21T23:47:30+08:00",
+        "last_success_at": "2026-11-21T23:54:26+08:00",
         "last_failure_at": null,
         "last_alert_at": null,
         "alert_active": false,
         "status": "ok",
         "last_error": null,
-        "last_attempt_at": "2026-11-21T23:47:30+08:00",
+        "last_attempt_at": "2026-11-21T23:54:26+08:00",
         "alert_open": false,
         "last_status": "ok",
         "alert_last_attempt_at": null,
@@ -329,7 +342,7 @@
       "ok": true,
       "stale": false,
       "error": null,
-      "updated_at": "2026-11-21T23:47:30+08:00",
+      "updated_at": "2026-11-21T23:54:26+08:00",
       "stale_since": null,
       "item_count": 1,
       "items": [
@@ -366,13 +379,13 @@
       },
       "health": {
         "consecutive_failures": 0,
-        "last_success_at": "2026-11-21T23:47:30+08:00",
+        "last_success_at": "2026-11-21T23:54:26+08:00",
         "last_failure_at": null,
         "last_alert_at": null,
         "alert_active": false,
         "status": "ok",
         "last_error": null,
-        "last_attempt_at": "2026-11-21T23:47:30+08:00",
+        "last_attempt_at": "2026-11-21T23:54:26+08:00",
         "alert_open": false,
         "last_status": "ok",
         "alert_last_attempt_at": null,
@@ -386,18 +399,6 @@
       "count": 7,
       "items": [
         {
-          "id": "24f652cfa0c13284",
-          "source_id": "ithome",
-          "source_name": "IT之家",
-          "category": "科技资讯",
-          "title": "1967 款保时捷 912 借电动化喜获新生：输出 304 马力，续航 400 公里",
-          "link": "https://www.ithome.com/1/030/510.htm",
-          "summary": "IT之家 11 月 21 日消息，现如今在海外，让经典车通过电动化改造获得新生的项目不断涌现。外媒 insideevs 今天（21 日）介绍了一辆“复活”的 1967 款保时捷 912，该车由改装厂商 Inverted 经手，改装团队为它装上了电池组和电动机。     改装完成后，车辆外观与原厂 912 毫无二致，经典…",
-          "author": "",
-          "published": "2026-11-21T23:43:31+08:00",
-          "date_source": "published"
-        },
-        {
           "id": "70d07a1304e167c9",
           "source_id": "ithome",
           "source_name": "IT之家",
@@ -407,6 +408,18 @@
           "summary": "IT之家 11 月 21 日消息，比亚迪腾势汽车在海外重现了大众 20 年前的一则经典广告：一辆柴油 SUV 拖着一架大型喷气式客机。不过，这一次腾势还准备了一项相当惊人的绝活。     20 年前，一辆蓝色大众途锐 V10 柴油版（下图）曾在英国邓斯福机场的跑道上拖动一架重达 155 吨的喷气式客机。     时间来…",
           "author": "",
           "published": "2026-11-21T23:25:36+08:00",
+          "date_source": "published"
+        },
+        {
+          "id": "1ab3ed2ffe95dd45",
+          "source_id": "ithome",
+          "source_name": "IT之家",
+          "category": "科技资讯",
+          "title": "育碧确认：《刺客信条》中国背景手游“代号 JADE”仍在开发",
+          "link": "https://www.ithome.com/1/030/507.htm",
+          "summary": "IT之家 11 月 21 日消息，育碧确认，《刺客信条》系列中国背景手游《刺客信条：代号 JADE》仍在开发中，不过现阶段 仍将主机和 PC 作为业务重点 。  育碧 CFO 弗雷德里克 · 迪盖在上半年业绩电话会议上披露，移动游戏在中长期仍有发展机会，《刺客信条：代号 JADE》就是该系列面向移动平台的作品。“从长期…",
+          "author": "",
+          "published": "2026-11-21T22:47:34+08:00",
           "date_source": "published"
         },
         {
@@ -443,8 +456,7 @@
           "summary": "上周末，今年正式被列入「全国普通高校学科竞赛排行榜」的2026鸿蒙高校创新赛在南京大学迎来全国总决赛颁奖典礼。华为董事、终端BGCEO何刚出席现场致辞并为获奖选手颁奖。他在现场表示，HarmonyOS",
           "author": "少数派编辑部",
           "published": "2026-11-21T12:00:00+08:00",
-          "date_source": "published",
-          "stale": true
+          "date_source": "published"
         },
         {
           "id": "52a9fd8fe895d552",
@@ -456,8 +468,7 @@
           "summary": "📅本周新预告《克里夫·布斯的惊险再冒险》终极预告11月18日，《好莱坞往事》续集电影《克里夫·布斯的惊险再冒险》发布了终极预告，将于11月25日在北美上映，12月23日上线Netflix。大卫·芬奇执",
           "author": "少数派编辑部",
           "published": "2026-11-20T17:54:01+08:00",
-          "date_source": "published",
-          "stale": true
+          "date_source": "published"
         },
         {
           "id": "0a31ea190e24db47",
@@ -469,8 +480,7 @@
           "summary": "编注：本文首发于「篝火营地」，原作者多边形。少数派经授权后转载，仅对文章格式略作调整。原标题：《侠盗猎车手6》游戏评测：10分｜篝火。作为RockstarGames时隔13年推出的《侠盗猎车手》系列新",
           "author": "篝火营地",
           "published": "2026-11-20T15:34:26+08:00",
-          "date_source": "published",
-          "stale": true
+          "date_source": "published"
         }
       ]
     },
