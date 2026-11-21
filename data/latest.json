@@ -1,9 +1,9 @@
 {
   "schema": 3,
   "pipeline": "m3",
-  "generated_at": "2026-11-21T21:09:42+08:00",
-  "generated_at_utc": "2026-11-21T13:09:42+00:00",
-  "run_url": "https://github.com/1lnmlnm2/daily-digest/actions/runs/44907450212",
+  "generated_at": "2026-11-21T22:32:56+08:00",
+  "generated_at_utc": "2026-11-21T14:32:56+00:00",
+  "run_url": "https://github.com/1lnmlnm2/daily-digest/actions/runs/44914480941",
   "tz_offset": 8,
   "push": {
     "enabled": false,
@@ -27,7 +27,7 @@
     "item_total": 10,
     "new_count": 0,
     "archive_files": 2,
-    "archive_items": 14,
+    "archive_items": 16,
     "state_items_removed": 0,
     "archive_files_removed": 0
   },
@@ -42,7 +42,7 @@
       "ok": true,
       "stale": false,
       "error": null,
-      "updated_at": "2026-11-21T21:09:42+08:00",
+      "updated_at": "2026-11-21T22:32:56+08:00",
       "stale_since": null,
       "item_count": 3,
       "items": [
@@ -103,7 +103,7 @@
       },
       "health": {
         "consecutive_failures": 0,
-        "last_success_at": "2026-11-21T21:09:42+08:00",
+        "last_success_at": "2026-11-21T22:32:56+08:00",
         "last_failure_at": null,
         "last_alert_at": null,
         "alert_active": false,
@@ -121,32 +121,32 @@
       "ok": true,
       "stale": false,
       "error": null,
-      "updated_at": "2026-11-21T21:09:42+08:00",
+      "updated_at": "2026-11-21T22:32:56+08:00",
       "stale_since": null,
       "item_count": 2,
       "items": [
         {
-          "id": "e67d843487a66672",
+          "id": "05c2a5e28bc3d860",
           "source_id": "ithome",
           "source_name": "IT之家",
           "category": "科技资讯",
-          "title": "欧洲央行行长拉加德：欧盟应利用公共资金，率先承担大型芯片厂、数据中心等项目首轮损失",
-          "link": "https://www.ithome.com/1/030/472.htm",
-          "summary": "IT之家 11 月 21 日消息，据美国 CNBC 报道，当地时间 11 月 20 日，欧洲央行行长克里斯蒂娜 · 拉加德在法兰克福欧洲银行业大会发表卸任前最后一次演讲时呼吁， 欧盟应利用公共资金，在大型芯片制造厂和数据中心项目中率先承担首轮损失，以此吸引私人资本 。  她指出：“如果某项挑战需要欧洲层面的解决方案，我…",
+          "title": "全球唯一实现非晶合金车用电驱规模化量产，广汽夸克电驱非晶-碳纤维电驱第 10 万套下线",
+          "link": "https://www.ithome.com/1/030/504.htm",
+          "summary": "IT之家 11 月 21 日消息，11 月 20 日，广汽夸克电驱非晶-碳纤维电驱第 10 万套正式量产下线。  官方表示，这一里程碑标志着 广汽成为全球唯一实现非晶合金车用电驱规模化量产的企业 。     据介绍，广汽动力总成自主研发团队围绕材料、工艺、结构和控制开展全链路攻关， 首创非晶合金定子量产工艺 ，突破碳纤…",
           "author": "",
-          "published": "2026-11-21T20:36:00+08:00",
+          "published": "2026-11-21T21:53:01+08:00",
           "date_source": "published"
         },
         {
-          "id": "8f80442dfe2a3602",
+          "id": "cda86e09189b91f2",
           "source_id": "ithome",
           "source_name": "IT之家",
           "category": "科技资讯",
-          "title": "vivo S60t 手机上架：第四代骁龙 7s 处理器、12GB RAM，3199 元起",
-          "link": "https://www.ithome.com/1/030/471.htm",
-          "summary": "IT之家 11 月 21 日消息，vivo 现已在京东上架 S60t 手机，该机可以看作是 S60 手机的换芯版，主要将 SoC 从第三代骁龙 8s 换成第四代骁龙 7s，匹配 12GB RAM，定价为 3599 元起，首发价 3199 元起（国补后 2448.86 元起）。          京东   vivo S6…",
+          "title": "南非开发者宣称独自开发操作系统 Impossible OS：兼容 Win32 和 Linux 二进制程序，两年后见",
+          "link": "https://www.ithome.com/1/030/479.htm",
+          "summary": "IT之家 11 月 21 日消息，从零开发一套操作系统，即使对经验丰富的工程团队而言也是一项艰巨任务，南非开发者兼企业家德里克 · 佩恩却选择独自承担这项工作。  当地时间 20 日，据外媒 TechSpot 报道，佩恩近日公布了面向现代 x86-64 PC 的全新操作系统 ——Impossible OS，其设计借鉴…",
           "author": "",
-          "published": "2026-11-21T20:24:50+08:00",
+          "published": "2026-11-21T21:32:51+08:00",
           "date_source": "published"
         }
       ],
@@ -170,7 +170,7 @@
       },
       "health": {
         "consecutive_failures": 0,
-        "last_success_at": "2026-11-21T21:09:42+08:00",
+        "last_success_at": "2026-11-21T22:32:56+08:00",
         "last_failure_at": null,
         "last_alert_at": null,
         "alert_active": false,
@@ -188,7 +188,7 @@
       "ok": true,
       "stale": false,
       "error": null,
-      "updated_at": "2026-11-21T21:09:42+08:00",
+      "updated_at": "2026-11-21T22:32:56+08:00",
       "stale_since": null,
       "item_count": 2,
       "items": [
@@ -237,7 +237,7 @@
       },
       "health": {
         "consecutive_failures": 0,
-        "last_success_at": "2026-11-21T21:09:42+08:00",
+        "last_success_at": "2026-11-21T22:32:56+08:00",
         "last_failure_at": null,
         "last_alert_at": null,
         "alert_active": false,
@@ -255,7 +255,7 @@
       "ok": true,
       "stale": false,
       "error": null,
-      "updated_at": "2026-11-21T21:09:42+08:00",
+      "updated_at": "2026-11-21T22:32:56+08:00",
       "stale_since": null,
       "item_count": 2,
       "items": [
@@ -304,7 +304,7 @@
       },
       "health": {
         "consecutive_failures": 0,
-        "last_success_at": "2026-11-21T21:09:42+08:00",
+        "last_success_at": "2026-11-21T22:32:56+08:00",
         "last_failure_at": null,
         "last_alert_at": null,
         "alert_active": false,
@@ -322,7 +322,7 @@
       "ok": true,
       "stale": false,
       "error": null,
-      "updated_at": "2026-11-21T21:09:42+08:00",
+      "updated_at": "2026-11-21T22:32:56+08:00",
       "stale_since": null,
       "item_count": 1,
       "items": [
@@ -359,7 +359,7 @@
       },
       "health": {
         "consecutive_failures": 0,
-        "last_success_at": "2026-11-21T21:09:42+08:00",
+        "last_success_at": "2026-11-21T22:32:56+08:00",
         "last_failure_at": null,
         "last_alert_at": null,
         "alert_active": false,
@@ -374,27 +374,27 @@
       "count": 7,
       "items": [
         {
-          "id": "e67d843487a66672",
+          "id": "05c2a5e28bc3d860",
           "source_id": "ithome",
           "source_name": "IT之家",
           "category": "科技资讯",
-          "title": "欧洲央行行长拉加德：欧盟应利用公共资金，率先承担大型芯片厂、数据中心等项目首轮损失",
-          "link": "https://www.ithome.com/1/030/472.htm",
-          "summary": "IT之家 11 月 21 日消息，据美国 CNBC 报道，当地时间 11 月 20 日，欧洲央行行长克里斯蒂娜 · 拉加德在法兰克福欧洲银行业大会发表卸任前最后一次演讲时呼吁， 欧盟应利用公共资金，在大型芯片制造厂和数据中心项目中率先承担首轮损失，以此吸引私人资本 。  她指出：“如果某项挑战需要欧洲层面的解决方案，我…",
+          "title": "全球唯一实现非晶合金车用电驱规模化量产，广汽夸克电驱非晶-碳纤维电驱第 10 万套下线",
+          "link": "https://www.ithome.com/1/030/504.htm",
+          "summary": "IT之家 11 月 21 日消息，11 月 20 日，广汽夸克电驱非晶-碳纤维电驱第 10 万套正式量产下线。  官方表示，这一里程碑标志着 广汽成为全球唯一实现非晶合金车用电驱规模化量产的企业 。     据介绍，广汽动力总成自主研发团队围绕材料、工艺、结构和控制开展全链路攻关， 首创非晶合金定子量产工艺 ，突破碳纤…",
           "author": "",
-          "published": "2026-11-21T20:36:00+08:00",
+          "published": "2026-11-21T21:53:01+08:00",
           "date_source": "published"
         },
         {
-          "id": "8f80442dfe2a3602",
+          "id": "cda86e09189b91f2",
           "source_id": "ithome",
           "source_name": "IT之家",
           "category": "科技资讯",
-          "title": "vivo S60t 手机上架：第四代骁龙 7s 处理器、12GB RAM，3199 元起",
-          "link": "https://www.ithome.com/1/030/471.htm",
-          "summary": "IT之家 11 月 21 日消息，vivo 现已在京东上架 S60t 手机，该机可以看作是 S60 手机的换芯版，主要将 SoC 从第三代骁龙 8s 换成第四代骁龙 7s，匹配 12GB RAM，定价为 3599 元起，首发价 3199 元起（国补后 2448.86 元起）。          京东   vivo S6…",
+          "title": "南非开发者宣称独自开发操作系统 Impossible OS：兼容 Win32 和 Linux 二进制程序，两年后见",
+          "link": "https://www.ithome.com/1/030/479.htm",
+          "summary": "IT之家 11 月 21 日消息，从零开发一套操作系统，即使对经验丰富的工程团队而言也是一项艰巨任务，南非开发者兼企业家德里克 · 佩恩却选择独自承担这项工作。  当地时间 20 日，据外媒 TechSpot 报道，佩恩近日公布了面向现代 x86-64 PC 的全新操作系统 ——Impossible OS，其设计借鉴…",
           "author": "",
-          "published": "2026-11-21T20:24:50+08:00",
+          "published": "2026-11-21T21:32:51+08:00",
           "date_source": "published"
         },
         {
