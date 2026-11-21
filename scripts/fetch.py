@@ -151,6 +151,26 @@ def load_state(source_ids) -> dict:
         defaults = skeleton["sources"][source_id]
         for key, value in defaults.items():
             meta.setdefault(key, value)
+
+        # 旧版 state 只有 alert_active / status；升级时迁到新字段，避免历史告警状态丢失
+        if bool(meta.get("alert_active")) and not meta.get("alert_open"):
+            meta["alert_open"] = True
+        if not isinstance(meta.get("alert_open"), bool):
+            meta["alert_open"] = bool(meta.get("alert_active"))
+        meta["alert_active"] = bool(meta["alert_open"])
+        if meta.get("last_status") in (None, "", "unknown"):
+            if meta.get("status") in ("ok", "failing"):
+                meta["last_status"] = meta["status"]
+            elif int(meta.get("consecutive_failures") or 0) > 0:
+                meta["last_status"] = "failing"
+            elif meta.get("last_success_at"):
+                meta["last_status"] = "ok"
+        if not meta.get("status"):
+            meta["status"] = meta.get("last_status") or "unknown"
+        if not meta.get("last_attempt_at"):
+            meta["last_attempt_at"] = (
+                meta.get("last_failure_at") or meta.get("last_success_at")
+            )
         state["sources"][source_id] = meta
 
     return state
@@ -332,19 +352,26 @@ def _now_iso(now: datetime) -> str:
 def mark_source_success(state: dict, source_id: str, now: datetime) -> None:
     health = state["sources"].setdefault(source_id, {})
     failures = int(health.get("consecutive_failures") or 0)
-    if failures:
-        log(f"  ↺ {source_id} 恢复正常（此前连续失败 {failures} 次）")
+    alert_was_open = bool(health.get("alert_open") or health.get("alert_active"))
     health["consecutive_failures"] = 0
     health["last_success_at"] = _now_iso(now)
+    health["last_attempt_at"] = _now_iso(now)
+    health["last_status"] = "ok"
     health["status"] = "ok"
+    health["alert_open"] = False
     health["alert_active"] = False
     health["last_error"] = None
+    health["alert_last_error"] = None
+    if failures or alert_was_open:
+        log(f"  ↺ {source_id} 恢复正常（此前连续失败 {failures} 次，未发送恢复消息）")
 
 
 def mark_source_failure(state: dict, source_id: str, error: str, now: datetime) -> None:
     health = state["sources"].setdefault(source_id, {})
     health["consecutive_failures"] = int(health.get("consecutive_failures") or 0) + 1
+    health["last_attempt_at"] = _now_iso(now)
     health["last_failure_at"] = _now_iso(now)
+    health["last_status"] = "failing"
     health["status"] = "failing"
     health["last_error"] = error
 
