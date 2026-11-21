@@ -72,7 +72,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: site
-       - name: 推送摘要到微信（可选）
+      - name: 推送摘要到微信（可选）
         continue-on-error: true
         env:
           SERVERCHAN_SENDKEY: ${{ secrets.SERVERCHAN_SENDKEY }}
