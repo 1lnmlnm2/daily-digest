@@ -217,6 +217,11 @@ def send_to_serverchan(sendkey: str, title: str, desp: str) -> bool:
         return False
 
 
+def get_sendkey() -> str:
+    """只有确定要推送时才调用，避免无新增运行读取密钥。"""
+    return (os.environ.get("SERVERCHAN_SENDKEY") or "").strip()
+
+
 def main() -> int:
     payload = load_json(DATA_PATH)
     if not isinstance(payload, dict):
@@ -258,7 +263,7 @@ def main() -> int:
         log("无法生成页面链接，跳过推送（pending 保留，下一次再试）")
         return 0
 
-    sendkey = (os.environ.get("SERVERCHAN_SENDKEY") or "").strip()
+    sendkey = get_sendkey()
 
     # 情况一：没有配置 Secret —— 明确提示跳过，不算错误
     if not sendkey:
