@@ -2,6 +2,8 @@
 
 一个**完全跑在 GitHub 上**的信息站模板：GitHub Actions 定时抓取公开 RSS，生成静态页面，自动部署到 GitHub Pages。
 
+> 当前仓库已进入 M3 多源阶段（5 个源、`state.json`、按发布时间归档、只推新增）。下面的“单源 / 0 Secret”等描述保留为 M1 的历史部署步骤；M3 的数据口径以 **2.1 归档口径** 和 `config/sources.yml` 为准。
+
 - 不需要你的电脑开机，关机也照常运行
 - 不需要服务器、数据库、域名
 - 不需要写代码就能换内容：只改 `config/sources.yml` 一个文件
@@ -42,18 +44,32 @@
 .
 ├─ .github/workflows/update-site.yml   定时任务：抓取 → 生成 → 部署到 Pages
 ├─ config/sources.yml                  ★ 订阅源配置：换内容只改这个文件
-├─ scripts/fetch.py                    抓取、清洗、失败保底，写出 data/latest.json
+├─ scripts/core.py                     M3 纯函数层：清洗、日期、关键词、限额、状态
+├─ scripts/fetch.py                    多源抓取、失败保底、状态维护、按发布日期归档
 ├─ scripts/build.py                    读数据 + 渲染模板，输出 site/
+├─ scripts/notify.py                   只推新增：读 state 的 pending，成功后标 notified
 ├─ templates/base.html                 页面骨架（head、样式引用）
-├─ templates/index.html                首页内容（标题栏、源列表、页脚）
+├─ templates/index.html                首页内容（分类、来源状态、页脚）
 ├─ assets/style.css                    样式；改配色只看文件顶部 :root 变量
-├─ data/latest.json                    抓取结果（Actions 会自动提交更新它）
+├─ data/latest.json                    本轮展示数据（Actions 会自动提交更新它）
+├─ data/state.json                     文章状态机与来源健康计数（Actions 自动提交）
+├─ data/archive/YYYY-MM-DD.json        按文章发布时间（北京时间）归档的历史数据
 ├─ site/                               构建产物（每次重建，不提交到仓库）
 ├─ requirements.txt                    Python 依赖（4 个，版本锁定）
 ├─ .gitignore                          忽略虚拟环境、产物、本地密钥
 ├─ LICENSE                             MIT 许可证
 └─ README.md                           本文件
 ```
+
+### 2.1 归档口径（M3 已确认）
+
+`data/archive/YYYY-MM-DD.json` 里的日期，是**文章发布时间在北京时间（UTC+8）对应的日期**，不是 Actions 实际抓取的日期。
+
+- 一篇 2026-11-20 23:30（UTC）发布的文章，北京时间已经是 2026-11-21 07:30，会归入 `2026-11-21.json`。
+- 同一篇文章用稳定 ID 去重：重复运行、重复抓到都只会更新展示字段，不会重复增加条目，也不会改变 `first_collected_at`。
+- 归档保留本轮成功抓取、通过源级过滤的所有条目（受各源 `max_items` 限制），**不受页面全站 `total_max_items` 截断**；页面只展示全站前 N 条，历史文件可以更完整。
+- 后续抓到较早发布的文章时，会幂等合并进对应历史日期文件；如果它已经见过，状态不会被当成新增，也不会补推。
+- 阶段 4 的归档页和搜索索引必须遍历 `data/archive/` 下的所有日期文件，不能假设只有一个文件。
 
 ---
 
@@ -252,52 +268,26 @@ open site/index.html
 
 ## 七、Secrets 清单
 
-### 当前版本：需要 1 个 Secret，但**可选**
+### 当前版本：普通抓取/部署需要 **0 个 Secret**
 
-抓取和部署只用 GitHub 内置的 `GITHUB_TOKEN`，不需要任何密钥。唯一可选的是微信推送：
+普通抓取、生成和 Pages 部署全部用 GitHub 内置的 `GITHUB_TOKEN`，不需要申请任何密钥。
 
-| Secret 名称 | 用途 | 不配置的后果 |
+只有需要微信推送时，才额外添加一个可选的 `SERVERCHAN_SENDKEY`（见下表）；不配置时会自动跳过推送，不影响抓取和部署。
+
+### 后续加推送时才需要（现在不用建，先了解）
+
+| Secret 名称 | 用途 | 获取方法 |
 | --- | --- | --- |
-| `SERVERCHAN_SENDKEY` | 把摘要推送到微信（Server 酱） | 自动跳过推送，抓取 / 提交 / 部署全部照常 |
+| `FEISHU_WEBHOOK_URL` | 推送到飞书群 | 飞书群聊 → 右上角 `...` → 设置 → 群机器人 → 添加机器人 → **自定义机器人** → 复制 webhook 地址（形如 `https://open.feishu.cn/open-apis/bot/v2/hook/xxxx`）。安全设置建议勾「自定义关键词」填「更新」 |
+| `SERVERCHAN_SENDKEY` | 推送到微信（Server 酱） | 打开 <https://sct.ftqq.com> → 微信扫码登录 → 复制页面上的 SendKey（形如 `SCTxxxxxx`） |
 
-### 7.1 怎么拿到 SendKey
+添加位置：仓库 **Settings → Secrets and variables → Actions → New repository secret**，Name 填上面的名字（全大写），Secret 粘贴值。
 
-1. 打开 <https://sct.ftqq.com>（Server 酱 Turbo 官网）
-2. 点右上角「登录」→ **微信扫码**，用你想收消息的微信号扫
-   （扫码会顺带关注「Server 酱」公众号，这是消息接收通道，必须关注，否则收不到）
-3. 进入左侧 **SendKey** 页面，复制那串 **`SCT` 开头**的密钥
-4. 若拿到的是 `sctp` 开头，说明你注册成了新版「Server 酱³」，接口地址不同，本项目不适用
-
-免费版每天 **5 条**，本项目每天推 1 条，够用。
-
-### 7.2 怎么配进仓库
-
-仓库 **Settings → Secrets and variables → Actions → New repository secret**
-
-- **Name** 填 `SERVERCHAN_SENDKEY`（全大写，一个字母都不能差；写错了推送会被静默跳过）
-- **Secret** 粘贴你的 SendKey（前后不要带引号或空格）
-- 点 **Add secret**
-
-注意别点成上面的 **Variables** 标签——那是明文存储，不能放密钥。
-
-### 7.3 三种结果分别是什么样
-
-| 情况 | 日志 | 对其他环节的影响 |
-| --- | --- | --- |
-| 没配 Secret | `[notify] 未配置 SERVERCHAN_SENDKEY，跳过推送（不影响抓取与部署）` | 无，抓取 / 提交 / 部署照常 |
-| Secret 格式不对（不是 `SCT` 开头） | `[notify] SERVERCHAN_SENDKEY 格式不符（应以 SCT 开头），跳过推送` | 无 |
-| 推送失败（超时 / HTTP 异常 / 接口返回失败） | `[notify] 推送失败：… SCT***已隐藏***` | 无。workflow 里该步骤 `continue-on-error: true` 兜底，两个 job 仍全绿，Pages 照常部署 |
-
-推送内容只有三样：**更新时间 + 前 3 条标题 + 页面链接**，不推全文。请求超时 15 秒、最多尝试 2 次，失败日志里的密钥一律替换成 `SCT***已隐藏***`。
-
-### 7.4 三条铁律
+**三条铁律**：
 
 1. 密钥只放 Secrets，**永远不要**写进 `config/sources.yml`、代码或 README
-2. 代码里只通过 `os.environ.get("SERVERCHAN_SENDKEY")` 读取，**不要 print 出来**
+2. 代码里只通过 `os.environ.get("FEISHU_WEBHOOK_URL")` 读取，**不要 print 出来**
 3. 本地调试用 `.env` 文件（已被 `.gitignore` 忽略），不要提交
-
-（飞书推送本项目当前**未接入**，`scripts/notify.py` 只实现了 Server 酱。想加飞书属于后续扩展。）
-
 
 ---
 
@@ -379,9 +369,7 @@ GitHub 官方规则：**公开仓库连续 60 天没有任何提交活动，sche
 3. **Settings → Pages → Source** 选 **GitHub Actions**
 4. **Actions → 定时更新站点 → Run workflow** 跑一次
 5. 改 `config/sources.yml`，把 `site_title`、`sources` 换成自己的内容
-6. 想收微信推送：按第七节给**自己的仓库**新建 `SERVERCHAN_SENDKEY`。fork 不会继承原作者的 Secret，不配就自动跳过推送，其他功能完全不受影响
-
-
+6. 需要推送时，再按第七节加 Secrets
 
 除了第 2、3 步这两个「开关」，**不需要改任何代码**。
 
@@ -421,7 +409,4 @@ MIT，见 `LICENSE`。 fork、修改、商用都可以，保留版权声明即�
 - 手动触发 workflow：抓取 / 构建 / 部署共约 35 秒，两个 job 全绿
 - 单源失效演练：把 `url` 改为不存在的地址后运行，日志出现 `✗ HTTP 404` 并 `沿用上次缓存（14:25:28，10 条）`；workflow 仍为绿色，页面保留 10 条并显示「缓存」+ 缓存时间
 - 恢复演练：改回原地址再运行，`✓ 成功，10 条`、`0 个沿用缓存`，缓存标记消失，`item_count` 仍为 10（没有重复追加）
-- 推送成功：16:02 手动运行，微信收到 **1 条**（更新时间 + 前 3 条标题 + 页面链接），`data/latest.json` 仍为 10 条
-- 推送跳过：15:47 运行时尚未配置 Secret，推送步骤仍为绿，抓取 / 提交 / 部署全部正常
-- 推送失败演练：临时把 Secret 换成假值后于 16:20 运行，日志 `推送失败：400 Client Error … SCT***已隐藏***`；第 9 步仍绿、两个 job 全绿、Pages 正常部署、微信 **0 条**
 - 完整截图与说明见本地 `验收记录/` 目录（仅作本地留档，不要上传仓库）
