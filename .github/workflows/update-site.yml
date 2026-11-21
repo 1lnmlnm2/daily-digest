@@ -84,6 +84,15 @@ jobs:
           SERVERCHAN_SENDKEY: ${{ secrets.SERVERCHAN_SENDKEY }}
         run: python scripts/notify.py
 
+      # ---------- 来源连续失败维护告警（独立于普通推送） ----------
+      # 放在数据提交之前、Pages 部署之前；只读取 alerts.enabled，
+      # 不受 push_mode=off 影响。脚本自身保证失败/跳过仍返回 0。
+      - name: 发送来源告警（可选）
+        continue-on-error: true
+        env:
+          SERVERCHAN_SENDKEY: ${{ secrets.SERVERCHAN_SENDKEY }}
+        run: python scripts/alert.py
+
       # 把最新数据、去重状态和当天归档提交回仓库：
       # - latest.json 供下次运行做单源失败保底
       # - state.json 记录已处理/已通知状态，保证手动重复运行不重复推送
