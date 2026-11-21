@@ -1,0 +1,274 @@
+/* ============================================================
+   静态信息站样式
+   - 想改配色，只用改下面 :root 里的变量
+   - 想改宽度，改 --layout-width
+   ============================================================ */
+
+:root {
+  --layout-width: 780px;
+
+  --bg: #f6f7f9;
+  --surface: #ffffff;
+  --text: #1a1d23;
+  --text-muted: #6b7280;
+  --text-faint: #9ca3af;
+  --border: #e8eaef;
+  --accent: #2563eb;
+  --ok: #12b981;
+  --warn: #f59e0b;
+  --warn-bg: #fffaeb;
+  --error: #ef4444;
+  --error-bg: #fef3f2;
+  --radius: 12px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 40px 20px 64px;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+    "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+.page {
+  max-width: var(--layout-width);
+  margin: 0 auto;
+}
+
+/* ---------- 页头 ---------- */
+
+.site-header {
+  margin-bottom: 32px;
+}
+
+.site-header h1 {
+  margin: 0 0 8px;
+  font-size: 30px;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.subtitle {
+  margin: 0 0 20px;
+  color: var(--text-muted);
+  font-size: 15px;
+}
+
+.status-bar {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 13px;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--ok);
+  box-shadow: 0 0 0 3px rgba(18, 185, 129, 0.15);
+  flex-shrink: 0;
+}
+
+.stats {
+  margin: 12px 0 0;
+  font-size: 13px;
+  color: var(--text-faint);
+}
+
+/* ---------- 源区块 ---------- */
+
+.source {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px 22px 6px;
+  margin-bottom: 20px;
+}
+
+.source-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border);
+}
+
+.source-head h2 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.badge {
+  display: inline-block;
+  padding: 1px 9px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.7;
+  letter-spacing: 0.02em;
+}
+
+.badge-ok {
+  color: var(--ok);
+  background: rgba(18, 185, 129, 0.1);
+}
+
+.badge-warn {
+  color: #b45309;
+  background: rgba(245, 158, 11, 0.14);
+}
+
+.badge-error {
+  color: var(--error);
+  background: rgba(239, 68, 68, 0.1);
+}
+
+.source-home {
+  margin-left: auto;
+  font-size: 12.5px;
+  color: var(--text-muted);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.source-home:hover {
+  color: var(--accent);
+}
+
+/* ---------- 提示条 ---------- */
+
+.notice {
+  margin: 14px 0 6px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: #f9fafb;
+  font-size: 13.5px;
+  color: var(--text-muted);
+}
+
+.notice-warn {
+  background: var(--warn-bg);
+  color: #92400e;
+  border-left: 3px solid var(--warn);
+}
+
+.notice-error {
+  background: var(--error-bg);
+  color: #b42318;
+  border-left: 3px solid var(--error);
+}
+
+/* ---------- 条目列表 ---------- */
+
+.item-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.item {
+  padding: 16px 0 14px;
+  border-bottom: 1px solid var(--border);
+}
+
+.item:last-child {
+  border-bottom: none;
+}
+
+.item-title {
+  display: block;
+  font-size: 16.5px;
+  font-weight: 600;
+  line-height: 1.55;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.item-title:hover {
+  color: var(--accent);
+}
+
+.item-summary {
+  margin: 6px 0 0;
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--text-muted);
+}
+
+.item-meta {
+  margin: 8px 0 0;
+  font-size: 12.5px;
+  color: var(--text-faint);
+  font-variant-numeric: tabular-nums;
+}
+
+.item-meta .sep {
+  margin: 0 6px;
+}
+
+/* ---------- 页脚 ---------- */
+
+.site-footer {
+  margin-top: 36px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  font-size: 12.5px;
+  color: var(--text-faint);
+  line-height: 1.9;
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+.footer-meta a {
+  color: var(--text-muted);
+}
+
+/* ---------- 小屏适配 ---------- */
+
+@media (max-width: 560px) {
+  body {
+    padding: 28px 14px 48px;
+    font-size: 15px;
+  }
+
+  .site-header h1 {
+    font-size: 25px;
+  }
+
+  .source {
+    padding: 16px 16px 4px;
+    border-radius: 10px;
+  }
+
+  .source-home {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .item-title {
+    font-size: 15.5px;
+  }
+}

@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block title %}{{ site_title }}{% endblock %}
+
+{% block content %}
+  <header class="site-header">
+    <h1>{{ site_title }}</h1>
+    <p class="subtitle">{{ site_description }}</p>
+
+    <div class="status-bar">
+      <span class="live-dot"></span>
+      <span>最后更新：<time datetime="{{ data.generated_at }}">{{ data.generated_at | dt }}</time>{% if tz_label %}（{{ tz_label }}）{% endif %}</span>
+    </div>
+
+    <p class="stats">
+      共 {{ stats.item_total or 0 }} 条 ·
+      {{ stats.source_ok or 0 }}/{{ stats.source_total or 0 }} 个源本次更新成功{% if stats.source_cached %} ·
+      {{ stats.source_cached }} 个源显示缓存{% endif %}
+    </p>
+  </header>
+
+  <main>
+  {% for source in data.sources %}
+    <section class="source" id="source-{{ source.id }}">
+      <div class="source-head">
+        <h2>{{ source.name }}</h2>
+        {% if source.stale %}
+          <span class="badge badge-warn">缓存</span>
+        {% elif source.ok %}
+          <span class="badge badge-ok">正常</span>
+        {% else %}
+          <span class="badge badge-error">异常</span>
+        {% endif %}
+        {% if source.home %}
+          <a class="source-home" href="{{ source.home }}" target="_blank" rel="noopener noreferrer">访问原站 ↗</a>
+        {% endif %}
+      </div>
+
+      {% if source.stale %}
+        <p class="notice notice-warn">
+          本次抓取失败（{{ source.error }}）。下面是 <strong>{{ source.stale_since | dt }}</strong> 抓到的缓存，
+          其余源不受影响，下次成功抓取后会自动覆盖。
+        </p>
+      {% elif not source.ok %}
+        <p class="notice notice-error">
+          本次抓取失败（{{ source.error }}），且没有可用的缓存数据。
+        </p>
+      {% endif %}
+
+      {% if source["items"] %}
+        <ul class="item-list">
+        {% for item in source["items"] %}
+          <li class="item">
+            <a class="item-title" href="{{ item.link }}" target="_blank" rel="noopener noreferrer">{{ item.title }}</a>
+            {% if item.summary %}
+              <p class="item-summary">{{ item.summary }}</p>
+            {% endif %}
+            <p class="item-meta">
+              {% if item.published %}<time datetime="{{ item.published }}">{{ item.published | date }}</time>{% else %}时间未知{% endif %}
+              {% if item.author %}<span class="sep">·</span>{{ item.author }}{% endif %}
+            </p>
+          </li>
+        {% endfor %}
+        </ul>
+      {% else %}
+        <p class="notice">暂无数据。可能是源暂时不可用，或还没有成功抓取过。等下一次定时任务再试。</p>
+      {% endif %}
+    </section>
+  {% endfor %}
+  </main>
+
+  <footer class="site-footer">
+    <p>本站内容来自公开 RSS / Atom 订阅源，仅展示<strong>标题、简短摘要和原文链接</strong>，版权归原作者与原站所有。点击标题可跳转原文。</p>
+    <p class="footer-meta">
+      由 GitHub Actions 定时抓取并自动生成
+      {% if data.run_url %} · <a href="{{ data.run_url }}" target="_blank" rel="noopener noreferrer">本次运行日志</a>{% endif %}
+    </p>
+  </footer>
+{% endblock %}

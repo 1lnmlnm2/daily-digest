@@ -1,0 +1,54 @@
+# ============================================================
+# 订阅源配置文件
+# ------------------------------------------------------------
+# 这是整个项目唯一需要你改的文件：
+#   - 换内容 → 改下面的 sources 列表
+#   - 换站点标题 → 改 settings
+# 改完保存并提交到 GitHub，下一次定时任务（或手动触发）就生效，
+# 不需要动任何 Python 代码。
+#
+# 支持的源类型：RSS 2.0、Atom（即绝大多数博客/媒体提供的“订阅”地址）
+# 不支持的源：需要登录、需要破解接口、robots.txt 明确禁止抓取的站点。
+# ============================================================
+
+settings:
+  # 网页上显示的大标题和副标题
+  site_title: "每日科技速览"
+  site_description: "由 GitHub Actions 定时抓取公开订阅源、自动生成并部署的静态信息站"
+
+  # 页面时间显示的时区偏移（小时）。8 = 北京时间。改成 0 就是 UTC。
+  timezone_offset: 8
+
+  # 每个源最多展示多少条（会被单个源自己的 max_items 覆盖）
+  max_items_per_source: 10
+
+  # 摘要最多保留多少字（只截取摘要，不转载全文，避免版权问题）
+  summary_max_chars: 160
+
+sources:
+  # ---------- 示例源 1：少数派（默认启用，用来跑通第一版） ----------
+  - id: sspai                 # 唯一标识，英文小写，不能和别的源重复
+    name: 少数派               # 页面上显示的名字
+    home: https://sspai.com    # 站点首页（用于把相对链接补全为完整链接）
+    type: rss                  # rss 或 atom
+    url: https://sspai.com/feed
+    enabled: true              # false = 暂停抓取，但配置保留
+    max_items: 10
+
+  # ---------- 示例源 2：阮一峰的网络日志（默认关闭，需要时把 enabled 改成 true） ----------
+  # 取消下面每一行开头的 "# " 即可启用。这是扩展示例，第一版不用管。
+  # - id: ruanyifeng
+  #   name: 阮一峰的网络日志
+  #   home: https://www.ruanyifeng.com/blog/
+  #   type: atom
+  #   url: https://www.ruanyifeng.com/blog/atom.xml
+  #   enabled: true
+  #   max_items: 5
+
+  # ---------- 加更多源：复制上面任意一段，保证 id 不重复即可 ----------
+  # 常见可用源（都是公开 RSS，自行确认站点条款后使用）：
+  #   - 少数派        https://sspai.com/feed
+  #   - 阮一峰周刊     https://www.ruanyifeng.com/blog/atom.xml
+  #   - 36氪          https://36kr.com/feed
+  #   - 知乎每日精选   https://www.zhihu.com/rss
+  # 提醒：源越多越容易触发对方限流，建议不超过 5 个，每个源 max_items 10 条以内。
