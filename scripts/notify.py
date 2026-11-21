@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-notify.py —— 把本次更新摘要推送到 Server 酱（微信）
+notify.py —— 只推送本轮真正新增的文章摘要到 Server 酱（微信）
 
 运行方式：
     python scripts/notify.py
@@ -11,12 +11,13 @@ notify.py —— 把本次更新摘要推送到 Server 酱（微信）
                         未配置时不会报错，只打印「跳过推送」。
     SITE_URL            可选。页面地址；不填则按 GitHub 仓库信息自动推断。
 
-三条安全约定（很重要）：
-    1. 没配置 SendKey → 跳过推送，退出码 0，不影响任何其他流程。
-    2. 网络超时、HTTP 错误、Server 酱返回失败 → 只记录脱敏后的错误，退出码 0。
-    3. 日志里绝不出现完整 SendKey：所有错误信息都会先经过 mask_secret()。
-
-推送内容只有三样：更新时间、前 3 条标题、页面链接。不推正文。
+推送规则（阶段 3）：
+    1. push_mode=off 或 new_count=0 → 直接跳过，不调用 Server 酱，不改状态。
+    2. 只从 data/state.json 中 status=pending 的条目生成消息，不再拿页面上的旧文章凑数。
+    3. 消息包含真实新增数量、最多 3 条新增标题和页面链接。
+    4. 每次运行最多只发起一次普通内容推送；失败就保留 pending，下一次运行再试。
+    5. 只有 Server 酱明确返回成功，才把本轮全部 pending 标成 notified 并写入 notified_at。
+    6. 日志绝不出现完整 SendKey；所有错误文本都会先经过 mask_secret()。
 """
 
 from __future__ import annotations
@@ -24,21 +25,21 @@ from __future__ import annotations
 import json
 import os
 import sys
-import time
 from datetime import datetime
 from pathlib import Path
 from urllib.parse import quote
 
 import requests
 
+import core
+
 ROOT = Path(__file__).resolve().parent.parent
 DATA_PATH = ROOT / "data" / "latest.json"
+STATE_PATH = ROOT / "data" / "state.json"
 
 API_BASE = "https://sctapi.ftqq.com"
 REQUEST_TIMEOUT = 15      # 单次请求超时（秒）
-MAX_ATTEMPTS = 2          # 最多尝试两次，容忍一次网络抖动
-RETRY_WAIT = 3            # 重试前等待（秒）
-PREVIEW_COUNT = 3         # 消息里最多列几条标题
+PREVIEW_COUNT = 3         # 消息里最多列几条新增标题
 KEY_PREFIX = "SCT"        # Server 酱 Turbo 的 SendKey 以此开头
 
 
@@ -61,6 +62,55 @@ def mask_secret(text: str, secret: str) -> str:
     return text
 
 
+def load_json(path: Path):
+    """读取 JSON；文件不存在或损坏都返回 None，由调用方决定是否跳过。"""
+    if not path.exists():
+        return None
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError):
+        return None
+
+
+def write_state_atomic(path: Path, payload: dict) -> None:
+    """先写临时文件再替换，避免状态文件写坏。"""
+    path.parent.mkdir(parents=True, exist_ok=True)
+    temp_path = path.with_name(path.name + ".tmp")
+    with temp_path.open("w", encoding="utf-8") as handle:
+        json.dump(payload, handle, ensure_ascii=False, indent=2)
+        handle.write("\n")
+    os.replace(temp_path, path)
+
+
+def pending_items(state: dict) -> list[dict]:
+    """
+    从 state.items 中取出所有 status=pending 的条目，按发布时间倒序。
+    只认状态，不认页面上的展示列表；这样历史文章不会被当成新增。
+    """
+    result: list[dict] = []
+    for item_id, meta in (state.get("items") or {}).items():
+        if not isinstance(meta, dict) or meta.get("status") != "pending":
+            continue
+        result.append(
+            {
+                "id": item_id,
+                "source_id": meta.get("source_id", ""),
+                "source_name": meta.get("source_name", ""),
+                "category": meta.get("category", ""),
+                "title": meta.get("title", ""),
+                "link": meta.get("link", ""),
+                "published": meta.get("published"),
+            }
+        )
+
+    def sort_key(item):
+        moment = core.to_datetime(item.get("published"))
+        return moment.timestamp() if moment else float("-inf")
+
+    result.sort(key=sort_key, reverse=True)
+    return result
+
+
 def build_site_url() -> str:
     """页面地址：优先读 SITE_URL，否则用 GitHub 仓库信息推断。"""
     explicit = (os.environ.get("SITE_URL") or "").strip()
@@ -75,120 +125,167 @@ def build_site_url() -> str:
     return ""
 
 
-def build_message(payload: dict, site_url: str) -> tuple[str, str]:
-    """拼出推送标题和正文（Markdown）。"""
+def build_message(payload: dict, pending: list[dict], site_url: str) -> tuple[str, str]:
+    """
+    生成一条普通内容推送：
+      - 真实新增数量用 pending 的实际条数，不用页面展示条数；
+      - 最多列 3 条新增标题；
+      - 附页面链接。
+    """
     generated = payload.get("generated_at") or ""
     try:
         stamp = datetime.fromisoformat(generated).strftime("%Y-%m-%d %H:%M")
     except (TypeError, ValueError):
         stamp = generated or "未知时间"
 
-    stats = payload.get("stats") or {}
+    count = len(pending)
     lines = [
-        f"**更新时间：{stamp}**",
+        f"**本次新增：{count} 条**",
         "",
-        f"本次成功 {stats.get('source_ok', 0)}/{stats.get('source_total', 0)} 个源，"
-        f"共 {stats.get('item_total', 0)} 条。",
+        f"更新时间：{stamp}",
+        "",
     ]
 
-    items = []
-    for source in payload.get("sources") or []:
-        for item in (source.get("items") or []):
-            if item.get("title"):
-                items.append(item)
-    items = items[:PREVIEW_COUNT]
+    for index, item in enumerate(pending[:PREVIEW_COUNT], start=1):
+        lines.append(f"{index}. {item.get('title', '')}")
 
-    if items:
-        lines.append("")
-        for index, item in enumerate(items, start=1):
-            lines.append(f"{index}. {item['title']}")
+    if count > PREVIEW_COUNT:
+        lines.append(f"……另有 {count - PREVIEW_COUNT} 条新增未展开")
 
     if site_url:
         lines.extend(["", f"[打开页面]({site_url})"])
 
     # Server 酱的标题建议控制在 32 字以内
-    title = f"每日科技速览已更新 · {stamp}"
+    title = f"每日科技速览 · 新增 {count} 条"
     if len(title) > 32:
         title = title[:32]
     return title, "\n".join(lines)
 
 
+def mark_notified(state: dict, pending: list[dict], now: datetime) -> int:
+    """
+    推送成功后，把本轮全部 pending 标记为 notified。
+    一条消息代表本轮全部新增；只列 3 条标题，但未展开的条目也已包含在“新增 N 条”里，
+    所以同样要标记，避免下一轮重复补推。
+    """
+    now_text = now.isoformat(timespec="seconds")
+    changed = 0
+    for item in pending:
+        item_id = item.get("id")
+        meta = (state.get("items") or {}).get(item_id)
+        if not isinstance(meta, dict) or meta.get("status") != "pending":
+            continue
+        meta["status"] = "notified"
+        meta["notified_at"] = now_text
+        meta["suppressed_reason"] = None
+        changed += 1
+
+    state["updated_at"] = now_text
+    state["last_notify"] = {
+        "at": now_text,
+        "count": changed,
+        "reason": "ok",
+    }
+    return changed
+
+
 def send_to_serverchan(sendkey: str, title: str, desp: str) -> bool:
-    """调用 Server 酱接口。成功返回 True，失败返回 False，任何情况下都不抛异常。"""
+    """
+    调用一次 Server 酱接口。成功返回 True，失败返回 False，任何情况下都不抛异常。
+    不在本函数内重试：失败后保留 pending，由下一次运行重试，避免一次运行发出重复消息。
+    """
     url = f"{API_BASE}/{sendkey}.send"
     body = {"title": title, "desp": desp}
 
-    for attempt in range(1, MAX_ATTEMPTS + 1):
+    try:
+        response = requests.post(url, data=body, timeout=REQUEST_TIMEOUT)
+        response.raise_for_status()
+        result = response.json()
+        code = result.get("code")
         try:
-            response = requests.post(url, data=body, timeout=REQUEST_TIMEOUT)
-            response.raise_for_status()
-            result = response.json()
-            code = result.get("code")
-            if code == 0:
-                log("推送成功，微信应已收到消息")
-                return True
-            reason = result.get("message") or result.get("info") or "未知原因"
-            log(f"Server 酱返回失败（code={code}）：{reason}")
-            return False
-        except Exception as exc:  # noqa: BLE001 —— 这里就是要兜住所有异常
-            error = mask_secret(str(exc), sendkey)
-            if attempt < MAX_ATTEMPTS:
-                log(f"第 {attempt} 次推送失败：{error}；{RETRY_WAIT} 秒后重试")
-                time.sleep(RETRY_WAIT)
-            else:
-                log(f"推送失败：{error}")
-    return False
+            code_value = int(code)
+        except (TypeError, ValueError):
+            code_value = None
+        if code_value == 0:
+            log("推送成功，微信应已收到消息")
+            return True
+        reason = result.get("message") or result.get("info") or "未知原因"
+        log(f"Server 酱返回失败（code={code}）：{mask_secret(str(reason), sendkey)}")
+        return False
+    except Exception as exc:  # noqa: BLE001 —— 这里就是要兜住所有异常
+        log(f"推送失败：{mask_secret(str(exc), sendkey)}")
+        return False
 
 
 def main() -> int:
-    payload: dict = {}
-    if DATA_PATH.exists():
-        try:
-            payload = json.loads(DATA_PATH.read_text(encoding="utf-8"))
-        except Exception as exc:  # noqa: BLE001
-            log(f"数据文件读取失败，跳过推送：{exc}")
-            return 0
-    else:
-        log(f"找不到 {DATA_PATH.name}，跳过推送")
+    payload = load_json(DATA_PATH)
+    if not isinstance(payload, dict):
+        log(f"找不到或无法读取 {DATA_PATH.name}，跳过推送")
         return 0
 
-    # 过渡期守卫：fetch.py 在 latest.json 里写入 push.enabled。
-    # push_mode=off 时这里必须直接返回，绝不能把条目标成已通知。
+    state = load_json(STATE_PATH)
+    if not isinstance(state, dict):
+        log(f"找不到或无法读取 {STATE_PATH.name}，跳过推送（pending 不会被标记）")
+        return 0
+
+    # 过渡期 / 无新增守卫：绝不调用推送，也绝不修改状态。
     push = payload.get("push") or {}
     if push.get("enabled") is not True:
         log("push_mode=off 过渡期，跳过普通推送（不标记已通知）")
         return 0
 
-    if int(push.get("new_count") or 0) <= 0:
+    declared_raw = push.get("new_count") or 0
+    try:
+        declared_count = int(declared_raw)
+    except (TypeError, ValueError):
+        declared_count = 0
+    if declared_count <= 0:
         log("没有新增内容，跳过普通推送")
+        return 0
+
+    pending = pending_items(state)
+    if not pending:
+        log("state 中没有 pending 条目，跳过普通推送")
+        return 0
+    if declared_count != len(pending):
+        log(
+            f"提示：latest 记录的新增数为 {declared_count}，state 中 pending 为 {len(pending)}；"
+            "以 state 为准"
+        )
+
+    site_url = build_site_url()
+    if not site_url:
+        log("无法生成页面链接，跳过推送（pending 保留，下一次再试）")
         return 0
 
     sendkey = (os.environ.get("SERVERCHAN_SENDKEY") or "").strip()
 
     # 情况一：没有配置 Secret —— 明确提示跳过，不算错误
     if not sendkey:
-        log("未配置 SERVERCHAN_SENDKEY，跳过推送（不影响抓取与部署）")
+        log("未配置 SERVERCHAN_SENDKEY，跳过推送（pending 保留，不影响抓取与部署）")
         return 0
 
     # 情况二：格式明显不对（比如误填了 Server 酱³ 的 sctp 密钥）
     if not sendkey.startswith(KEY_PREFIX):
-        log("SERVERCHAN_SENDKEY 格式不符（应以 SCT 开头），跳过推送")
+        log("SERVERCHAN_SENDKEY 格式不符（应以 SCT 开头），跳过推送（pending 保留）")
         return 0
 
-    site_url = build_site_url()
-    title, desp = build_message(payload, site_url)
+    title, desp = build_message(payload, pending, site_url)
 
     log(f"准备推送：{title}")
-    if not site_url:
-        log("提示：未能推断页面地址，消息里不会附带链接")
+    if not send_to_serverchan(sendkey, title, desp):
+        log("推送失败，pending 保留，下一次运行会重试（不标记 notified）")
+        return 0
 
+    now = datetime.now(core.get_timezone(payload.get("tz_offset") or 8))
+    marked = mark_notified(state, pending, now)
     try:
-        send_to_serverchan(sendkey, title, desp)
-    except Exception as exc:  # noqa: BLE001 —— 最后一道保险
-        log(f"推送过程出现未预期错误：{mask_secret(str(exc), sendkey)}")
+        write_state_atomic(STATE_PATH, state)
+    except Exception as exc:  # noqa: BLE001
+        log(f"推送已成功，但 state 写入失败：{exc}；下一次可能重复 1 条，请按失败矩阵处理")
+        return 1
 
-    # 关键：无论推送成功、失败还是跳过，都返回 0，
-    # 这样 workflow 里这一步永远不会因为推送问题而中断。
+    log(f"推送成功并已标记 {marked} 条为 notified")
     return 0
 
 
