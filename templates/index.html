@@ -20,10 +20,51 @@
   </header>
 
   <main>
-  {% for source in data.sources %}
-    <section class="source" id="source-{{ source.id }}">
-      <div class="source-head">
-        <h2>{{ source.name }}</h2>
+  {% if not has_items %}
+    <section class="empty-state">
+      <h2>本期暂无新内容</h2>
+      <p>各来源在各自时间窗口内都没有符合条件的新文章。等下一次定时运行即可，页面不会用旧文章凑满 10 条。</p>
+    </section>
+  {% endif %}
+
+  {% for group in categories %}
+    {% if group["items"] %}
+    <section class="category" id="category-{{ loop.index }}">
+      <div class="category-head">
+        <h2>{{ group.name }}</h2>
+        <span class="category-count">{{ group.count }} 条</span>
+      </div>
+
+      <ul class="item-list">
+      {% for item in group["items"] %}
+        <li class="item">
+          <a class="item-title" href="{{ item.link }}" target="_blank" rel="noopener noreferrer">{{ item.title }}</a>
+          {% if item.summary %}
+            <p class="item-summary">{{ item.summary }}</p>
+          {% endif %}
+          <p class="item-meta">
+            {% if item.source_name %}<span>{{ item.source_name }}</span><span class="sep">·</span>{% endif %}
+            {% if item.published %}<time datetime="{{ item.published }}">{{ item.published | date }}</time>{% else %}时间未知{% endif %}
+            {% if item.author %}<span class="sep">·</span>{{ item.author }}{% endif %}
+            {% if item.stale %}<span class="sep">·</span><span class="badge badge-warn">缓存</span>{% endif %}
+          </p>
+        </li>
+      {% endfor %}
+      </ul>
+    </section>
+    {% endif %}
+  {% endfor %}
+
+  <section class="source-status">
+    <h2>来源状态</h2>
+    <ul class="source-status-list">
+    {% for source in data.sources %}
+      <li class="source-status-row">
+        {% if source.home %}
+          <a href="{{ source.home }}" target="_blank" rel="noopener noreferrer">{{ source.name }}</a>
+        {% else %}
+          <span>{{ source.name }}</span>
+        {% endif %}
         {% if source.stale %}
           <span class="badge badge-warn">缓存</span>
         {% elif source.ok %}
@@ -31,42 +72,16 @@
         {% else %}
           <span class="badge badge-error">异常</span>
         {% endif %}
-        {% if source.home %}
-          <a class="source-home" href="{{ source.home }}" target="_blank" rel="noopener noreferrer">访问原站 ↗</a>
+        {% if source.health and source.health.consecutive_failures %}
+          <span class="source-failures">连续失败 {{ source.health.consecutive_failures }} 次</span>
         {% endif %}
-      </div>
-
-      {% if source.stale %}
-        <p class="notice notice-warn">
-          本次抓取失败（{{ source.error }}）。下面是 <strong>{{ source.stale_since | dt }}</strong> 抓到的缓存，
-          其余源不受影响，下次成功抓取后会自动覆盖。
-        </p>
-      {% elif not source.ok %}
-        <p class="notice notice-error">
-          本次抓取失败（{{ source.error }}），且没有可用的缓存数据。
-        </p>
-      {% endif %}
-
-      {% if source["items"] %}
-        <ul class="item-list">
-        {% for item in source["items"] %}
-          <li class="item">
-            <a class="item-title" href="{{ item.link }}" target="_blank" rel="noopener noreferrer">{{ item.title }}</a>
-            {% if item.summary %}
-              <p class="item-summary">{{ item.summary }}</p>
-            {% endif %}
-            <p class="item-meta">
-              {% if item.published %}<time datetime="{{ item.published }}">{{ item.published | date }}</time>{% else %}时间未知{% endif %}
-              {% if item.author %}<span class="sep">·</span>{{ item.author }}{% endif %}
-            </p>
-          </li>
-        {% endfor %}
-        </ul>
-      {% else %}
-        <p class="notice">暂无数据。可能是源暂时不可用，或还没有成功抓取过。等下一次定时任务再试。</p>
-      {% endif %}
-    </section>
-  {% endfor %}
+        {% if source.stale_since %}
+          <span class="source-time">最后成功：{{ source.stale_since | dt }}</span>
+        {% endif %}
+      </li>
+    {% endfor %}
+    </ul>
+  </section>
   </main>
 
   <footer class="site-footer">
