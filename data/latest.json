@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-11-21T15:02:10+08:00",
-  "generated_at_utc": "2026-11-21T07:02:10+00:00",
-  "run_url": "https://github.com/1lnmlnm2/daily-digest/actions/runs/44878316039",
+  "generated_at": "2026-11-21T15:47:59+08:00",
+  "generated_at_utc": "2026-11-21T07:47:59+00:00",
+  "run_url": "https://github.com/1lnmlnm2/daily-digest/actions/runs/44881889045",
   "stats": {
     "source_total": 1,
     "source_ok": 1,
@@ -19,7 +19,7 @@
       "ok": true,
       "stale": false,
       "error": null,
-      "updated_at": "2026-11-21T15:02:10+08:00",
+      "updated_at": "2026-11-21T15:47:59+08:00",
       "stale_since": null,
       "item_count": 10,
       "items": [
