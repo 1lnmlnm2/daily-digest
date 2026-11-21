@@ -5,7 +5,7 @@
     "established": false,
     "established_at": null
   },
-  "updated_at": "2026-11-21T23:54:26+08:00",
+  "updated_at": "2026-11-22T06:56:00+08:00",
   "items": {
     "ddc942c524c1112b": {
       "source_id": "sspai",
@@ -15,7 +15,7 @@
       "link": "https://sspai.com/post/119291",
       "published": "2026-11-21T12:00:00+08:00",
       "first_seen": "2026-11-21T19:58:57+08:00",
-      "last_seen": "2026-11-21T23:54:26+08:00",
+      "last_seen": "2026-11-22T06:56:00+08:00",
       "status": "observed",
       "notified_at": null,
       "suppressed_reason": null
@@ -28,7 +28,7 @@
       "link": "https://sspai.com/post/119337",
       "published": "2026-11-20T17:54:01+08:00",
       "first_seen": "2026-11-21T19:58:57+08:00",
-      "last_seen": "2026-11-21T23:54:26+08:00",
+      "last_seen": "2026-11-22T06:56:00+08:00",
       "status": "observed",
       "notified_at": null,
       "suppressed_reason": null
@@ -41,7 +41,7 @@
       "link": "https://sspai.com/post/119327",
       "published": "2026-11-20T15:34:26+08:00",
       "first_seen": "2026-11-21T19:58:57+08:00",
-      "last_seen": "2026-11-21T23:54:26+08:00",
+      "last_seen": "2026-11-22T06:56:00+08:00",
       "status": "observed",
       "notified_at": null,
       "suppressed_reason": null
@@ -106,7 +106,7 @@
       "link": "https://www.appinn.com/google-ai-pro-black-friday-2026/",
       "published": "2026-11-21T19:14:41+08:00",
       "first_seen": "2026-11-21T19:58:57+08:00",
-      "last_seen": "2026-11-21T23:54:26+08:00",
+      "last_seen": "2026-11-22T06:56:00+08:00",
       "status": "observed",
       "notified_at": null,
       "suppressed_reason": null
@@ -119,7 +119,7 @@
       "link": "https://www.appinn.com/dettato/",
       "published": "2026-11-21T14:24:51+08:00",
       "first_seen": "2026-11-21T19:58:57+08:00",
-      "last_seen": "2026-11-21T23:54:26+08:00",
+      "last_seen": "2026-11-22T06:56:00+08:00",
       "status": "observed",
       "notified_at": null,
       "suppressed_reason": null
@@ -132,7 +132,7 @@
       "link": "http://www.ruanyifeng.com/blog/2026/11/weekly-issue-420.html",
       "published": "2026-11-20T08:07:30+08:00",
       "first_seen": "2026-11-21T19:58:57+08:00",
-      "last_seen": "2026-11-21T23:54:26+08:00",
+      "last_seen": "2026-11-22T06:56:00+08:00",
       "status": "observed",
       "notified_at": null,
       "suppressed_reason": null
@@ -249,7 +249,7 @@
       "link": "https://www.solidot.org/story?sid=85955",
       "published": "2026-11-21T22:40:48+08:00",
       "first_seen": "2026-11-21T23:42:27+08:00",
-      "last_seen": "2026-11-21T23:54:26+08:00",
+      "last_seen": "2026-11-22T06:56:00+08:00",
       "status": "observed",
       "notified_at": null,
       "suppressed_reason": null
@@ -262,7 +262,7 @@
       "link": "https://www.solidot.org/story?sid=85954",
       "published": "2026-11-21T22:25:45+08:00",
       "first_seen": "2026-11-21T23:42:27+08:00",
-      "last_seen": "2026-11-21T23:54:26+08:00",
+      "last_seen": "2026-11-22T06:56:00+08:00",
       "status": "observed",
       "notified_at": null,
       "suppressed_reason": null
@@ -275,7 +275,7 @@
       "link": "https://www.ithome.com/1/030/510.htm",
       "published": "2026-11-21T23:43:31+08:00",
       "first_seen": "2026-11-21T23:47:30+08:00",
-      "last_seen": "2026-11-21T23:47:30+08:00",
+      "last_seen": "2026-11-22T06:56:00+08:00",
       "status": "observed",
       "notified_at": null,
       "suppressed_reason": null
@@ -292,18 +292,31 @@
       "status": "observed",
       "notified_at": null,
       "suppressed_reason": null
+    },
+    "2a49cc88f81bec55": {
+      "source_id": "ithome",
+      "source_name": "IT之家",
+      "category": "科技资讯",
+      "title": "今日小雪：雨凝为雪，地气冻结",
+      "link": "https://www.ithome.com/1/030/511.htm",
+      "published": "2026-11-22T00:00:08+08:00",
+      "first_seen": "2026-11-22T06:56:00+08:00",
+      "last_seen": "2026-11-22T06:56:00+08:00",
+      "status": "observed",
+      "notified_at": null,
+      "suppressed_reason": null
     }
   },
   "sources": {
     "sspai": {
       "consecutive_failures": 0,
-      "last_success_at": "2026-11-21T23:54:26+08:00",
+      "last_success_at": "2026-11-22T06:56:00+08:00",
       "last_failure_at": "2026-11-21T23:47:30+08:00",
       "last_alert_at": "2026-11-21T23:47:44+08:00",
       "alert_active": false,
       "status": "ok",
       "last_error": null,
-      "last_attempt_at": "2026-11-21T23:54:26+08:00",
+      "last_attempt_at": "2026-11-22T06:56:00+08:00",
       "alert_open": false,
       "last_status": "ok",
       "alert_last_attempt_at": "2026-11-21T23:47:44+08:00",
@@ -311,13 +324,13 @@
     },
     "ithome": {
       "consecutive_failures": 0,
-      "last_success_at": "2026-11-21T23:54:26+08:00",
+      "last_success_at": "2026-11-22T06:56:00+08:00",
       "last_failure_at": null,
       "last_alert_at": null,
       "alert_active": false,
       "status": "ok",
       "last_error": null,
-      "last_attempt_at": "2026-11-21T23:54:26+08:00",
+      "last_attempt_at": "2026-11-22T06:56:00+08:00",
       "alert_open": false,
       "last_status": "ok",
       "alert_last_attempt_at": null,
@@ -325,13 +338,13 @@
     },
     "solidot": {
       "consecutive_failures": 0,
-      "last_success_at": "2026-11-21T23:54:26+08:00",
+      "last_success_at": "2026-11-22T06:56:00+08:00",
       "last_failure_at": null,
       "last_alert_at": null,
       "alert_active": false,
       "status": "ok",
       "last_error": null,
-      "last_attempt_at": "2026-11-21T23:54:26+08:00",
+      "last_attempt_at": "2026-11-22T06:56:00+08:00",
       "alert_open": false,
       "last_status": "ok",
       "alert_last_attempt_at": null,
@@ -339,13 +352,13 @@
     },
     "appinn": {
       "consecutive_failures": 0,
-      "last_success_at": "2026-11-21T23:54:26+08:00",
+      "last_success_at": "2026-11-22T06:56:00+08:00",
       "last_failure_at": null,
       "last_alert_at": null,
       "alert_active": false,
       "status": "ok",
       "last_error": null,
-      "last_attempt_at": "2026-11-21T23:54:26+08:00",
+      "last_attempt_at": "2026-11-22T06:56:00+08:00",
       "alert_open": false,
       "last_status": "ok",
       "alert_last_attempt_at": null,
@@ -353,13 +366,13 @@
     },
     "ruanyifeng": {
       "consecutive_failures": 0,
-      "last_success_at": "2026-11-21T23:54:26+08:00",
+      "last_success_at": "2026-11-22T06:56:00+08:00",
       "last_failure_at": null,
       "last_alert_at": null,
       "alert_active": false,
       "status": "ok",
       "last_error": null,
-      "last_attempt_at": "2026-11-21T23:54:26+08:00",
+      "last_attempt_at": "2026-11-22T06:56:00+08:00",
       "alert_open": false,
       "last_status": "ok",
       "alert_last_attempt_at": null,
@@ -367,8 +380,8 @@
     }
   },
   "last_run": {
-    "at": "2026-11-21T23:54:26+08:00",
-    "run_url": "https://github.com/1lnmlnm2/daily-digest/actions/runs/44921637116",
+    "at": "2026-11-22T06:56:00+08:00",
+    "run_url": "https://github.com/1lnmlnm2/daily-digest/actions/runs/44959240665",
     "push_mode": "off",
     "baseline_established": false
   },
