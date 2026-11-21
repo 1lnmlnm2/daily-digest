@@ -1,6 +1,11 @@
 # ============================================================
 # 定时抓取 → 生成静态页 → 部署到 GitHub Pages
-# 触发方式：schedule（定时，UTC） + workflow_dispatch（网页手动）
+# ------------------------------------------------------------
+# 触发方式：
+#   1. schedule：定时自动运行（cron 用 UTC 时间，见下方注释）
+#   2. workflow_dispatch：在网页上手动点按钮运行
+# 说明：故意没有配置 push 触发。否则你第一次上传文件时会立刻跑一次，
+#       而那时 Pages 还没打开，部署步骤必然报错，容易让人以为项目坏了。
 # ============================================================
 
 name: 定时更新站点
@@ -9,21 +14,27 @@ on:
   schedule:
     # GitHub 的 cron 一律按 UTC 计算，不是北京时间！
     # UTC 22:17 = 北京时间次日 06:17
+    # 故意避开整点（0 分），因为整点是全球任务高峰，容易排队延迟。
     - cron: "17 22 * * *"
   workflow_dispatch:
 
-# 提交数据需要 contents: write，部署 Pages 需要 pages / id-token
+# GITHUB_TOKEN 的权限：提交数据需要 contents: write，部署 Pages 需要 pages/id-token
 permissions:
   contents: write
   pages: write
   id-token: write
 
-# 同一时间只允许一个部署，避免互相覆盖
+# 同一个时间只允许一个运行在跑，避免 Schedule 与手动运行、或两次手动运行
+# 同时读取同一份 state.json，造成重复推送、归档重复合并、git rebase 冲突。
+# cancel-in-progress: false 表示新触发不会取消正在跑的任务，而是排队等它结束。
+# 注意：GitHub 每个并发组只保留一个“等待中”的运行，短时间连点多次时，
+# 后到的等待运行可能替换先到的等待运行，但绝不会两个同时执行。
 concurrency:
   group: pages-deploy
   cancel-in-progress: false
 
 jobs:
+  # ---------- 第一步：抓取 + 生成 ----------
   build:
     name: 抓取并构建
     runs-on: ubuntu-latest
@@ -32,18 +43,23 @@ jobs:
     steps:
       - name: 检出仓库代码
         uses: actions/checkout@v4
+        with:
+          # 取完整历史：提交步骤里的 git pull --rebase 需要共同祖先，
+          # 默认 depth=1 的浅克隆在 rebase 时可能失败。
+          fetch-depth: 0
 
       - name: 安装 Python 3.12
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+          # 缓存 pip 下载的依赖包，加快后续运行
           cache: pip
           cache-dependency-path: requirements.txt
 
       - name: 安装依赖
         run: pip install -r requirements.txt
 
-      # 脚本内部每个源已重试 3 次，这里再兜一层
+      # 脚本内部对每个源已有 3 次重试；这里再兜一层，防止脚本整体异常退出。
       - name: 抓取数据
         run: |
           python scripts/fetch.py || (
@@ -55,30 +71,58 @@ jobs:
       - name: 生成静态页面
         run: python scripts/build.py
 
-      # 把数据提交回仓库：用于下次运行读取旧数据、以及给定时任务保活
-      - name: 提交最新数据
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/latest.json
-          if git diff --cached --quiet; then
-            echo "数据没有变化，跳过提交"
-            exit 0
-          fi
-          git commit -m "chore(data): 自动更新 $(date -u '+%Y-%m-%d %H:%M UTC')"
-          git push origin "HEAD:${{ github.ref_name }}"
-
-      - name: 上传页面产物
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: site
+      # ---------- 可选：把摘要推送到微信（Server 酱） ----------
+      # 放在数据提交之前：推送脚本会读取 latest.json 的 push 开关，
+      # 过渡期（push_mode=off）直接跳过，不会标记任何条目为已通知。
+      # 这是一个独立的容错步骤：
+      #   - 没配 Secret 时，脚本自己打印「跳过推送」，正常结束
+      #   - 推送失败时，脚本也只记录脱敏日志，退出码仍是 0
+      #   - continue-on-error 再兜一层，保证不会影响部署
       - name: 推送摘要到微信（可选）
         continue-on-error: true
         env:
           SERVERCHAN_SENDKEY: ${{ secrets.SERVERCHAN_SENDKEY }}
         run: python scripts/notify.py
 
+      # 把最新数据、去重状态和当天归档提交回仓库：
+      # - latest.json 供下次运行做单源失败保底
+      # - state.json 记录已处理/已通知状态，保证手动重复运行不重复推送
+      # - archive/ 是历史页面与搜索的数据来源
+      # 只有前面所有步骤都成功（if: success()）才提交，避免把不完整状态写进仓库。
+      - name: 提交数据与状态
+        if: success()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/latest.json data/state.json
+          if [ -d data/archive ]; then
+            git add data/archive
+          fi
+          if git diff --cached --quiet; then
+            echo "数据没有变化，跳过提交"
+            exit 0
+          fi
+          git commit -m "chore(data): 自动更新 $(date -u '+%Y-%m-%d %H:%M UTC')"
 
+          branch="${GITHUB_REF_NAME}"
+          for attempt in 1 2 3; do
+            if git pull --rebase origin "$branch" && git push origin "HEAD:$branch"; then
+              echo "数据提交成功（第 ${attempt} 次尝试）"
+              exit 0
+            fi
+            echo "::warning::第 ${attempt} 次提交失败，5 秒后重试"
+            git rebase --abort || true
+            sleep 5
+          done
+          echo "::error::数据提交失败：微信可能已发出但 state.json 未保存，请按失败处理矩阵手动补提交"
+          exit 1
+
+      - name: 上传页面产物
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  # ---------- 第二步：部署到 Pages ----------
   deploy:
     name: 部署到 GitHub Pages
     needs: build
