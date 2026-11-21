@@ -54,7 +54,8 @@ settings:
   # "on"  = 正式：只有真正新增的文章才推送；on 的第一次运行只建立基线，不推送历史
   # 注意：必须带引号，否则 YAML 会把 off/on 当成布尔值
   push_mode: "off"
-  # 连续失败多少次才发维护告警（第一次失败只记录）
+  # 连续失败多少次才发维护告警（第一次失败只记录，不发送）
+  # 告警开关在下方独立的 alerts.enabled 控制，不受 push_mode 影响。
   alert_after_failures: 2
 
   # ---------- 全局关键词（默认留空 = 不过滤） ----------
@@ -66,6 +67,11 @@ settings:
   filters:
     include_keywords: []
     exclude_keywords: []
+
+# 来源连续失败维护告警：独立于普通内容推送。
+# push_mode: "off" 只停止普通文章推送，不会停止这里的维护告警。
+alerts:
+  enabled: true
 
 sources:
   # ---------- 1. 少数派 ----------
