@@ -31,7 +31,7 @@ sources:
     name: 少数派               # 页面上显示的名字
     home: https://sspai.com    # 站点首页（用于把相对链接补全为完整链接）
     type: rss                  # rss 或 atom
-    url: https://sspai.com/feed-xxx
+    url: https://sspai.com/feed
     enabled: true              # false = 暂停抓取，但配置保留
     max_items: 10
 
