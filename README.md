@@ -102,10 +102,10 @@
 
 ```powershell
 # 已有 data/latest.json 时直接生成页面
-.\\.venv\\Scripts\\python.exe scripts\\build.py
+.\.venv\Scripts\python.exe scripts\build.py
 
 # 搜索页需要 HTTP 访问，不能直接双击 HTML（file:// 下 fetch 会被浏览器拦截）
-.\\.venv\\Scripts\\python.exe -m http.server 8000 --directory site
+.\.venv\Scripts\python.exe -m http.server 8000 --directory site
 # 浏览器打开 http://localhost:8000/
 ```
 
@@ -126,7 +126,7 @@
 本地验证：
 
 ```powershell
-.\\.venv\\Scripts\\python.exe -m unittest discover -s tests -v
+.\.venv\Scripts\python.exe -m unittest discover -s tests -v
 ```
 
 告警只影响维护通知，不修改 `data/latest.json`、`data/archive/` 或页面产物。
@@ -150,7 +150,7 @@
 ### 第 3 步：上传文件
 
 1. 在新仓库页面点 **Add file** → **Upload files**
-2. 打开你电脑上的项目文件夹 `D:\\github静态抓取工具站`
+2. 打开你电脑上的项目文件夹 `D:\github静态抓取工具站`
 3. 把下面 **6 个文件夹** 整个拖进网页的拖拽区域：
    `.github`、`assets`、`config`、`data`、`scripts`、`templates`
 4. 点下方 **Commit changes**（弹窗里再点一次 **Commit changes**）
@@ -292,22 +292,22 @@ settings:
 在 PowerShell 里进入项目目录，逐行执行：
 
 ```powershell
-cd D:\\github静态抓取工具站
+cd D:\github静态抓取工具站
 
 # 1. 创建虚拟环境（只做一次）
 python -m venv .venv
 
 # 2. 安装依赖（国内用清华镜像，快很多）
-.\\.venv\\Scripts\\python.exe -m pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
 
 # 3. 抓取（会打印每个源的成功/失败情况）
-.\\.venv\\Scripts\\python.exe scripts\\fetch.py
+.\.venv\Scripts\python.exe scripts\fetch.py
 
 # 4. 生成页面
-.\\.venv\\Scripts\\python.exe scripts\\build.py
+.\.venv\Scripts\python.exe scripts\build.py
 
 # 5. 启动本地静态服务器预览（不要直接双击 HTML：搜索页需要 HTTP）
-.\\.venv\\Scripts\\python.exe -m http.server 8000 --directory site
+.\.venv\Scripts\python.exe -m http.server 8000 --directory site
 
 # 6. 浏览器打开 http://localhost:8000/
 ```
