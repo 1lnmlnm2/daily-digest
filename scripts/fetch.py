@@ -531,17 +531,26 @@ def merge_archive_day(date_text: str, items, now: datetime) -> int:
     return len(ordered)
 
 
+def archive_date_for(published, tz: timezone) -> str:
+    """
+    计算归档文件名用的日期：按文章发布时间的北京时间日期，不是实际抓取日期。
+
+    即使传入的是 UTC/其它时区的 ISO 字符串，也先转成配置时区再取日期，
+    避免文章在 UTC 23:30 发布、北京时间已经是次日 07:30 时被归错文件。
+    """
+    moment = core.to_datetime(published)
+    if moment is None:
+        return ""
+    return moment.astimezone(tz).strftime("%Y-%m-%d")
+
+
 def archive_fresh_items(items, now: datetime) -> tuple[int, int]:
     """按文章发布日（北京时间）归档，返回 (归档文件数, 合并后条目总数)。"""
+    tz = now.tzinfo or core.get_timezone(8)
     by_date: dict[str, list] = {}
     for item in items:
-        published = item.get("published")
-        if not published:
-            continue
-        date_text = str(published)[:10]
-        try:
-            datetime.strptime(date_text, "%Y-%m-%d")
-        except ValueError:
+        date_text = archive_date_for(item.get("published"), tz)
+        if not date_text:
             continue
         by_date.setdefault(date_text, []).append(item)
 
@@ -765,7 +774,10 @@ def main(now: datetime | None = None) -> int:
 
     # ---------- 归档 ----------
     try:
-        archive_files, archive_total = archive_fresh_items(limited, now)
+        # 归档所有通过源级过滤的条目，而不是只归档页面最终展示的前 N 条。
+        # 这样较早发布、但本轮被全站限额挤掉的文章，也能按发布时间进入历史文件，
+        # 供阶段 4 的归档页/搜索索引使用；页面展示仍由 limited 控制。
+        archive_files, archive_total = archive_fresh_items(fresh_items, now)
         archive_removed = prune_archive(
             int(settings.get("archive_retention_days") or 90), now
         )
