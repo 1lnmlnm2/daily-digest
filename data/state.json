@@ -1,0 +1,47 @@
+{
+  "schema": 2,
+  "pipeline": "m3",
+  "baseline": {
+    "established": false,
+    "established_at": null
+  },
+  "updated_at": null,
+  "items": {},
+  "sources": {
+    "sspai": {
+      "consecutive_failures": 0,
+      "last_success_at": null,
+      "last_failure_at": null,
+      "last_alert_at": null,
+      "alert_active": false
+    },
+    "ithome": {
+      "consecutive_failures": 0,
+      "last_success_at": null,
+      "last_failure_at": null,
+      "last_alert_at": null,
+      "alert_active": false
+    },
+    "solidot": {
+      "consecutive_failures": 0,
+      "last_success_at": null,
+      "last_failure_at": null,
+      "last_alert_at": null,
+      "alert_active": false
+    },
+    "appinn": {
+      "consecutive_failures": 0,
+      "last_success_at": null,
+      "last_failure_at": null,
+      "last_alert_at": null,
+      "alert_active": false
+    },
+    "ruanyifeng": {
+      "consecutive_failures": 0,
+      "last_success_at": null,
+      "last_failure_at": null,
+      "last_alert_at": null,
+      "alert_active": false
+    }
+  }
+}
