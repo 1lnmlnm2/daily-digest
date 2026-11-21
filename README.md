@@ -2,7 +2,7 @@
 
 一个**完全跑在 GitHub 上**的信息站模板：GitHub Actions 定时抓取公开 RSS，生成静态页面，自动部署到 GitHub Pages。
 
-> 当前仓库已进入 M3 多源阶段（5 个源、`state.json`、按发布时间归档、只推新增）；阶段 4 的归档页与浏览器端静态搜索已在本地实现并通过本地测试，线上待验收。下面的“单源 / 0 Secret”等描述保留为 M1 的历史部署步骤；M3 的数据口径以 **2.1 归档口径** 和 `config/sources.yml` 为准。
+> 当前仓库已进入 M3 多源阶段（5 个源、`state.json`、按发布时间归档、只推新增）。阶段 4 的归档页与浏览器端静态搜索已通过线上验收；阶段 5 的来源连续失败告警已在本地实现并通过本地测试与隔离故障演练，**尚未上传线上**。下面的“单源 / 0 Secret”等描述保留为 M1 的历史部署步骤；M3 的数据口径以 **2.1 归档口径** 和 `config/sources.yml` 为准。
 
 - 不需要你的电脑开机，关机也照常运行
 - 不需要服务器、数据库、域名
@@ -102,14 +102,34 @@
 
 ```powershell
 # 已有 data/latest.json 时直接生成页面
-.\.venv\Scripts\python.exe scripts\build.py
+.\\.venv\\Scripts\\python.exe scripts\\build.py
 
 # 搜索页需要 HTTP 访问，不能直接双击 HTML（file:// 下 fetch 会被浏览器拦截）
-.\.venv\Scripts\python.exe -m http.server 8000 --directory site
+.\\.venv\\Scripts\\python.exe -m http.server 8000 --directory site
 # 浏览器打开 http://localhost:8000/
 ```
 
 构建日志会输出归档页数量、归档条目数、搜索索引条数和索引体积（例如 `搜索索引：14 条（归档 14 条，上限 2000），8203 B`），便于确认索引没有异常增长。
+
+### 2.3 来源连续失败告警（阶段 5）
+
+普通内容推送和维护告警是两条独立链路：
+
+- `push_mode: "off"` 只停止普通文章推送；告警由 `alerts.enabled` 单独控制，过渡期仍可验证。
+- 连续失败达到阈值（当前 `alert_after_failures: 2`）时，`scripts/alert.py` 发送**一条合并告警**；多个来源同时异常也只发 1 条。
+- 同一段连续故障只告警一次；恢复后计数归零、`alert_open` 关闭，不发送恢复消息；以后再发生新的一段故障可以重新告警。
+- 只有确认存在待告警来源时才读取 `SERVERCHAN_SENDKEY`；无告警、无新增时不会读取或打印密钥。
+- 告警步骤位于普通推送之后、数据提交之前，使用 `continue-on-error: true`，告警成功、失败、跳过都不会使 workflow 失败。
+- 发送失败时不把 `alert_open` 写成成功，保留 `alert_last_error` 和可重试状态；错误文本会脱敏。
+- `data/state.json` 为每个来源维护 `consecutive_failures`、`last_success_at`、`last_attempt_at`、`last_alert_at`、`alert_open`、`last_status` 等字段；旧 state 会自动迁移。
+
+本地验证：
+
+```powershell
+.\\.venv\\Scripts\\python.exe -m unittest discover -s tests -v
+```
+
+告警只影响维护通知，不修改 `data/latest.json`、`data/archive/` 或页面产物。
 
 ---
 
@@ -130,7 +150,7 @@
 ### 第 3 步：上传文件
 
 1. 在新仓库页面点 **Add file** → **Upload files**
-2. 打开你电脑上的项目文件夹 `D:\github静态抓取工具站`
+2. 打开你电脑上的项目文件夹 `D:\\github静态抓取工具站`
 3. 把下面 **6 个文件夹** 整个拖进网页的拖拽区域：
    `.github`、`assets`、`config`、`data`、`scripts`、`templates`
 4. 点下方 **Commit changes**（弹窗里再点一次 **Commit changes**）
@@ -272,22 +292,22 @@ settings:
 在 PowerShell 里进入项目目录，逐行执行：
 
 ```powershell
-cd D:\github静态抓取工具站
+cd D:\\github静态抓取工具站
 
 # 1. 创建虚拟环境（只做一次）
 python -m venv .venv
 
 # 2. 安装依赖（国内用清华镜像，快很多）
-.\.venv\Scripts\python.exe -m pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
+.\\.venv\\Scripts\\python.exe -m pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
 
 # 3. 抓取（会打印每个源的成功/失败情况）
-.\.venv\Scripts\python.exe scripts\fetch.py
+.\\.venv\\Scripts\\python.exe scripts\\fetch.py
 
 # 4. 生成页面
-.\.venv\Scripts\python.exe scripts\build.py
+.\\.venv\\Scripts\\python.exe scripts\\build.py
 
 # 5. 启动本地静态服务器预览（不要直接双击 HTML：搜索页需要 HTTP）
-.\.venv\Scripts\python.exe -m http.server 8000 --directory site
+.\\.venv\\Scripts\\python.exe -m http.server 8000 --directory site
 
 # 6. 浏览器打开 http://localhost:8000/
 ```
