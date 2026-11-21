@@ -448,9 +448,17 @@ def empty_state(source_ids) -> dict:
             str(sid): {
                 "consecutive_failures": 0,
                 "last_success_at": None,
-                "last_failure_at": None,
+                "last_attempt_at": None,
                 "last_alert_at": None,
+                "alert_open": False,
+                "last_status": "unknown",
+                "last_failure_at": None,
+                "last_error": None,
+                # 兼容旧版 state 字段；新逻辑以 alert_open 为准，两者保持同步
                 "alert_active": False,
+                "status": "unknown",
+                "alert_last_attempt_at": None,
+                "alert_last_error": None,
             }
             for sid in (source_ids or [])
         },
