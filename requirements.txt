@@ -1,0 +1,5 @@
+# Python 依赖清单：版本全部锁定，保证每次运行结果一致
+feedparser==6.0.11
+Jinja2==3.1.4
+PyYAML==6.0.2
+requests==2.32.3
