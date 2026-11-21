@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}历史归档 · {{ day["date"] }} · {{ site_title }}{% endblock %}
+
+{% block content %}
+  <header class="site-header">
+    <h1>历史归档 · {{ day["date"] }}</h1>
+    <p class="subtitle">按文章发布日（北京时间）归档，共 {{ day["count"] }} 条。</p>
+    <p class="notice notice-warn">这是历史归档，不是今日更新页；归档展示不受首页 10 条限额影响。</p>
+    {% if day["updated_at"] %}<p class="stats">归档更新时间：{{ day["updated_at"] | dt }}</p>{% endif %}
+  </header>
+
+  <main>
+    <section class="category">
+      <div class="category-head">
+        <h2>{{ day["date"] }} 的归档条目</h2>
+        <span class="category-count">{{ day["count"] }} 条</span>
+      </div>
+
+      {% if day["items"] %}
+      <ul class="item-list">
+        {% for item in day["items"] %}
+        <li class="item">
+          <a class="item-title" href="{{ item.link }}" target="_blank" rel="noopener noreferrer">{{ item.title }}</a>
+          <p class="item-summary">{{ item.summary or "—" }}</p>
+          <p class="item-meta">
+            <span>{{ item.source_name }}</span><span class="sep">·</span>
+            <span>{{ item.category }}</span><span class="sep">·</span>
+            <time datetime="{{ item.published }}">{{ item.published | dt }}</time>
+          </p>
+        </li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <p class="empty-archive">该日期暂无可显示条目。</p>
+      {% endif %}
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>历史归档页只读取 <code>data/archive/{{ day["date"] }}.json</code> 的已清洗字段，不修改原始归档。</p>
+  </footer>
+{% endblock %}
