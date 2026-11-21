@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-11-21T14:25:28+08:00",
-  "generated_at_utc": "2026-11-21T06:25:28+00:00",
-  "run_url": "https://github.com/1lnmlnm2/daily-digest/actions/runs/44875451548",
+  "generated_at": "2026-11-21T14:51:28+08:00",
+  "generated_at_utc": "2026-11-21T06:51:28+00:00",
+  "run_url": "https://github.com/1lnmlnm2/daily-digest/actions/runs/44877493444",
   "stats": {
     "source_total": 1,
-    "source_ok": 1,
-    "source_failed": 0,
-    "source_cached": 0,
+    "source_ok": 0,
+    "source_failed": 1,
+    "source_cached": 1,
     "item_total": 10
   },
   "sources": [
@@ -14,13 +14,13 @@
       "id": "sspai",
       "name": "少数派",
       "home": "https://sspai.com",
-      "url": "https://sspai.com/feed",
+      "url": "https://sspai.com/feed-xxx",
       "type": "rss",
-      "ok": true,
-      "stale": false,
-      "error": null,
+      "ok": false,
+      "stale": true,
+      "error": "HTTP 404，地址可能写错或对方拒绝访问",
       "updated_at": "2026-11-21T14:25:28+08:00",
-      "stale_since": null,
+      "stale_since": "2026-11-21T14:25:28+08:00",
       "item_count": 10,
       "items": [
         {
