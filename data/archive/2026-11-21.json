@@ -1,8 +1,32 @@
 {
   "date": "2026-11-21",
-  "updated_at": "2026-11-21T19:58:57+08:00",
-  "count": 6,
+  "updated_at": "2026-11-21T21:09:42+08:00",
+  "count": 10,
   "items": [
+    {
+      "id": "e67d843487a66672",
+      "source_id": "ithome",
+      "source_name": "IT之家",
+      "category": "科技资讯",
+      "title": "欧洲央行行长拉加德：欧盟应利用公共资金，率先承担大型芯片厂、数据中心等项目首轮损失",
+      "link": "https://www.ithome.com/1/030/472.htm",
+      "summary": "IT之家 11 月 21 日消息，据美国 CNBC 报道，当地时间 11 月 20 日，欧洲央行行长克里斯蒂娜 · 拉加德在法兰克福欧洲银行业大会发表卸任前最后一次演讲时呼吁， 欧盟应利用公共资金，在大型芯片制造厂和数据中心项目中率先承担首轮损失，以此吸引私人资本 。  她指出：“如果某项挑战需要欧洲层面的解决方案，我…",
+      "author": "",
+      "published": "2026-11-21T20:36:00+08:00",
+      "first_collected_at": "2026-11-21T21:09:42+08:00"
+    },
+    {
+      "id": "8f80442dfe2a3602",
+      "source_id": "ithome",
+      "source_name": "IT之家",
+      "category": "科技资讯",
+      "title": "vivo S60t 手机上架：第四代骁龙 7s 处理器、12GB RAM，3199 元起",
+      "link": "https://www.ithome.com/1/030/471.htm",
+      "summary": "IT之家 11 月 21 日消息，vivo 现已在京东上架 S60t 手机，该机可以看作是 S60 手机的换芯版，主要将 SoC 从第三代骁龙 8s 换成第四代骁龙 7s，匹配 12GB RAM，定价为 3599 元起，首发价 3199 元起（国补后 2448.86 元起）。          京东   vivo S6…",
+      "author": "",
+      "published": "2026-11-21T20:24:50+08:00",
+      "first_collected_at": "2026-11-21T21:09:42+08:00"
+    },
     {
       "id": "8248d1d8189b8403",
       "source_id": "ithome",
@@ -38,6 +62,30 @@
       "author": "青小蛙",
       "published": "2026-11-21T19:14:41+08:00",
       "first_collected_at": "2026-11-21T19:58:57+08:00"
+    },
+    {
+      "id": "6c7167eea3a2091a",
+      "source_id": "solidot",
+      "source_name": "Solidot 奇客",
+      "category": "科技资讯",
+      "title": "人类数学家匆忙发布广义黎曼猜想的证明手稿",
+      "link": "https://www.solidot.org/story?sid=85952",
+      "summary": "今年 9 月 OpenAI 宣布解决 Navier-Stokes 问题时引发了广泛争议，原因是当时有数学家正致力于解决该问题，而且已经取得了突破。现在 Anthropic 数学家发表几十万页的文档声称证明了黎曼猜想。数学家 Alessandro Maria Masullo 在广义黎曼猜想问题上投入了 12 年时间，他也…",
+      "author": "",
+      "published": "2026-11-21T19:09:59+08:00",
+      "first_collected_at": "2026-11-21T21:09:42+08:00"
+    },
+    {
+      "id": "eab6b3a22ceac0ea",
+      "source_id": "solidot",
+      "source_name": "Solidot 奇客",
+      "category": "科技资讯",
+      "title": "GTA 6 首日销售额达到创纪录的 37.9 亿美元",
+      "link": "https://www.solidot.org/story?sid=85951",
+      "summary": "GTA 6 开发商 Rockstar Games 母公司 Take-Two Interactive 披露，游戏的预购加上首日销售额达到创纪录的了 37.9 亿美元。这是娱乐产品历史上金额最高的首日收入，超过了《复仇者联盟 4：终局之战》的全球总票房 29 亿美元。Take-Two 未公布游戏具体的销售数量。GTA 6…",
+      "author": "",
+      "published": "2026-11-21T18:48:33+08:00",
+      "first_collected_at": "2026-11-21T21:09:42+08:00"
     },
     {
       "id": "a77f0a2f17f4376b",

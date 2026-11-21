@@ -5,7 +5,7 @@
     "established": false,
     "established_at": null
   },
-  "updated_at": "2026-11-21T19:58:57+08:00",
+  "updated_at": "2026-11-21T21:09:42+08:00",
   "items": {
     "ddc942c524c1112b": {
       "source_id": "sspai",
@@ -15,7 +15,7 @@
       "link": "https://sspai.com/post/119291",
       "published": "2026-11-21T12:00:00+08:00",
       "first_seen": "2026-11-21T19:58:57+08:00",
-      "last_seen": "2026-11-21T19:58:57+08:00",
+      "last_seen": "2026-11-21T21:09:42+08:00",
       "status": "observed",
       "notified_at": null,
       "suppressed_reason": null
@@ -28,7 +28,7 @@
       "link": "https://sspai.com/post/119337",
       "published": "2026-11-20T17:54:01+08:00",
       "first_seen": "2026-11-21T19:58:57+08:00",
-      "last_seen": "2026-11-21T19:58:57+08:00",
+      "last_seen": "2026-11-21T21:09:42+08:00",
       "status": "observed",
       "notified_at": null,
       "suppressed_reason": null
@@ -41,7 +41,7 @@
       "link": "https://sspai.com/post/119327",
       "published": "2026-11-20T15:34:26+08:00",
       "first_seen": "2026-11-21T19:58:57+08:00",
-      "last_seen": "2026-11-21T19:58:57+08:00",
+      "last_seen": "2026-11-21T21:09:42+08:00",
       "status": "observed",
       "notified_at": null,
       "suppressed_reason": null
@@ -106,7 +106,7 @@
       "link": "https://www.appinn.com/google-ai-pro-black-friday-2026/",
       "published": "2026-11-21T19:14:41+08:00",
       "first_seen": "2026-11-21T19:58:57+08:00",
-      "last_seen": "2026-11-21T19:58:57+08:00",
+      "last_seen": "2026-11-21T21:09:42+08:00",
       "status": "observed",
       "notified_at": null,
       "suppressed_reason": null
@@ -119,7 +119,7 @@
       "link": "https://www.appinn.com/dettato/",
       "published": "2026-11-21T14:24:51+08:00",
       "first_seen": "2026-11-21T19:58:57+08:00",
-      "last_seen": "2026-11-21T19:58:57+08:00",
+      "last_seen": "2026-11-21T21:09:42+08:00",
       "status": "observed",
       "notified_at": null,
       "suppressed_reason": null
@@ -132,7 +132,59 @@
       "link": "http://www.ruanyifeng.com/blog/2026/11/weekly-issue-420.html",
       "published": "2026-11-20T08:07:30+08:00",
       "first_seen": "2026-11-21T19:58:57+08:00",
-      "last_seen": "2026-11-21T19:58:57+08:00",
+      "last_seen": "2026-11-21T21:09:42+08:00",
+      "status": "observed",
+      "notified_at": null,
+      "suppressed_reason": null
+    },
+    "e67d843487a66672": {
+      "source_id": "ithome",
+      "source_name": "IT之家",
+      "category": "科技资讯",
+      "title": "欧洲央行行长拉加德：欧盟应利用公共资金，率先承担大型芯片厂、数据中心等项目首轮损失",
+      "link": "https://www.ithome.com/1/030/472.htm",
+      "published": "2026-11-21T20:36:00+08:00",
+      "first_seen": "2026-11-21T21:09:42+08:00",
+      "last_seen": "2026-11-21T21:09:42+08:00",
+      "status": "observed",
+      "notified_at": null,
+      "suppressed_reason": null
+    },
+    "8f80442dfe2a3602": {
+      "source_id": "ithome",
+      "source_name": "IT之家",
+      "category": "科技资讯",
+      "title": "vivo S60t 手机上架：第四代骁龙 7s 处理器、12GB RAM，3199 元起",
+      "link": "https://www.ithome.com/1/030/471.htm",
+      "published": "2026-11-21T20:24:50+08:00",
+      "first_seen": "2026-11-21T21:09:42+08:00",
+      "last_seen": "2026-11-21T21:09:42+08:00",
+      "status": "observed",
+      "notified_at": null,
+      "suppressed_reason": null
+    },
+    "6c7167eea3a2091a": {
+      "source_id": "solidot",
+      "source_name": "Solidot 奇客",
+      "category": "科技资讯",
+      "title": "人类数学家匆忙发布广义黎曼猜想的证明手稿",
+      "link": "https://www.solidot.org/story?sid=85952",
+      "published": "2026-11-21T19:09:59+08:00",
+      "first_seen": "2026-11-21T21:09:42+08:00",
+      "last_seen": "2026-11-21T21:09:42+08:00",
+      "status": "observed",
+      "notified_at": null,
+      "suppressed_reason": null
+    },
+    "eab6b3a22ceac0ea": {
+      "source_id": "solidot",
+      "source_name": "Solidot 奇客",
+      "category": "科技资讯",
+      "title": "GTA 6 首日销售额达到创纪录的 37.9 亿美元",
+      "link": "https://www.solidot.org/story?sid=85951",
+      "published": "2026-11-21T18:48:33+08:00",
+      "first_seen": "2026-11-21T21:09:42+08:00",
+      "last_seen": "2026-11-21T21:09:42+08:00",
       "status": "observed",
       "notified_at": null,
       "suppressed_reason": null
@@ -141,7 +193,7 @@
   "sources": {
     "sspai": {
       "consecutive_failures": 0,
-      "last_success_at": "2026-11-21T19:58:57+08:00",
+      "last_success_at": "2026-11-21T21:09:42+08:00",
       "last_failure_at": null,
       "last_alert_at": null,
       "alert_active": false,
@@ -150,7 +202,7 @@
     },
     "ithome": {
       "consecutive_failures": 0,
-      "last_success_at": "2026-11-21T19:58:57+08:00",
+      "last_success_at": "2026-11-21T21:09:42+08:00",
       "last_failure_at": null,
       "last_alert_at": null,
       "alert_active": false,
@@ -159,7 +211,7 @@
     },
     "solidot": {
       "consecutive_failures": 0,
-      "last_success_at": "2026-11-21T19:58:57+08:00",
+      "last_success_at": "2026-11-21T21:09:42+08:00",
       "last_failure_at": null,
       "last_alert_at": null,
       "alert_active": false,
@@ -168,7 +220,7 @@
     },
     "appinn": {
       "consecutive_failures": 0,
-      "last_success_at": "2026-11-21T19:58:57+08:00",
+      "last_success_at": "2026-11-21T21:09:42+08:00",
       "last_failure_at": null,
       "last_alert_at": null,
       "alert_active": false,
@@ -177,7 +229,7 @@
     },
     "ruanyifeng": {
       "consecutive_failures": 0,
-      "last_success_at": "2026-11-21T19:58:57+08:00",
+      "last_success_at": "2026-11-21T21:09:42+08:00",
       "last_failure_at": null,
       "last_alert_at": null,
       "alert_active": false,
@@ -186,8 +238,8 @@
     }
   },
   "last_run": {
-    "at": "2026-11-21T19:58:57+08:00",
-    "run_url": "https://github.com/1lnmlnm2/daily-digest/actions/runs/44901623733",
+    "at": "2026-11-21T21:09:42+08:00",
+    "run_url": "https://github.com/1lnmlnm2/daily-digest/actions/runs/44907450212",
     "push_mode": "off",
     "baseline_established": false
   }
