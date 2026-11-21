@@ -1,0 +1,88 @@
+# ============================================================
+# 定时抓取 → 生成静态页 → 部署到 GitHub Pages
+# 触发方式：schedule（定时，UTC） + workflow_dispatch（网页手动）
+# ============================================================
+
+name: 定时更新站点
+
+on:
+  schedule:
+    # GitHub 的 cron 一律按 UTC 计算，不是北京时间！
+    # UTC 22:17 = 北京时间次日 06:17
+    - cron: "17 22 * * *"
+  workflow_dispatch:
+
+# 提交数据需要 contents: write，部署 Pages 需要 pages / id-token
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+# 同一时间只允许一个部署，避免互相覆盖
+concurrency:
+  group: pages-deploy
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: 抓取并构建
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: 检出仓库代码
+        uses: actions/checkout@v4
+
+      - name: 安装 Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements.txt
+
+      - name: 安装依赖
+        run: pip install -r requirements.txt
+
+      # 脚本内部每个源已重试 3 次，这里再兜一层
+      - name: 抓取数据
+        run: |
+          python scripts/fetch.py || (
+            echo "::warning::第一次抓取异常退出，60 秒后整体重试一次"
+            sleep 60
+            python scripts/fetch.py
+          )
+
+      - name: 生成静态页面
+        run: python scripts/build.py
+
+      # 把数据提交回仓库：用于下次运行读取旧数据、以及给定时任务保活
+      - name: 提交最新数据
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/latest.json
+          if git diff --cached --quiet; then
+            echo "数据没有变化，跳过提交"
+            exit 0
+          fi
+          git commit -m "chore(data): 自动更新 $(date -u '+%Y-%m-%d %H:%M UTC')"
+          git push origin "HEAD:${{ github.ref_name }}"
+
+      - name: 上传页面产物
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  deploy:
+    name: 部署到 GitHub Pages
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: 部署
+        id: deployment
+        uses: actions/deploy-pages@v4
