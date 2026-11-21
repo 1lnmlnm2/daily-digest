@@ -5,43 +5,190 @@
     "established": false,
     "established_at": null
   },
-  "updated_at": null,
-  "items": {},
+  "updated_at": "2026-11-21T19:58:57+08:00",
+  "items": {
+    "ddc942c524c1112b": {
+      "source_id": "sspai",
+      "source_name": "少数派",
+      "category": "科技资讯",
+      "title": "这群在鸿蒙写应用的年轻人，只想做点「用得上」的",
+      "link": "https://sspai.com/post/119291",
+      "published": "2026-11-21T12:00:00+08:00",
+      "first_seen": "2026-11-21T19:58:57+08:00",
+      "last_seen": "2026-11-21T19:58:57+08:00",
+      "status": "observed",
+      "notified_at": null,
+      "suppressed_reason": null
+    },
+    "52a9fd8fe895d552": {
+      "source_id": "sspai",
+      "source_name": "少数派",
+      "category": "科技资讯",
+      "title": "本周看什么 | 最近值得一看的 10 部作品",
+      "link": "https://sspai.com/post/119337",
+      "published": "2026-11-20T17:54:01+08:00",
+      "first_seen": "2026-11-21T19:58:57+08:00",
+      "last_seen": "2026-11-21T19:58:57+08:00",
+      "status": "observed",
+      "notified_at": null,
+      "suppressed_reason": null
+    },
+    "0a31ea190e24db47": {
+      "source_id": "sspai",
+      "source_name": "少数派",
+      "category": "科技资讯",
+      "title": "游戏史最高分，不负 13 年的等待：《GTA 6》游玩体验",
+      "link": "https://sspai.com/post/119327",
+      "published": "2026-11-20T15:34:26+08:00",
+      "first_seen": "2026-11-21T19:58:57+08:00",
+      "last_seen": "2026-11-21T19:58:57+08:00",
+      "status": "observed",
+      "notified_at": null,
+      "suppressed_reason": null
+    },
+    "8248d1d8189b8403": {
+      "source_id": "ithome",
+      "source_name": "IT之家",
+      "category": "科技资讯",
+      "title": "AOC“CU34G4H”34 英寸带鱼屏显示器发售：1440P 200Hz Fast VA 面板，1599 元",
+      "link": "https://www.ithome.com/1/030/463.htm",
+      "published": "2026-11-21T19:37:57+08:00",
+      "first_seen": "2026-11-21T19:58:57+08:00",
+      "last_seen": "2026-11-21T19:58:57+08:00",
+      "status": "observed",
+      "notified_at": null,
+      "suppressed_reason": null
+    },
+    "da83bbf71098efb1": {
+      "source_id": "ithome",
+      "source_name": "IT之家",
+      "category": "科技资讯",
+      "title": "《GTA6》雷奥奈达州完整地图海报上线 R 星官网，玩家可自行下载打印",
+      "link": "https://www.ithome.com/1/030/462.htm",
+      "published": "2026-11-21T19:29:02+08:00",
+      "first_seen": "2026-11-21T19:58:57+08:00",
+      "last_seen": "2026-11-21T19:58:57+08:00",
+      "status": "observed",
+      "notified_at": null,
+      "suppressed_reason": null
+    },
+    "a77f0a2f17f4376b": {
+      "source_id": "solidot",
+      "source_name": "Solidot 奇客",
+      "category": "科技资讯",
+      "title": "为勒索软件受害者提供解密服务的公司只是付钱给勒索软件组织",
+      "link": "https://www.solidot.org/story?sid=85950",
+      "published": "2026-11-21T18:11:05+08:00",
+      "first_seen": "2026-11-21T19:58:57+08:00",
+      "last_seen": "2026-11-21T19:58:57+08:00",
+      "status": "observed",
+      "notified_at": null,
+      "suppressed_reason": null
+    },
+    "ea94fc850f030d14": {
+      "source_id": "solidot",
+      "source_name": "Solidot 奇客",
+      "category": "科技资讯",
+      "title": "Anthropic 的数论学家声称证明黎曼猜想",
+      "link": "https://www.solidot.org/story?sid=85949",
+      "published": "2026-11-20T23:14:05+08:00",
+      "first_seen": "2026-11-21T19:58:57+08:00",
+      "last_seen": "2026-11-21T19:58:57+08:00",
+      "status": "observed",
+      "notified_at": null,
+      "suppressed_reason": null
+    },
+    "7e92856e801bbc67": {
+      "source_id": "appinn",
+      "source_name": "小众软件",
+      "category": "实用工具",
+      "title": "Google Gemini 黑五五折！AI Pro 年费约 100 美元，Google One 老用户也能参加",
+      "link": "https://www.appinn.com/google-ai-pro-black-friday-2026/",
+      "published": "2026-11-21T19:14:41+08:00",
+      "first_seen": "2026-11-21T19:58:57+08:00",
+      "last_seen": "2026-11-21T19:58:57+08:00",
+      "status": "observed",
+      "notified_at": null,
+      "suppressed_reason": null
+    },
+    "146f70ce9a3829e7": {
+      "source_id": "appinn",
+      "source_name": "小众软件",
+      "category": "实用工具",
+      "title": "Dettato：多乐器音频转 MIDI，每个乐器一个音轨，再加一个鼓组音轨",
+      "link": "https://www.appinn.com/dettato/",
+      "published": "2026-11-21T14:24:51+08:00",
+      "first_seen": "2026-11-21T19:58:57+08:00",
+      "last_seen": "2026-11-21T19:58:57+08:00",
+      "status": "observed",
+      "notified_at": null,
+      "suppressed_reason": null
+    },
+    "72770d4c61909653": {
+      "source_id": "ruanyifeng",
+      "source_name": "阮一峰的网络日志",
+      "category": "每周精选",
+      "title": "科技爱好者周刊（第 420 期）：最分心的一年",
+      "link": "http://www.ruanyifeng.com/blog/2026/11/weekly-issue-420.html",
+      "published": "2026-11-20T08:07:30+08:00",
+      "first_seen": "2026-11-21T19:58:57+08:00",
+      "last_seen": "2026-11-21T19:58:57+08:00",
+      "status": "observed",
+      "notified_at": null,
+      "suppressed_reason": null
+    }
+  },
   "sources": {
     "sspai": {
       "consecutive_failures": 0,
-      "last_success_at": null,
+      "last_success_at": "2026-11-21T19:58:57+08:00",
       "last_failure_at": null,
       "last_alert_at": null,
-      "alert_active": false
+      "alert_active": false,
+      "status": "ok",
+      "last_error": null
     },
     "ithome": {
       "consecutive_failures": 0,
-      "last_success_at": null,
+      "last_success_at": "2026-11-21T19:58:57+08:00",
       "last_failure_at": null,
       "last_alert_at": null,
-      "alert_active": false
+      "alert_active": false,
+      "status": "ok",
+      "last_error": null
     },
     "solidot": {
       "consecutive_failures": 0,
-      "last_success_at": null,
+      "last_success_at": "2026-11-21T19:58:57+08:00",
       "last_failure_at": null,
       "last_alert_at": null,
-      "alert_active": false
+      "alert_active": false,
+      "status": "ok",
+      "last_error": null
     },
     "appinn": {
       "consecutive_failures": 0,
-      "last_success_at": null,
+      "last_success_at": "2026-11-21T19:58:57+08:00",
       "last_failure_at": null,
       "last_alert_at": null,
-      "alert_active": false
+      "alert_active": false,
+      "status": "ok",
+      "last_error": null
     },
     "ruanyifeng": {
       "consecutive_failures": 0,
-      "last_success_at": null,
+      "last_success_at": "2026-11-21T19:58:57+08:00",
       "last_failure_at": null,
       "last_alert_at": null,
-      "alert_active": false
+      "alert_active": false,
+      "status": "ok",
+      "last_error": null
     }
+  },
+  "last_run": {
+    "at": "2026-11-21T19:58:57+08:00",
+    "run_url": "https://github.com/1lnmlnm2/daily-digest/actions/runs/44901623733",
+    "push_mode": "off",
+    "baseline_established": false
   }
 }

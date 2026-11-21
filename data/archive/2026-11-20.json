@@ -1,0 +1,55 @@
+{
+  "date": "2026-11-20",
+  "updated_at": "2026-11-21T19:58:57+08:00",
+  "count": 4,
+  "items": [
+    {
+      "id": "ea94fc850f030d14",
+      "source_id": "solidot",
+      "source_name": "Solidot 奇客",
+      "category": "科技资讯",
+      "title": "Anthropic 的数论学家声称证明黎曼猜想",
+      "link": "https://www.solidot.org/story?sid=85949",
+      "summary": "美国数学家 Levent Alpöge 以数论和算术统计方面的工作著称，他目前在 AI 公司 Anthropic 工作。他发表声明，声称与公司 AI 工具 Claude 合作获得了数论经典难题黎曼猜想的一般性证明。他们发现了黎曼猜想的一个证明，而这个证明方法可以进一步证明广义黎曼猜想和扩展黎曼猜想。他称论证过程极其冗长…",
+      "author": "",
+      "published": "2026-11-20T23:14:05+08:00",
+      "first_collected_at": "2026-11-21T19:58:57+08:00"
+    },
+    {
+      "id": "52a9fd8fe895d552",
+      "source_id": "sspai",
+      "source_name": "少数派",
+      "category": "科技资讯",
+      "title": "本周看什么 | 最近值得一看的 10 部作品",
+      "link": "https://sspai.com/post/119337",
+      "summary": "📅本周新预告《克里夫·布斯的惊险再冒险》终极预告11月18日，《好莱坞往事》续集电影《克里夫·布斯的惊险再冒险》发布了终极预告，将于11月25日在北美上映，12月23日上线Netflix。大卫·芬奇执",
+      "author": "少数派编辑部",
+      "published": "2026-11-20T17:54:01+08:00",
+      "first_collected_at": "2026-11-21T19:58:57+08:00"
+    },
+    {
+      "id": "0a31ea190e24db47",
+      "source_id": "sspai",
+      "source_name": "少数派",
+      "category": "科技资讯",
+      "title": "游戏史最高分，不负 13 年的等待：《GTA 6》游玩体验",
+      "link": "https://sspai.com/post/119327",
+      "summary": "编注：本文首发于「篝火营地」，原作者多边形。少数派经授权后转载，仅对文章格式略作调整。原标题：《侠盗猎车手6》游戏评测：10分｜篝火。作为RockstarGames时隔13年推出的《侠盗猎车手》系列新",
+      "author": "篝火营地",
+      "published": "2026-11-20T15:34:26+08:00",
+      "first_collected_at": "2026-11-21T19:58:57+08:00"
+    },
+    {
+      "id": "72770d4c61909653",
+      "source_id": "ruanyifeng",
+      "source_name": "阮一峰的网络日志",
+      "category": "每周精选",
+      "title": "科技爱好者周刊（第 420 期）：最分心的一年",
+      "link": "http://www.ruanyifeng.com/blog/2026/11/weekly-issue-420.html",
+      "summary": "这里记录每周值得分享的科技内容，周五发布。...",
+      "author": "阮一峰",
+      "published": "2026-11-20T08:07:30+08:00",
+      "first_collected_at": "2026-11-21T19:58:57+08:00"
+    }
+  ]
+}

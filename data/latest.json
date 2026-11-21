@@ -1,13 +1,35 @@
 {
-  "generated_at": "2026-11-21T16:20:18+08:00",
-  "generated_at_utc": "2026-11-21T08:20:18+00:00",
-  "run_url": "https://github.com/1lnmlnm2/daily-digest/actions/runs/44884369918",
+  "schema": 3,
+  "pipeline": "m3",
+  "generated_at": "2026-11-21T19:58:57+08:00",
+  "generated_at_utc": "2026-11-21T11:58:57+00:00",
+  "run_url": "https://github.com/1lnmlnm2/daily-digest/actions/runs/44901623733",
+  "tz_offset": 8,
+  "push": {
+    "enabled": false,
+    "mode": "off",
+    "baseline_established": false,
+    "baseline_established_this_run": false,
+    "new_count": 0,
+    "reason": "push_mode_off",
+    "items": []
+  },
+  "settings": {
+    "total_max_items": 10,
+    "archive_retention_days": 90,
+    "undated_policy": "skip"
+  },
   "stats": {
-    "source_total": 1,
-    "source_ok": 1,
+    "source_total": 5,
+    "source_ok": 5,
     "source_failed": 0,
     "source_cached": 0,
-    "item_total": 10
+    "item_total": 10,
+    "new_count": 0,
+    "archive_files": 2,
+    "archive_items": 10,
+    "state_items_removed": 0,
+    "archive_files_removed": 0
   },
   "sources": [
     {
@@ -16,82 +38,472 @@
       "home": "https://sspai.com",
       "url": "https://sspai.com/feed",
       "type": "rss",
+      "category": "科技资讯",
       "ok": true,
       "stale": false,
       "error": null,
-      "updated_at": "2026-11-21T16:20:18+08:00",
+      "updated_at": "2026-11-21T19:58:57+08:00",
       "stale_since": null,
-      "item_count": 10,
+      "item_count": 3,
       "items": [
         {
+          "id": "ddc942c524c1112b",
+          "source_id": "sspai",
+          "source_name": "少数派",
+          "category": "科技资讯",
           "title": "这群在鸿蒙写应用的年轻人，只想做点「用得上」的",
           "link": "https://sspai.com/post/119291",
           "summary": "上周末，今年正式被列入「全国普通高校学科竞赛排行榜」的2026鸿蒙高校创新赛在南京大学迎来全国总决赛颁奖典礼。华为董事、终端BGCEO何刚出席现场致辞并为获奖选手颁奖。他在现场表示，HarmonyOS",
           "author": "少数派编辑部",
-          "published": "2026-11-21T12:00:00+08:00"
+          "published": "2026-11-21T12:00:00+08:00",
+          "date_source": "published"
         },
         {
+          "id": "52a9fd8fe895d552",
+          "source_id": "sspai",
+          "source_name": "少数派",
+          "category": "科技资讯",
           "title": "本周看什么 | 最近值得一看的 10 部作品",
           "link": "https://sspai.com/post/119337",
           "summary": "📅本周新预告《克里夫·布斯的惊险再冒险》终极预告11月18日，《好莱坞往事》续集电影《克里夫·布斯的惊险再冒险》发布了终极预告，将于11月25日在北美上映，12月23日上线Netflix。大卫·芬奇执",
           "author": "少数派编辑部",
-          "published": "2026-11-20T17:54:01+08:00"
+          "published": "2026-11-20T17:54:01+08:00",
+          "date_source": "published"
         },
         {
+          "id": "0a31ea190e24db47",
+          "source_id": "sspai",
+          "source_name": "少数派",
+          "category": "科技资讯",
           "title": "游戏史最高分，不负 13 年的等待：《GTA 6》游玩体验",
           "link": "https://sspai.com/post/119327",
           "summary": "编注：本文首发于「篝火营地」，原作者多边形。少数派经授权后转载，仅对文章格式略作调整。原标题：《侠盗猎车手6》游戏评测：10分｜篝火。作为RockstarGames时隔13年推出的《侠盗猎车手》系列新",
           "author": "篝火营地",
-          "published": "2026-11-20T15:34:26+08:00"
+          "published": "2026-11-20T15:34:26+08:00",
+          "date_source": "published"
+        }
+      ],
+      "stats": {
+        "entries_total": 10,
+        "invalid_entries": 0,
+        "duplicate_entries": 0,
+        "undated_skipped": 0,
+        "future_skipped": 0,
+        "out_of_window": 0,
+        "keyword_excluded": 0,
+        "keyword_not_included": 0,
+        "kept": 3
+      },
+      "config": {
+        "max_items": 3,
+        "lookback_hours": 72.0,
+        "category": "科技资讯",
+        "include_keywords": [],
+        "exclude_keywords": []
+      },
+      "health": {
+        "consecutive_failures": 0,
+        "last_success_at": "2026-11-21T19:58:57+08:00",
+        "last_failure_at": null,
+        "last_alert_at": null,
+        "alert_active": false,
+        "status": "ok",
+        "last_error": null
+      }
+    },
+    {
+      "id": "ithome",
+      "name": "IT之家",
+      "home": "https://www.ithome.com",
+      "url": "https://www.ithome.com/rss/",
+      "type": "rss",
+      "category": "科技资讯",
+      "ok": true,
+      "stale": false,
+      "error": null,
+      "updated_at": "2026-11-21T19:58:57+08:00",
+      "stale_since": null,
+      "item_count": 2,
+      "items": [
+        {
+          "id": "8248d1d8189b8403",
+          "source_id": "ithome",
+          "source_name": "IT之家",
+          "category": "科技资讯",
+          "title": "AOC“CU34G4H”34 英寸带鱼屏显示器发售：1440P 200Hz Fast VA 面板，1599 元",
+          "link": "https://www.ithome.com/1/030/463.htm",
+          "summary": "IT之家 11 月 21 日消息，AOC 旗下“CU34G4H”34 英寸带鱼屏显示器现已在京东发售，该机为 1440P 200Hz 规格， 定价为 1599 元 。        该机配备一块 3440x1440 分辨率 200Hz Fast VA 面板，曲率 1500R，GtG 响应速度 1ms，显示器支持 8-B…",
+          "author": "",
+          "published": "2026-11-21T19:37:57+08:00",
+          "date_source": "published"
         },
         {
-          "title": "浮屏：截图即可「上岛」，还能帮你记录生活",
-          "link": "https://sspai.com/post/118879",
-          "summary": "浮屏是我一个人开发的应用。它最初只是为了解决一杯柠檬水的取餐码问题，后来慢慢长成了一个记录生活小片段的工具。",
-          "author": "Nezuko",
-          "published": "2026-11-20T10:47:52+08:00"
+          "id": "da83bbf71098efb1",
+          "source_id": "ithome",
+          "source_name": "IT之家",
+          "category": "科技资讯",
+          "title": "《GTA6》雷奥奈达州完整地图海报上线 R 星官网，玩家可自行下载打印",
+          "link": "https://www.ithome.com/1/030/462.htm",
+          "summary": "IT之家 11 月 21 日消息，R 星现已在《GTA6》官方网站免费公开游戏舞台“雷奥奈达州”的完整地图及封面图海报供玩家下载打印，IT之家附地址（  https://www.rockstargames.com/VI/media  ）。     过去部分《GTA》作品曾在游戏包装内附赠纸质地图，让玩家能够一边查阅地图…",
+          "author": "",
+          "published": "2026-11-21T19:29:02+08:00",
+          "date_source": "published"
+        }
+      ],
+      "stats": {
+        "entries_total": 60,
+        "invalid_entries": 0,
+        "duplicate_entries": 0,
+        "undated_skipped": 0,
+        "future_skipped": 0,
+        "out_of_window": 0,
+        "keyword_excluded": 0,
+        "keyword_not_included": 0,
+        "kept": 2
+      },
+      "config": {
+        "max_items": 2,
+        "lookback_hours": 24.0,
+        "category": "科技资讯",
+        "include_keywords": [],
+        "exclude_keywords": []
+      },
+      "health": {
+        "consecutive_failures": 0,
+        "last_success_at": "2026-11-21T19:58:57+08:00",
+        "last_failure_at": null,
+        "last_alert_at": null,
+        "alert_active": false,
+        "status": "ok",
+        "last_error": null
+      }
+    },
+    {
+      "id": "solidot",
+      "name": "Solidot 奇客",
+      "home": "https://www.solidot.org",
+      "url": "https://www.solidot.org/index.rss",
+      "type": "rss",
+      "category": "科技资讯",
+      "ok": true,
+      "stale": false,
+      "error": null,
+      "updated_at": "2026-11-21T19:58:57+08:00",
+      "stale_since": null,
+      "item_count": 2,
+      "items": [
+        {
+          "id": "a77f0a2f17f4376b",
+          "source_id": "solidot",
+          "source_name": "Solidot 奇客",
+          "category": "科技资讯",
+          "title": "为勒索软件受害者提供解密服务的公司只是付钱给勒索软件组织",
+          "link": "https://www.solidot.org/story?sid=85950",
+          "summary": "位于美国佛罗里达州的 RansomwareHelp.com 向勒索软件受害者提供解密服务，它通过其官网督促受害者不要支付赎金，声称它的先进解密工具能将数据、服务器和系统 100% 恢复到原始状态，受害者不需要向勒索软件组织屈服。RansomwareHelp.com 称其密码学专家利用独有工具和算法，能实现 100% 的…",
+          "author": "",
+          "published": "2026-11-21T18:11:05+08:00",
+          "date_source": "published"
         },
         {
-          "title": "派早报：Google 推出 Gemini 4 Neon 模型，网易 UU 远程将于 12 月推出付费会员等",
-          "link": "https://sspai.com/post/119311",
-          "summary": "Google Play 将强制要求应用适配折叠屏，微软宣布 Microsoft To Do 将于明年 6 月全面停用等。",
+          "id": "ea94fc850f030d14",
+          "source_id": "solidot",
+          "source_name": "Solidot 奇客",
+          "category": "科技资讯",
+          "title": "Anthropic 的数论学家声称证明黎曼猜想",
+          "link": "https://www.solidot.org/story?sid=85949",
+          "summary": "美国数学家 Levent Alpöge 以数论和算术统计方面的工作著称，他目前在 AI 公司 Anthropic 工作。他发表声明，声称与公司 AI 工具 Claude 合作获得了数论经典难题黎曼猜想的一般性证明。他们发现了黎曼猜想的一个证明，而这个证明方法可以进一步证明广义黎曼猜想和扩展黎曼猜想。他称论证过程极其冗长…",
+          "author": "",
+          "published": "2026-11-20T23:14:05+08:00",
+          "date_source": "published"
+        }
+      ],
+      "stats": {
+        "entries_total": 20,
+        "invalid_entries": 0,
+        "duplicate_entries": 0,
+        "undated_skipped": 0,
+        "future_skipped": 0,
+        "out_of_window": 16,
+        "keyword_excluded": 0,
+        "keyword_not_included": 0,
+        "kept": 2
+      },
+      "config": {
+        "max_items": 2,
+        "lookback_hours": 24.0,
+        "category": "科技资讯",
+        "include_keywords": [],
+        "exclude_keywords": []
+      },
+      "health": {
+        "consecutive_failures": 0,
+        "last_success_at": "2026-11-21T19:58:57+08:00",
+        "last_failure_at": null,
+        "last_alert_at": null,
+        "alert_active": false,
+        "status": "ok",
+        "last_error": null
+      }
+    },
+    {
+      "id": "appinn",
+      "name": "小众软件",
+      "home": "https://www.appinn.com",
+      "url": "https://www.appinn.com/feed/",
+      "type": "rss",
+      "category": "实用工具",
+      "ok": true,
+      "stale": false,
+      "error": null,
+      "updated_at": "2026-11-21T19:58:57+08:00",
+      "stale_since": null,
+      "item_count": 2,
+      "items": [
+        {
+          "id": "7e92856e801bbc67",
+          "source_id": "appinn",
+          "source_name": "小众软件",
+          "category": "实用工具",
+          "title": "Google Gemini 黑五五折！AI Pro 年费约 100 美元，Google One 老用户也能参加",
+          "link": "https://www.appinn.com/google-ai-pro-black-friday-2026/",
+          "summary": "Google Gemini 黑五促销开启，美区 Google AI Pro 年费最高五折，折后约 99.99 美元。符合条件的 Google One 老用户可提前参加，具体优惠以结算页面为准。",
+          "author": "青小蛙",
+          "published": "2026-11-21T19:14:41+08:00",
+          "date_source": "published"
+        },
+        {
+          "id": "146f70ce9a3829e7",
+          "source_id": "appinn",
+          "source_name": "小众软件",
+          "category": "实用工具",
+          "title": "Dettato：多乐器音频转 MIDI，每个乐器一个音轨，再加一个鼓组音轨",
+          "link": "https://www.appinn.com/dettato/",
+          "summary": "Dettato 是 KobiMusic 开源的音乐转录模型，可以在自己的电脑（CPU、GPU）上运行。你只需输入一段音频，它就能生成一个 MIDI 文件，每个乐器对应一个音轨，外加一个鼓组音轨。@Ap",
+          "author": "青小蛙",
+          "published": "2026-11-21T14:24:51+08:00",
+          "date_source": "published"
+        }
+      ],
+      "stats": {
+        "entries_total": 10,
+        "invalid_entries": 0,
+        "duplicate_entries": 0,
+        "undated_skipped": 0,
+        "future_skipped": 0,
+        "out_of_window": 0,
+        "keyword_excluded": 0,
+        "keyword_not_included": 0,
+        "kept": 2
+      },
+      "config": {
+        "max_items": 2,
+        "lookback_hours": 72.0,
+        "category": "实用工具",
+        "include_keywords": [],
+        "exclude_keywords": []
+      },
+      "health": {
+        "consecutive_failures": 0,
+        "last_success_at": "2026-11-21T19:58:57+08:00",
+        "last_failure_at": null,
+        "last_alert_at": null,
+        "alert_active": false,
+        "status": "ok",
+        "last_error": null
+      }
+    },
+    {
+      "id": "ruanyifeng",
+      "name": "阮一峰的网络日志",
+      "home": "https://www.ruanyifeng.com/blog/",
+      "url": "https://www.ruanyifeng.com/blog/atom.xml",
+      "type": "atom",
+      "category": "每周精选",
+      "ok": true,
+      "stale": false,
+      "error": null,
+      "updated_at": "2026-11-21T19:58:57+08:00",
+      "stale_since": null,
+      "item_count": 1,
+      "items": [
+        {
+          "id": "72770d4c61909653",
+          "source_id": "ruanyifeng",
+          "source_name": "阮一峰的网络日志",
+          "category": "每周精选",
+          "title": "科技爱好者周刊（第 420 期）：最分心的一年",
+          "link": "http://www.ruanyifeng.com/blog/2026/11/weekly-issue-420.html",
+          "summary": "这里记录每周值得分享的科技内容，周五发布。...",
+          "author": "阮一峰",
+          "published": "2026-11-20T08:07:30+08:00",
+          "date_source": "published"
+        }
+      ],
+      "stats": {
+        "entries_total": 3,
+        "invalid_entries": 0,
+        "duplicate_entries": 0,
+        "undated_skipped": 0,
+        "future_skipped": 0,
+        "out_of_window": 2,
+        "keyword_excluded": 0,
+        "keyword_not_included": 0,
+        "kept": 1
+      },
+      "config": {
+        "max_items": 1,
+        "lookback_hours": 192.0,
+        "category": "每周精选",
+        "include_keywords": [],
+        "exclude_keywords": []
+      },
+      "health": {
+        "consecutive_failures": 0,
+        "last_success_at": "2026-11-21T19:58:57+08:00",
+        "last_failure_at": null,
+        "last_alert_at": null,
+        "alert_active": false,
+        "status": "ok",
+        "last_error": null
+      }
+    }
+  ],
+  "categories": [
+    {
+      "name": "科技资讯",
+      "count": 7,
+      "items": [
+        {
+          "id": "8248d1d8189b8403",
+          "source_id": "ithome",
+          "source_name": "IT之家",
+          "category": "科技资讯",
+          "title": "AOC“CU34G4H”34 英寸带鱼屏显示器发售：1440P 200Hz Fast VA 面板，1599 元",
+          "link": "https://www.ithome.com/1/030/463.htm",
+          "summary": "IT之家 11 月 21 日消息，AOC 旗下“CU34G4H”34 英寸带鱼屏显示器现已在京东发售，该机为 1440P 200Hz 规格， 定价为 1599 元 。        该机配备一块 3440x1440 分辨率 200Hz Fast VA 面板，曲率 1500R，GtG 响应速度 1ms，显示器支持 8-B…",
+          "author": "",
+          "published": "2026-11-21T19:37:57+08:00",
+          "date_source": "published"
+        },
+        {
+          "id": "da83bbf71098efb1",
+          "source_id": "ithome",
+          "source_name": "IT之家",
+          "category": "科技资讯",
+          "title": "《GTA6》雷奥奈达州完整地图海报上线 R 星官网，玩家可自行下载打印",
+          "link": "https://www.ithome.com/1/030/462.htm",
+          "summary": "IT之家 11 月 21 日消息，R 星现已在《GTA6》官方网站免费公开游戏舞台“雷奥奈达州”的完整地图及封面图海报供玩家下载打印，IT之家附地址（  https://www.rockstargames.com/VI/media  ）。     过去部分《GTA》作品曾在游戏包装内附赠纸质地图，让玩家能够一边查阅地图…",
+          "author": "",
+          "published": "2026-11-21T19:29:02+08:00",
+          "date_source": "published"
+        },
+        {
+          "id": "a77f0a2f17f4376b",
+          "source_id": "solidot",
+          "source_name": "Solidot 奇客",
+          "category": "科技资讯",
+          "title": "为勒索软件受害者提供解密服务的公司只是付钱给勒索软件组织",
+          "link": "https://www.solidot.org/story?sid=85950",
+          "summary": "位于美国佛罗里达州的 RansomwareHelp.com 向勒索软件受害者提供解密服务，它通过其官网督促受害者不要支付赎金，声称它的先进解密工具能将数据、服务器和系统 100% 恢复到原始状态，受害者不需要向勒索软件组织屈服。RansomwareHelp.com 称其密码学专家利用独有工具和算法，能实现 100% 的…",
+          "author": "",
+          "published": "2026-11-21T18:11:05+08:00",
+          "date_source": "published"
+        },
+        {
+          "id": "ddc942c524c1112b",
+          "source_id": "sspai",
+          "source_name": "少数派",
+          "category": "科技资讯",
+          "title": "这群在鸿蒙写应用的年轻人，只想做点「用得上」的",
+          "link": "https://sspai.com/post/119291",
+          "summary": "上周末，今年正式被列入「全国普通高校学科竞赛排行榜」的2026鸿蒙高校创新赛在南京大学迎来全国总决赛颁奖典礼。华为董事、终端BGCEO何刚出席现场致辞并为获奖选手颁奖。他在现场表示，HarmonyOS",
           "author": "少数派编辑部",
-          "published": "2026-11-20T08:34:31+08:00"
+          "published": "2026-11-21T12:00:00+08:00",
+          "date_source": "published"
         },
         {
-          "title": "给 Apple 的 2026 年打分，请你一起参与",
-          "link": "https://sspai.com/post/119191",
-          "summary": "2026年以来，Apple在硬件领域明显加快了产品线的拓展。定价亲民、采用A系列芯片的MacBookNeo让Mac触及更广泛的消费群体，也引发了对性能妥协与长期使用价值的讨论。M6芯片继续推进Appl",
+          "id": "ea94fc850f030d14",
+          "source_id": "solidot",
+          "source_name": "Solidot 奇客",
+          "category": "科技资讯",
+          "title": "Anthropic 的数论学家声称证明黎曼猜想",
+          "link": "https://www.solidot.org/story?sid=85949",
+          "summary": "美国数学家 Levent Alpöge 以数论和算术统计方面的工作著称，他目前在 AI 公司 Anthropic 工作。他发表声明，声称与公司 AI 工具 Claude 合作获得了数论经典难题黎曼猜想的一般性证明。他们发现了黎曼猜想的一个证明，而这个证明方法可以进一步证明广义黎曼猜想和扩展黎曼猜想。他称论证过程极其冗长…",
+          "author": "",
+          "published": "2026-11-20T23:14:05+08:00",
+          "date_source": "published"
+        },
+        {
+          "id": "52a9fd8fe895d552",
+          "source_id": "sspai",
+          "source_name": "少数派",
+          "category": "科技资讯",
+          "title": "本周看什么 | 最近值得一看的 10 部作品",
+          "link": "https://sspai.com/post/119337",
+          "summary": "📅本周新预告《克里夫·布斯的惊险再冒险》终极预告11月18日，《好莱坞往事》续集电影《克里夫·布斯的惊险再冒险》发布了终极预告，将于11月25日在北美上映，12月23日上线Netflix。大卫·芬奇执",
           "author": "少数派编辑部",
-          "published": "2026-11-19T18:25:05+08:00"
+          "published": "2026-11-20T17:54:01+08:00",
+          "date_source": "published"
         },
         {
-          "title": "新玩意 256｜少数派的编辑们最近买了啥？",
-          "link": "https://sspai.com/post/119287",
-          "summary": "编注：很多读者都会好奇少数派的编辑们到底平时都「买了啥」。我们希望通过「编辑部的新玩意」介绍编辑部成员们最近在用的新奇产品，让他们自己来谈谈这些新玩意的使用体验究竟如何。内容声明：《新玩意》栏目如含有",
-          "author": "少数派编辑部",
-          "published": "2026-11-19T17:16:00+08:00"
+          "id": "0a31ea190e24db47",
+          "source_id": "sspai",
+          "source_name": "少数派",
+          "category": "科技资讯",
+          "title": "游戏史最高分，不负 13 年的等待：《GTA 6》游玩体验",
+          "link": "https://sspai.com/post/119327",
+          "summary": "编注：本文首发于「篝火营地」，原作者多边形。少数派经授权后转载，仅对文章格式略作调整。原标题：《侠盗猎车手6》游戏评测：10分｜篝火。作为RockstarGames时隔13年推出的《侠盗猎车手》系列新",
+          "author": "篝火营地",
+          "published": "2026-11-20T15:34:26+08:00",
+          "date_source": "published"
+        }
+      ]
+    },
+    {
+      "name": "实用工具",
+      "count": 2,
+      "items": [
+        {
+          "id": "7e92856e801bbc67",
+          "source_id": "appinn",
+          "source_name": "小众软件",
+          "category": "实用工具",
+          "title": "Google Gemini 黑五五折！AI Pro 年费约 100 美元，Google One 老用户也能参加",
+          "link": "https://www.appinn.com/google-ai-pro-black-friday-2026/",
+          "summary": "Google Gemini 黑五促销开启，美区 Google AI Pro 年费最高五折，折后约 99.99 美元。符合条件的 Google One 老用户可提前参加，具体优惠以结算页面为准。",
+          "author": "青小蛙",
+          "published": "2026-11-21T19:14:41+08:00",
+          "date_source": "published"
         },
         {
-          "title": "有必要但欠平衡：浅评 macOS 27.3 新版权限控制机制",
-          "link": "https://sspai.com/prime/story/system-app-protection-override-macos-27-3",
-          "summary": "本文为会员文章，出自 《单篇文章》 ，订阅后可。",
-          "author": "广陵止息",
-          "published": "2026-11-19T15:34:11+08:00"
-        },
+          "id": "146f70ce9a3829e7",
+          "source_id": "appinn",
+          "source_name": "小众软件",
+          "category": "实用工具",
+          "title": "Dettato：多乐器音频转 MIDI，每个乐器一个音轨，再加一个鼓组音轨",
+          "link": "https://www.appinn.com/dettato/",
+          "summary": "Dettato 是 KobiMusic 开源的音乐转录模型，可以在自己的电脑（CPU、GPU）上运行。你只需输入一段音频，它就能生成一个 MIDI 文件，每个乐器对应一个音轨，外加一个鼓组音轨。@Ap",
+          "author": "青小蛙",
+          "published": "2026-11-21T14:24:51+08:00",
+          "date_source": "published"
+        }
+      ]
+    },
+    {
+      "name": "每周精选",
+      "count": 1,
+      "items": [
         {
-          "title": "徒步旅行指南 | 玉龙虎跳峡与天堂雨崩",
-          "link": "https://sspai.com/post/119039",
-          "summary": "Matrix首页推荐Matrix是少数派的写作社区，我们主张分享真实的产品体验，有实用价值的经验与思考。我们会不定期挑选Matrix最优质的文章，展示来自用户的最真实的体验和观点。文章代表作者个人观点",
-          "author": "PJHubs",
-          "published": "2026-11-19T10:58:08+08:00"
-        },
-        {
-          "title": "派早报：Apple 年度应用、TGA 2026 分别公布入围名单等",
-          "link": "https://sspai.com/post/119239",
-          "summary": "AMD 更新虚幻引擎 FSR 插件、Google Wallet 登陆 iOS 等。",
-          "author": "少数派编辑部",
-          "published": "2026-11-19T08:29:30+08:00"
+          "id": "72770d4c61909653",
+          "source_id": "ruanyifeng",
+          "source_name": "阮一峰的网络日志",
+          "category": "每周精选",
+          "title": "科技爱好者周刊（第 420 期）：最分心的一年",
+          "link": "http://www.ruanyifeng.com/blog/2026/11/weekly-issue-420.html",
+          "summary": "这里记录每周值得分享的科技内容，周五发布。...",
+          "author": "阮一峰",
+          "published": "2026-11-20T08:07:30+08:00",
+          "date_source": "published"
         }
       ]
     }
