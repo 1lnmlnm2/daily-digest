@@ -1,54 +1,133 @@
 # ============================================================
-# 订阅源配置文件
+# 订阅源配置（M3 版本）
 # ------------------------------------------------------------
-# 这是整个项目唯一需要你改的文件：
-#   - 换内容 → 改下面的 sources 列表
-#   - 换站点标题 → 改 settings
-# 改完保存并提交到 GitHub，下一次定时任务（或手动触发）就生效，
-# 不需要动任何 Python 代码。
+# 日常只需要改这个文件：
+#   - 换内容     → 改下面 sources 列表
+#   - 改限额     → 改每个源的 max_items / lookback_hours
+#   - 加关键词   → 取消 filters 或单个源里关键词示例的注释
+#   - 站点标题   → 改 settings
+# 改完保存并提交，下一次运行（定时或手动）就生效，不需要动 Python 代码。
 #
-# 支持的源类型：RSS 2.0、Atom（即绝大多数博客/媒体提供的“订阅”地址）
+# 支持的源类型：RSS 2.0、Atom（绝大多数博客/媒体提供的“订阅”地址）
 # 不支持的源：需要登录、需要破解接口、robots.txt 明确禁止抓取的站点。
+#
+# 处理顺序（每个源独立执行，互不影响）：
+#   抓取 → 清洗 → 生成稳定 ID → 日期解析 → 时间窗口 → 关键词 → 按时间排序 → 单源限额
+# 注意：单源限额发生在日期和关键词过滤之后，所以高频源不会挤占其他源的名额；
+#       全站再按发布时间取最多 total_max_items 条，不足就少显示，不用旧文凑数。
 # ============================================================
 
 settings:
-  # 网页上显示的大标题和副标题
   site_title: "每日科技速览"
   site_description: "由 GitHub Actions 定时抓取公开订阅源、自动生成并部署的静态信息站"
 
-  # 页面时间显示的时区偏移（小时）。8 = 北京时间。改成 0 就是 UTC。
+  # 页面时间显示时区：8 = 北京时间，0 = UTC
   timezone_offset: 8
 
-  # 每个源最多展示多少条（会被单个源自己的 max_items 覆盖）
+  # ---------- 数量与窗口 ----------
+  # 全站最终最多展示几条（各源上限之和正好等于这个值）
+  total_max_items: 10
+  # 单源 max_items 缺省时的兜底值
   max_items_per_source: 10
-
-  # 摘要最多保留多少字（只截取摘要，不转载全文，避免版权问题）
+  # 单源 lookback_hours 缺省时的兜底值（小时）
+  default_lookback_hours: 24
+  # 摘要最多保留多少字（只截摘要，不转载全文）
   summary_max_chars: 160
 
+  # 无法解析发布时间的条目怎么处理：
+  #   skip（推荐）：丢弃，并在日志里记数量与原因
+  #   keep：保留，但排在所有有时间的条目之后，页面显示「时间未知」，不冒充最新
+  undated_policy: skip
+
+  # ---------- 归档与状态 ----------
+  # 归档保留天数（按天一个文件：data/archive/YYYY-MM-DD.json）
+  archive_retention_days: 90
+  # 去重状态的保留天数，必须大于归档天数，避免旧文“复活”成新增
+  state_retention_days: 120
+  # 去重状态最多保留多少条 ID
+  state_max_items: 3000
+  # 搜索索引最多收录多少条（受 90 天归档天然约束，90×10 远低于此上限）
+  search_max_items: 2000
+
+  # ---------- 推送与告警 ----------
+  # "off" = 过渡期：只抓取、归档，不推送任何普通内容（用于上线多源、建立基线之前）
+  # "on"  = 正式：只有真正新增的文章才推送；on 的第一次运行只建立基线，不推送历史
+  # 注意：必须带引号，否则 YAML 会把 off/on 当成布尔值
+  push_mode: "off"
+  # 连续失败多少次才发维护告警（第一次失败只记录）
+  alert_after_failures: 2
+
+  # ---------- 全局关键词（默认留空 = 不过滤） ----------
+  # 全局与单源关键词取并集；exclude 优先于 include；英文忽略大小写。
+  # 取消注释即可启用，示例：
+  # filters:
+  #   include_keywords: ["AI", "开源", "安全"]
+  #   exclude_keywords: ["广告", "推广"]
+  filters:
+    include_keywords: []
+    exclude_keywords: []
+
 sources:
-  # ---------- 示例源 1：少数派（默认启用，用来跑通第一版） ----------
-  - id: sspai                 # 唯一标识，英文小写，不能和别的源重复
-    name: 少数派               # 页面上显示的名字
-    home: https://sspai.com    # 站点首页（用于把相对链接补全为完整链接）
-    type: rss                  # rss 或 atom
+  # ---------- 1. 少数派 ----------
+  - id: sspai
+    name: 少数派
+    home: https://sspai.com
+    type: rss
     url: https://sspai.com/feed
-    enabled: true              # false = 暂停抓取，但配置保留
-    max_items: 10
+    enabled: true
+    category: 科技资讯
+    max_items: 3
+    lookback_hours: 72
+    # 单源关键词示例（默认留空，取消注释即生效）：
+    # include_keywords: ["效率", "工具"]
+    # exclude_keywords: ["播客"]
 
-  # ---------- 示例源 2：阮一峰的网络日志（默认关闭，需要时把 enabled 改成 true） ----------
-  # 取消下面每一行开头的 "# " 即可启用。这是扩展示例，第一版不用管。
-  # - id: ruanyifeng
-  #   name: 阮一峰的网络日志
-  #   home: https://www.ruanyifeng.com/blog/
-  #   type: atom
-  #   url: https://www.ruanyifeng.com/blog/atom.xml
-  #   enabled: true
-  #   max_items: 5
+  # ---------- 2. IT之家（高频源，24 小时只取最新 2 条） ----------
+  - id: ithome
+    name: IT之家
+    home: https://www.ithome.com
+    type: rss
+    url: https://www.ithome.com/rss/
+    enabled: true
+    category: 科技资讯
+    max_items: 2
+    lookback_hours: 24
 
-  # ---------- 加更多源：复制上面任意一段，保证 id 不重复即可 ----------
-  # 常见可用源（都是公开 RSS，自行确认站点条款后使用）：
-  #   - 少数派        https://sspai.com/feed
-  #   - 阮一峰周刊     https://www.ruanyifeng.com/blog/atom.xml
-  #   - 36氪          https://36kr.com/feed
-  #   - 知乎每日精选   https://www.zhihu.com/rss
-  # 提醒：源越多越容易触发对方限流，建议不超过 5 个，每个源 max_items 10 条以内。
+  # ---------- 3. Solidot 奇客 ----------
+  - id: solidot
+    name: Solidot 奇客
+    home: https://www.solidot.org
+    type: rss
+    url: https://www.solidot.org/index.rss
+    enabled: true
+    category: 科技资讯
+    max_items: 2
+    lookback_hours: 24
+
+  # ---------- 4. 小众软件 ----------
+  - id: appinn
+    name: 小众软件
+    home: https://www.appinn.com
+    type: rss
+    url: https://www.appinn.com/feed/
+    enabled: true
+    category: 实用工具
+    max_items: 2
+    lookback_hours: 72
+
+  # ---------- 5. 阮一峰的网络日志（周刊，8 天窗口，只取 1 条） ----------
+  - id: ruanyifeng
+    name: 阮一峰的网络日志
+    home: https://www.ruanyifeng.com/blog/
+    type: atom
+    url: https://www.ruanyifeng.com/blog/atom.xml
+    enabled: true
+    category: 每周精选
+    max_items: 1
+    lookback_hours: 192
+
+# ============================================================
+# 停用某个源：把它的 enabled 改成 false 即可（配置保留，不用删）
+# 新增源：复制一段，改 id（英文小写、不重复）、name、url、category 即可
+# 提醒：源越多越容易触发对方限流，建议不超过 6 个
+# ============================================================
