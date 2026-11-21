@@ -5,7 +5,7 @@
     "established": false,
     "established_at": null
   },
-  "updated_at": "2026-11-21T22:32:56+08:00",
+  "updated_at": "2026-11-21T23:42:27+08:00",
   "items": {
     "ddc942c524c1112b": {
       "source_id": "sspai",
@@ -106,7 +106,7 @@
       "link": "https://www.appinn.com/google-ai-pro-black-friday-2026/",
       "published": "2026-11-21T19:14:41+08:00",
       "first_seen": "2026-11-21T19:58:57+08:00",
-      "last_seen": "2026-11-21T22:32:56+08:00",
+      "last_seen": "2026-11-21T23:42:27+08:00",
       "status": "observed",
       "notified_at": null,
       "suppressed_reason": null
@@ -119,7 +119,7 @@
       "link": "https://www.appinn.com/dettato/",
       "published": "2026-11-21T14:24:51+08:00",
       "first_seen": "2026-11-21T19:58:57+08:00",
-      "last_seen": "2026-11-21T22:32:56+08:00",
+      "last_seen": "2026-11-21T23:42:27+08:00",
       "status": "observed",
       "notified_at": null,
       "suppressed_reason": null
@@ -132,7 +132,7 @@
       "link": "http://www.ruanyifeng.com/blog/2026/11/weekly-issue-420.html",
       "published": "2026-11-20T08:07:30+08:00",
       "first_seen": "2026-11-21T19:58:57+08:00",
-      "last_seen": "2026-11-21T22:32:56+08:00",
+      "last_seen": "2026-11-21T23:42:27+08:00",
       "status": "observed",
       "notified_at": null,
       "suppressed_reason": null
@@ -214,58 +214,135 @@
       "status": "observed",
       "notified_at": null,
       "suppressed_reason": null
+    },
+    "1ab3ed2ffe95dd45": {
+      "source_id": "ithome",
+      "source_name": "IT之家",
+      "category": "科技资讯",
+      "title": "育碧确认：《刺客信条》中国背景手游“代号 JADE”仍在开发",
+      "link": "https://www.ithome.com/1/030/507.htm",
+      "published": "2026-11-21T22:47:34+08:00",
+      "first_seen": "2026-11-21T23:42:27+08:00",
+      "last_seen": "2026-11-21T23:42:27+08:00",
+      "status": "observed",
+      "notified_at": null,
+      "suppressed_reason": null
+    },
+    "7fcbeb3387770e51": {
+      "source_id": "ithome",
+      "source_name": "IT之家",
+      "category": "科技资讯",
+      "title": "韩国总统李在明：速度在 AI 竞赛中至关重要",
+      "link": "https://www.ithome.com/1/030/506.htm",
+      "published": "2026-11-21T22:26:35+08:00",
+      "first_seen": "2026-11-21T23:42:27+08:00",
+      "last_seen": "2026-11-21T23:42:27+08:00",
+      "status": "observed",
+      "notified_at": null,
+      "suppressed_reason": null
+    },
+    "b48ca13a8c5c1a52": {
+      "source_id": "solidot",
+      "source_name": "Solidot 奇客",
+      "category": "科技资讯",
+      "title": "地球 28 光年外发现一个三星系统",
+      "link": "https://www.solidot.org/story?sid=85955",
+      "published": "2026-11-21T22:40:48+08:00",
+      "first_seen": "2026-11-21T23:42:27+08:00",
+      "last_seen": "2026-11-21T23:42:27+08:00",
+      "status": "observed",
+      "notified_at": null,
+      "suppressed_reason": null
+    },
+    "ee726ae731d6eb06": {
+      "source_id": "solidot",
+      "source_name": "Solidot 奇客",
+      "category": "科技资讯",
+      "title": "人类免疫系统衰老在 40 岁和 60 岁后会加速",
+      "link": "https://www.solidot.org/story?sid=85954",
+      "published": "2026-11-21T22:25:45+08:00",
+      "first_seen": "2026-11-21T23:42:27+08:00",
+      "last_seen": "2026-11-21T23:42:27+08:00",
+      "status": "observed",
+      "notified_at": null,
+      "suppressed_reason": null
     }
   },
   "sources": {
     "sspai": {
-      "consecutive_failures": 0,
+      "consecutive_failures": 1,
       "last_success_at": "2026-11-21T22:32:56+08:00",
-      "last_failure_at": null,
+      "last_failure_at": "2026-11-21T23:42:27+08:00",
       "last_alert_at": null,
       "alert_active": false,
-      "status": "ok",
-      "last_error": null
+      "status": "failing",
+      "last_error": "订阅内容解析失败：<unknown>:2:0: syntax error",
+      "last_attempt_at": "2026-11-21T23:42:27+08:00",
+      "alert_open": false,
+      "last_status": "failing",
+      "alert_last_attempt_at": null,
+      "alert_last_error": null
     },
     "ithome": {
       "consecutive_failures": 0,
-      "last_success_at": "2026-11-21T22:32:56+08:00",
+      "last_success_at": "2026-11-21T23:42:27+08:00",
       "last_failure_at": null,
       "last_alert_at": null,
       "alert_active": false,
       "status": "ok",
-      "last_error": null
+      "last_error": null,
+      "last_attempt_at": "2026-11-21T23:42:27+08:00",
+      "alert_open": false,
+      "last_status": "ok",
+      "alert_last_attempt_at": null,
+      "alert_last_error": null
     },
     "solidot": {
       "consecutive_failures": 0,
-      "last_success_at": "2026-11-21T22:32:56+08:00",
+      "last_success_at": "2026-11-21T23:42:27+08:00",
       "last_failure_at": null,
       "last_alert_at": null,
       "alert_active": false,
       "status": "ok",
-      "last_error": null
+      "last_error": null,
+      "last_attempt_at": "2026-11-21T23:42:27+08:00",
+      "alert_open": false,
+      "last_status": "ok",
+      "alert_last_attempt_at": null,
+      "alert_last_error": null
     },
     "appinn": {
       "consecutive_failures": 0,
-      "last_success_at": "2026-11-21T22:32:56+08:00",
+      "last_success_at": "2026-11-21T23:42:27+08:00",
       "last_failure_at": null,
       "last_alert_at": null,
       "alert_active": false,
       "status": "ok",
-      "last_error": null
+      "last_error": null,
+      "last_attempt_at": "2026-11-21T23:42:27+08:00",
+      "alert_open": false,
+      "last_status": "ok",
+      "alert_last_attempt_at": null,
+      "alert_last_error": null
     },
     "ruanyifeng": {
       "consecutive_failures": 0,
-      "last_success_at": "2026-11-21T22:32:56+08:00",
+      "last_success_at": "2026-11-21T23:42:27+08:00",
       "last_failure_at": null,
       "last_alert_at": null,
       "alert_active": false,
       "status": "ok",
-      "last_error": null
+      "last_error": null,
+      "last_attempt_at": "2026-11-21T23:42:27+08:00",
+      "alert_open": false,
+      "last_status": "ok",
+      "alert_last_attempt_at": null,
+      "alert_last_error": null
     }
   },
   "last_run": {
-    "at": "2026-11-21T22:32:56+08:00",
-    "run_url": "https://github.com/1lnmlnm2/daily-digest/actions/runs/44914480941",
+    "at": "2026-11-21T23:42:27+08:00",
+    "run_url": "https://github.com/1lnmlnm2/daily-digest/actions/runs/44920592989",
     "push_mode": "off",
     "baseline_established": false
   }

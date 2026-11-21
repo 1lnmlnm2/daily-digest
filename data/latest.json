@@ -1,9 +1,9 @@
 {
   "schema": 3,
   "pipeline": "m3",
-  "generated_at": "2026-11-21T22:32:56+08:00",
-  "generated_at_utc": "2026-11-21T14:32:56+00:00",
-  "run_url": "https://github.com/1lnmlnm2/daily-digest/actions/runs/44914480941",
+  "generated_at": "2026-11-21T23:42:27+08:00",
+  "generated_at_utc": "2026-11-21T15:42:27+00:00",
+  "run_url": "https://github.com/1lnmlnm2/daily-digest/actions/runs/44920592989",
   "tz_offset": 8,
   "push": {
     "enabled": false,
@@ -21,13 +21,13 @@
   },
   "stats": {
     "source_total": 5,
-    "source_ok": 5,
-    "source_failed": 0,
-    "source_cached": 0,
+    "source_ok": 4,
+    "source_failed": 1,
+    "source_cached": 1,
     "item_total": 10,
     "new_count": 0,
     "archive_files": 2,
-    "archive_items": 16,
+    "archive_items": 20,
     "state_items_removed": 0,
     "archive_files_removed": 0
   },
@@ -36,14 +36,14 @@
       "id": "sspai",
       "name": "少数派",
       "home": "https://sspai.com",
-      "url": "https://sspai.com/feed",
+      "url": "https://sspai.com/phase5-drill-not-found.xml",
       "type": "rss",
       "category": "科技资讯",
-      "ok": true,
-      "stale": false,
-      "error": null,
+      "ok": false,
+      "stale": true,
+      "error": "订阅内容解析失败：<unknown>:2:0: syntax error",
       "updated_at": "2026-11-21T22:32:56+08:00",
-      "stale_since": null,
+      "stale_since": "2026-11-21T22:32:56+08:00",
       "item_count": 3,
       "items": [
         {
@@ -56,7 +56,8 @@
           "summary": "上周末，今年正式被列入「全国普通高校学科竞赛排行榜」的2026鸿蒙高校创新赛在南京大学迎来全国总决赛颁奖典礼。华为董事、终端BGCEO何刚出席现场致辞并为获奖选手颁奖。他在现场表示，HarmonyOS",
           "author": "少数派编辑部",
           "published": "2026-11-21T12:00:00+08:00",
-          "date_source": "published"
+          "date_source": "published",
+          "stale": true
         },
         {
           "id": "52a9fd8fe895d552",
@@ -68,7 +69,8 @@
           "summary": "📅本周新预告《克里夫·布斯的惊险再冒险》终极预告11月18日，《好莱坞往事》续集电影《克里夫·布斯的惊险再冒险》发布了终极预告，将于11月25日在北美上映，12月23日上线Netflix。大卫·芬奇执",
           "author": "少数派编辑部",
           "published": "2026-11-20T17:54:01+08:00",
-          "date_source": "published"
+          "date_source": "published",
+          "stale": true
         },
         {
           "id": "0a31ea190e24db47",
@@ -80,35 +82,25 @@
           "summary": "编注：本文首发于「篝火营地」，原作者多边形。少数派经授权后转载，仅对文章格式略作调整。原标题：《侠盗猎车手6》游戏评测：10分｜篝火。作为RockstarGames时隔13年推出的《侠盗猎车手》系列新",
           "author": "篝火营地",
           "published": "2026-11-20T15:34:26+08:00",
-          "date_source": "published"
+          "date_source": "published",
+          "stale": true
         }
       ],
-      "stats": {
-        "entries_total": 10,
-        "invalid_entries": 0,
-        "duplicate_entries": 0,
-        "undated_skipped": 0,
-        "future_skipped": 0,
-        "out_of_window": 0,
-        "keyword_excluded": 0,
-        "keyword_not_included": 0,
-        "kept": 3
-      },
-      "config": {
-        "max_items": 3,
-        "lookback_hours": 72.0,
-        "category": "科技资讯",
-        "include_keywords": [],
-        "exclude_keywords": []
-      },
+      "stats": {},
+      "config": {},
       "health": {
-        "consecutive_failures": 0,
+        "consecutive_failures": 1,
         "last_success_at": "2026-11-21T22:32:56+08:00",
-        "last_failure_at": null,
+        "last_failure_at": "2026-11-21T23:42:27+08:00",
         "last_alert_at": null,
         "alert_active": false,
-        "status": "ok",
-        "last_error": null
+        "status": "failing",
+        "last_error": "订阅内容解析失败：<unknown>:2:0: syntax error",
+        "last_attempt_at": "2026-11-21T23:42:27+08:00",
+        "alert_open": false,
+        "last_status": "failing",
+        "alert_last_attempt_at": null,
+        "alert_last_error": null
       }
     },
     {
@@ -121,32 +113,32 @@
       "ok": true,
       "stale": false,
       "error": null,
-      "updated_at": "2026-11-21T22:32:56+08:00",
+      "updated_at": "2026-11-21T23:42:27+08:00",
       "stale_since": null,
       "item_count": 2,
       "items": [
         {
-          "id": "05c2a5e28bc3d860",
+          "id": "1ab3ed2ffe95dd45",
           "source_id": "ithome",
           "source_name": "IT之家",
           "category": "科技资讯",
-          "title": "全球唯一实现非晶合金车用电驱规模化量产，广汽夸克电驱非晶-碳纤维电驱第 10 万套下线",
-          "link": "https://www.ithome.com/1/030/504.htm",
-          "summary": "IT之家 11 月 21 日消息，11 月 20 日，广汽夸克电驱非晶-碳纤维电驱第 10 万套正式量产下线。  官方表示，这一里程碑标志着 广汽成为全球唯一实现非晶合金车用电驱规模化量产的企业 。     据介绍，广汽动力总成自主研发团队围绕材料、工艺、结构和控制开展全链路攻关， 首创非晶合金定子量产工艺 ，突破碳纤…",
+          "title": "育碧确认：《刺客信条》中国背景手游“代号 JADE”仍在开发",
+          "link": "https://www.ithome.com/1/030/507.htm",
+          "summary": "IT之家 11 月 21 日消息，育碧确认，《刺客信条》系列中国背景手游《刺客信条：代号 JADE》仍在开发中，不过现阶段 仍将主机和 PC 作为业务重点 。  育碧 CFO 弗雷德里克 · 迪盖在上半年业绩电话会议上披露，移动游戏在中长期仍有发展机会，《刺客信条：代号 JADE》就是该系列面向移动平台的作品。“从长期…",
           "author": "",
-          "published": "2026-11-21T21:53:01+08:00",
+          "published": "2026-11-21T22:47:34+08:00",
           "date_source": "published"
         },
         {
-          "id": "cda86e09189b91f2",
+          "id": "7fcbeb3387770e51",
           "source_id": "ithome",
           "source_name": "IT之家",
           "category": "科技资讯",
-          "title": "南非开发者宣称独自开发操作系统 Impossible OS：兼容 Win32 和 Linux 二进制程序，两年后见",
-          "link": "https://www.ithome.com/1/030/479.htm",
-          "summary": "IT之家 11 月 21 日消息，从零开发一套操作系统，即使对经验丰富的工程团队而言也是一项艰巨任务，南非开发者兼企业家德里克 · 佩恩却选择独自承担这项工作。  当地时间 20 日，据外媒 TechSpot 报道，佩恩近日公布了面向现代 x86-64 PC 的全新操作系统 ——Impossible OS，其设计借鉴…",
+          "title": "韩国总统李在明：速度在 AI 竞赛中至关重要",
+          "link": "https://www.ithome.com/1/030/506.htm",
+          "summary": "IT之家 11 月 21 日消息，据路透社报道，当地时间 21 日，韩国总统李在明前往韩国东南部城市蔚山，视察当地一座在建数据中心，并敦促韩国加快在全球 AI 竞赛中的步伐。“ 全世界都在竞相角逐，速度至关重要 。”  数据中心是芯片需求的重要来源。李在明希望，SK 建设的蔚山项目能够取得成功，进而吸引全球 AI 企业…",
           "author": "",
-          "published": "2026-11-21T21:32:51+08:00",
+          "published": "2026-11-21T22:26:35+08:00",
           "date_source": "published"
         }
       ],
@@ -170,12 +162,17 @@
       },
       "health": {
         "consecutive_failures": 0,
-        "last_success_at": "2026-11-21T22:32:56+08:00",
+        "last_success_at": "2026-11-21T23:42:27+08:00",
         "last_failure_at": null,
         "last_alert_at": null,
         "alert_active": false,
         "status": "ok",
-        "last_error": null
+        "last_error": null,
+        "last_attempt_at": "2026-11-21T23:42:27+08:00",
+        "alert_open": false,
+        "last_status": "ok",
+        "alert_last_attempt_at": null,
+        "alert_last_error": null
       }
     },
     {
@@ -188,32 +185,32 @@
       "ok": true,
       "stale": false,
       "error": null,
-      "updated_at": "2026-11-21T22:32:56+08:00",
+      "updated_at": "2026-11-21T23:42:27+08:00",
       "stale_since": null,
       "item_count": 2,
       "items": [
         {
-          "id": "6c7167eea3a2091a",
+          "id": "b48ca13a8c5c1a52",
           "source_id": "solidot",
           "source_name": "Solidot 奇客",
           "category": "科技资讯",
-          "title": "人类数学家匆忙发布广义黎曼猜想的证明手稿",
-          "link": "https://www.solidot.org/story?sid=85952",
-          "summary": "今年 9 月 OpenAI 宣布解决 Navier-Stokes 问题时引发了广泛争议，原因是当时有数学家正致力于解决该问题，而且已经取得了突破。现在 Anthropic 数学家发表几十万页的文档声称证明了黎曼猜想。数学家 Alessandro Maria Masullo 在广义黎曼猜想问题上投入了 12 年时间，他也…",
+          "title": "地球 28 光年外发现一个三星系统",
+          "link": "https://www.solidot.org/story?sid=85955",
+          "summary": "天文学家在距离地球 28 光年处发现了一个三星系统，挑战了对恒星演化的现有观念。该系统被命名为 Welopōʻa，包括两颗白矮星和一颗红矮星。白矮星是类太阳恒星耗尽燃料后的高致密残骸，而红矮星则比太阳暗淡得多。天文学家是在红矮星周围寻找行星时意外发现这一三星结构的：这颗红矮星与另一颗白矮星近距离相互旋转，而另一颗更遥远…",
           "author": "",
-          "published": "2026-11-21T19:09:59+08:00",
+          "published": "2026-11-21T22:40:48+08:00",
           "date_source": "published"
         },
         {
-          "id": "eab6b3a22ceac0ea",
+          "id": "ee726ae731d6eb06",
           "source_id": "solidot",
           "source_name": "Solidot 奇客",
           "category": "科技资讯",
-          "title": "GTA 6 首日销售额达到创纪录的 37.9 亿美元",
-          "link": "https://www.solidot.org/story?sid=85951",
-          "summary": "GTA 6 开发商 Rockstar Games 母公司 Take-Two Interactive 披露，游戏的预购加上首日销售额达到创纪录的了 37.9 亿美元。这是娱乐产品历史上金额最高的首日收入，超过了《复仇者联盟 4：终局之战》的全球总票房 29 亿美元。Take-Two 未公布游戏具体的销售数量。GTA 6…",
+          "title": "人类免疫系统衰老在 40 岁和 60 岁后会加速",
+          "link": "https://www.solidot.org/story?sid=85954",
+          "summary": "生死之旅从来不是平坦的。人体的衰老会呈现突然的跳跃加速，科学家正试图弄清楚衰老加速在细胞层面是何时发生的。发表在《Nature Communications》期刊上的一项研究调查了人类免疫系统，发现免疫系统衰老有两次突然加速。新加坡研究人员分析了 1828 名不同族裔、年龄在 19-97 岁之间健康个体的单细胞转录组。…",
           "author": "",
-          "published": "2026-11-21T18:48:33+08:00",
+          "published": "2026-11-21T22:25:45+08:00",
           "date_source": "published"
         }
       ],
@@ -223,7 +220,7 @@
         "duplicate_entries": 0,
         "undated_skipped": 0,
         "future_skipped": 0,
-        "out_of_window": 15,
+        "out_of_window": 14,
         "keyword_excluded": 0,
         "keyword_not_included": 0,
         "kept": 2
@@ -237,12 +234,17 @@
       },
       "health": {
         "consecutive_failures": 0,
-        "last_success_at": "2026-11-21T22:32:56+08:00",
+        "last_success_at": "2026-11-21T23:42:27+08:00",
         "last_failure_at": null,
         "last_alert_at": null,
         "alert_active": false,
         "status": "ok",
-        "last_error": null
+        "last_error": null,
+        "last_attempt_at": "2026-11-21T23:42:27+08:00",
+        "alert_open": false,
+        "last_status": "ok",
+        "alert_last_attempt_at": null,
+        "alert_last_error": null
       }
     },
     {
@@ -255,7 +257,7 @@
       "ok": true,
       "stale": false,
       "error": null,
-      "updated_at": "2026-11-21T22:32:56+08:00",
+      "updated_at": "2026-11-21T23:42:27+08:00",
       "stale_since": null,
       "item_count": 2,
       "items": [
@@ -304,12 +306,17 @@
       },
       "health": {
         "consecutive_failures": 0,
-        "last_success_at": "2026-11-21T22:32:56+08:00",
+        "last_success_at": "2026-11-21T23:42:27+08:00",
         "last_failure_at": null,
         "last_alert_at": null,
         "alert_active": false,
         "status": "ok",
-        "last_error": null
+        "last_error": null,
+        "last_attempt_at": "2026-11-21T23:42:27+08:00",
+        "alert_open": false,
+        "last_status": "ok",
+        "alert_last_attempt_at": null,
+        "alert_last_error": null
       }
     },
     {
@@ -322,7 +329,7 @@
       "ok": true,
       "stale": false,
       "error": null,
-      "updated_at": "2026-11-21T22:32:56+08:00",
+      "updated_at": "2026-11-21T23:42:27+08:00",
       "stale_since": null,
       "item_count": 1,
       "items": [
@@ -359,12 +366,17 @@
       },
       "health": {
         "consecutive_failures": 0,
-        "last_success_at": "2026-11-21T22:32:56+08:00",
+        "last_success_at": "2026-11-21T23:42:27+08:00",
         "last_failure_at": null,
         "last_alert_at": null,
         "alert_active": false,
         "status": "ok",
-        "last_error": null
+        "last_error": null,
+        "last_attempt_at": "2026-11-21T23:42:27+08:00",
+        "alert_open": false,
+        "last_status": "ok",
+        "alert_last_attempt_at": null,
+        "alert_last_error": null
       }
     }
   ],
@@ -374,51 +386,51 @@
       "count": 7,
       "items": [
         {
-          "id": "05c2a5e28bc3d860",
+          "id": "1ab3ed2ffe95dd45",
           "source_id": "ithome",
           "source_name": "IT之家",
           "category": "科技资讯",
-          "title": "全球唯一实现非晶合金车用电驱规模化量产，广汽夸克电驱非晶-碳纤维电驱第 10 万套下线",
-          "link": "https://www.ithome.com/1/030/504.htm",
-          "summary": "IT之家 11 月 21 日消息，11 月 20 日，广汽夸克电驱非晶-碳纤维电驱第 10 万套正式量产下线。  官方表示，这一里程碑标志着 广汽成为全球唯一实现非晶合金车用电驱规模化量产的企业 。     据介绍，广汽动力总成自主研发团队围绕材料、工艺、结构和控制开展全链路攻关， 首创非晶合金定子量产工艺 ，突破碳纤…",
+          "title": "育碧确认：《刺客信条》中国背景手游“代号 JADE”仍在开发",
+          "link": "https://www.ithome.com/1/030/507.htm",
+          "summary": "IT之家 11 月 21 日消息，育碧确认，《刺客信条》系列中国背景手游《刺客信条：代号 JADE》仍在开发中，不过现阶段 仍将主机和 PC 作为业务重点 。  育碧 CFO 弗雷德里克 · 迪盖在上半年业绩电话会议上披露，移动游戏在中长期仍有发展机会，《刺客信条：代号 JADE》就是该系列面向移动平台的作品。“从长期…",
           "author": "",
-          "published": "2026-11-21T21:53:01+08:00",
+          "published": "2026-11-21T22:47:34+08:00",
           "date_source": "published"
         },
         {
-          "id": "cda86e09189b91f2",
+          "id": "b48ca13a8c5c1a52",
+          "source_id": "solidot",
+          "source_name": "Solidot 奇客",
+          "category": "科技资讯",
+          "title": "地球 28 光年外发现一个三星系统",
+          "link": "https://www.solidot.org/story?sid=85955",
+          "summary": "天文学家在距离地球 28 光年处发现了一个三星系统，挑战了对恒星演化的现有观念。该系统被命名为 Welopōʻa，包括两颗白矮星和一颗红矮星。白矮星是类太阳恒星耗尽燃料后的高致密残骸，而红矮星则比太阳暗淡得多。天文学家是在红矮星周围寻找行星时意外发现这一三星结构的：这颗红矮星与另一颗白矮星近距离相互旋转，而另一颗更遥远…",
+          "author": "",
+          "published": "2026-11-21T22:40:48+08:00",
+          "date_source": "published"
+        },
+        {
+          "id": "7fcbeb3387770e51",
           "source_id": "ithome",
           "source_name": "IT之家",
           "category": "科技资讯",
-          "title": "南非开发者宣称独自开发操作系统 Impossible OS：兼容 Win32 和 Linux 二进制程序，两年后见",
-          "link": "https://www.ithome.com/1/030/479.htm",
-          "summary": "IT之家 11 月 21 日消息，从零开发一套操作系统，即使对经验丰富的工程团队而言也是一项艰巨任务，南非开发者兼企业家德里克 · 佩恩却选择独自承担这项工作。  当地时间 20 日，据外媒 TechSpot 报道，佩恩近日公布了面向现代 x86-64 PC 的全新操作系统 ——Impossible OS，其设计借鉴…",
+          "title": "韩国总统李在明：速度在 AI 竞赛中至关重要",
+          "link": "https://www.ithome.com/1/030/506.htm",
+          "summary": "IT之家 11 月 21 日消息，据路透社报道，当地时间 21 日，韩国总统李在明前往韩国东南部城市蔚山，视察当地一座在建数据中心，并敦促韩国加快在全球 AI 竞赛中的步伐。“ 全世界都在竞相角逐，速度至关重要 。”  数据中心是芯片需求的重要来源。李在明希望，SK 建设的蔚山项目能够取得成功，进而吸引全球 AI 企业…",
           "author": "",
-          "published": "2026-11-21T21:32:51+08:00",
+          "published": "2026-11-21T22:26:35+08:00",
           "date_source": "published"
         },
         {
-          "id": "6c7167eea3a2091a",
+          "id": "ee726ae731d6eb06",
           "source_id": "solidot",
           "source_name": "Solidot 奇客",
           "category": "科技资讯",
-          "title": "人类数学家匆忙发布广义黎曼猜想的证明手稿",
-          "link": "https://www.solidot.org/story?sid=85952",
-          "summary": "今年 9 月 OpenAI 宣布解决 Navier-Stokes 问题时引发了广泛争议，原因是当时有数学家正致力于解决该问题，而且已经取得了突破。现在 Anthropic 数学家发表几十万页的文档声称证明了黎曼猜想。数学家 Alessandro Maria Masullo 在广义黎曼猜想问题上投入了 12 年时间，他也…",
+          "title": "人类免疫系统衰老在 40 岁和 60 岁后会加速",
+          "link": "https://www.solidot.org/story?sid=85954",
+          "summary": "生死之旅从来不是平坦的。人体的衰老会呈现突然的跳跃加速，科学家正试图弄清楚衰老加速在细胞层面是何时发生的。发表在《Nature Communications》期刊上的一项研究调查了人类免疫系统，发现免疫系统衰老有两次突然加速。新加坡研究人员分析了 1828 名不同族裔、年龄在 19-97 岁之间健康个体的单细胞转录组。…",
           "author": "",
-          "published": "2026-11-21T19:09:59+08:00",
-          "date_source": "published"
-        },
-        {
-          "id": "eab6b3a22ceac0ea",
-          "source_id": "solidot",
-          "source_name": "Solidot 奇客",
-          "category": "科技资讯",
-          "title": "GTA 6 首日销售额达到创纪录的 37.9 亿美元",
-          "link": "https://www.solidot.org/story?sid=85951",
-          "summary": "GTA 6 开发商 Rockstar Games 母公司 Take-Two Interactive 披露，游戏的预购加上首日销售额达到创纪录的了 37.9 亿美元。这是娱乐产品历史上金额最高的首日收入，超过了《复仇者联盟 4：终局之战》的全球总票房 29 亿美元。Take-Two 未公布游戏具体的销售数量。GTA 6…",
-          "author": "",
-          "published": "2026-11-21T18:48:33+08:00",
+          "published": "2026-11-21T22:25:45+08:00",
           "date_source": "published"
         },
         {
@@ -431,7 +443,8 @@
           "summary": "上周末，今年正式被列入「全国普通高校学科竞赛排行榜」的2026鸿蒙高校创新赛在南京大学迎来全国总决赛颁奖典礼。华为董事、终端BGCEO何刚出席现场致辞并为获奖选手颁奖。他在现场表示，HarmonyOS",
           "author": "少数派编辑部",
           "published": "2026-11-21T12:00:00+08:00",
-          "date_source": "published"
+          "date_source": "published",
+          "stale": true
         },
         {
           "id": "52a9fd8fe895d552",
@@ -443,7 +456,8 @@
           "summary": "📅本周新预告《克里夫·布斯的惊险再冒险》终极预告11月18日，《好莱坞往事》续集电影《克里夫·布斯的惊险再冒险》发布了终极预告，将于11月25日在北美上映，12月23日上线Netflix。大卫·芬奇执",
           "author": "少数派编辑部",
           "published": "2026-11-20T17:54:01+08:00",
-          "date_source": "published"
+          "date_source": "published",
+          "stale": true
         },
         {
           "id": "0a31ea190e24db47",
@@ -455,7 +469,8 @@
           "summary": "编注：本文首发于「篝火营地」，原作者多边形。少数派经授权后转载，仅对文章格式略作调整。原标题：《侠盗猎车手6》游戏评测：10分｜篝火。作为RockstarGames时隔13年推出的《侠盗猎车手》系列新",
           "author": "篝火营地",
           "published": "2026-11-20T15:34:26+08:00",
-          "date_source": "published"
+          "date_source": "published",
+          "stale": true
         }
       ]
     },
