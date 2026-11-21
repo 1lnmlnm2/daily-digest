@@ -3,12 +3,11 @@
 """
 build.py —— 把 data/latest.json 渲染成静态页面，输出到 site/
 
-流程：
-1. 读 config/sources.yml（取站点标题等）
-2. 读 data/latest.json（取抓取结果）
-3. 用 Jinja2 渲染 templates/index.html → site/index.html
-4. 复制 assets/ 到 site/assets/
-5. 顺便把最新数据复制一份到 site/data/latest.json，方便以后做接口或二次开发
+M3 的变化：
+1. 页面按 category（科技资讯 / 实用工具 / 每周精选）分组，组内按发布时间倒序。
+2. 没有任何内容时显示「本期暂无新内容」，不用旧文章凑数。
+3. 顶部保留来源健康状态条，缓存和连续失败次数都能看到。
+4. 页面仍然只展示标题、摘要和原文链接，不做美化、不做 AI 摘要。
 
 运行方式：
     python scripts/build.py
@@ -39,19 +38,49 @@ def format_datetime(value, fmt: str = "%Y-%m-%d %H:%M") -> str:
         return "—"
     try:
         moment = datetime.fromisoformat(str(value))
-    except ValueError:
+    except (TypeError, ValueError):
         return str(value)
     return moment.strftime(fmt)
 
 
 def format_date(value) -> str:
-    """只显示日期，用于条目时间。"""
     return format_datetime(value, "%Y-%m-%d")
 
 
 def load_json(path: Path) -> dict:
     with path.open("r", encoding="utf-8") as handle:
         return json.load(handle)
+
+
+def ensure_categories(payload: dict) -> list[dict]:
+    """
+    优先用 fetch.py 生成的 categories；
+    兼容旧版 latest.json（没有 categories 字段）时，按来源顺序临时分组。
+    """
+    categories = payload.get("categories")
+    if isinstance(categories, list) and categories:
+        return categories
+
+    order: list[str] = []
+    for source in payload.get("sources") or []:
+        category = source.get("category") or "未分类"
+        if category not in order:
+            order.append(category)
+
+    groups = []
+    for category in order:
+        items = []
+        for source in payload.get("sources") or []:
+            if (source.get("category") or "未分类") != category:
+                continue
+            for item in source.get("items") or []:
+                copy = dict(item)
+                copy.setdefault("source_name", source.get("name", ""))
+                copy.setdefault("category", category)
+                copy.setdefault("stale", source.get("stale", False))
+                items.append(copy)
+        groups.append({"name": category, "count": len(items), "items": items})
+    return groups
 
 
 def main() -> int:
@@ -66,10 +95,10 @@ def main() -> int:
 
     settings = config.get("settings") or {}
     payload = load_json(DATA_PATH)
+    categories = ensure_categories(payload)
 
-    # 页面上标注的时间是哪个时区，方便读者理解
     try:
-        offset = int(settings.get("timezone_offset", 8))
+        offset = int(settings.get("timezone_offset", payload.get("tz_offset", 8)))
     except (TypeError, ValueError):
         offset = 8
     if offset == 8:
@@ -79,7 +108,6 @@ def main() -> int:
     else:
         tz_label = f"UTC{offset:+d}"
 
-    # ---------- 准备模板环境 ----------
     env = Environment(
         loader=FileSystemLoader(str(TEMPLATE_DIR)),
         autoescape=select_autoescape(["html", "xml"]),  # 自动转义，防止 XSS
@@ -96,9 +124,10 @@ def main() -> int:
         tz_label=tz_label,
         data=payload,
         stats=payload.get("stats") or {},
+        categories=categories,
+        has_items=any(group.get("items") for group in categories),
     )
 
-    # ---------- 写出站点 ----------
     # 每次重建先清空，避免旧文件残留在产物里
     if OUTPUT_DIR.exists():
         shutil.rmtree(OUTPUT_DIR)
@@ -114,12 +143,12 @@ def main() -> int:
     data_out.mkdir(parents=True, exist_ok=True)
     shutil.copyfile(DATA_PATH, data_out / "latest.json")
 
-    # 给 GitHub Pages 一个 404 之外的静态标记（可选但有用）
     (OUTPUT_DIR / ".nojekyll").write_text("", encoding="utf-8")
 
     generated = format_datetime(payload.get("generated_at"))
     print(f"[build] 页面已生成：{OUTPUT_DIR / 'index.html'}")
     print(f"[build] 数据时间：{generated}")
+    print(f"[build] 条目数：{(payload.get('stats') or {}).get('item_total', 0)}")
     return 0
 
 
