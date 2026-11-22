@@ -2,10 +2,11 @@
   "schema": 2,
   "pipeline": "m3",
   "baseline": {
-    "established": false,
-    "established_at": null
+    "established": true,
+    "established_at": "2026-11-22T12:59:21+08:00",
+    "suppressed_count": 26
   },
-  "updated_at": "2026-11-22T06:56:00+08:00",
+  "updated_at": "2026-11-22T12:59:21+08:00",
   "items": {
     "ddc942c524c1112b": {
       "source_id": "sspai",
@@ -15,10 +16,10 @@
       "link": "https://sspai.com/post/119291",
       "published": "2026-11-21T12:00:00+08:00",
       "first_seen": "2026-11-21T19:58:57+08:00",
-      "last_seen": "2026-11-22T06:56:00+08:00",
-      "status": "observed",
+      "last_seen": "2026-11-22T12:59:21+08:00",
+      "status": "suppressed",
       "notified_at": null,
-      "suppressed_reason": null
+      "suppressed_reason": "baseline"
     },
     "52a9fd8fe895d552": {
       "source_id": "sspai",
@@ -28,10 +29,10 @@
       "link": "https://sspai.com/post/119337",
       "published": "2026-11-20T17:54:01+08:00",
       "first_seen": "2026-11-21T19:58:57+08:00",
-      "last_seen": "2026-11-22T06:56:00+08:00",
-      "status": "observed",
+      "last_seen": "2026-11-22T12:59:21+08:00",
+      "status": "suppressed",
       "notified_at": null,
-      "suppressed_reason": null
+      "suppressed_reason": "baseline"
     },
     "0a31ea190e24db47": {
       "source_id": "sspai",
@@ -42,9 +43,9 @@
       "published": "2026-11-20T15:34:26+08:00",
       "first_seen": "2026-11-21T19:58:57+08:00",
       "last_seen": "2026-11-22T06:56:00+08:00",
-      "status": "observed",
+      "status": "suppressed",
       "notified_at": null,
-      "suppressed_reason": null
+      "suppressed_reason": "baseline"
     },
     "8248d1d8189b8403": {
       "source_id": "ithome",
@@ -55,9 +56,9 @@
       "published": "2026-11-21T19:37:57+08:00",
       "first_seen": "2026-11-21T19:58:57+08:00",
       "last_seen": "2026-11-21T19:58:57+08:00",
-      "status": "observed",
+      "status": "suppressed",
       "notified_at": null,
-      "suppressed_reason": null
+      "suppressed_reason": "baseline"
     },
     "da83bbf71098efb1": {
       "source_id": "ithome",
@@ -68,9 +69,9 @@
       "published": "2026-11-21T19:29:02+08:00",
       "first_seen": "2026-11-21T19:58:57+08:00",
       "last_seen": "2026-11-21T19:58:57+08:00",
-      "status": "observed",
+      "status": "suppressed",
       "notified_at": null,
-      "suppressed_reason": null
+      "suppressed_reason": "baseline"
     },
     "a77f0a2f17f4376b": {
       "source_id": "solidot",
@@ -81,9 +82,9 @@
       "published": "2026-11-21T18:11:05+08:00",
       "first_seen": "2026-11-21T19:58:57+08:00",
       "last_seen": "2026-11-21T19:58:57+08:00",
-      "status": "observed",
+      "status": "suppressed",
       "notified_at": null,
-      "suppressed_reason": null
+      "suppressed_reason": "baseline"
     },
     "ea94fc850f030d14": {
       "source_id": "solidot",
@@ -94,9 +95,9 @@
       "published": "2026-11-20T23:14:05+08:00",
       "first_seen": "2026-11-21T19:58:57+08:00",
       "last_seen": "2026-11-21T19:58:57+08:00",
-      "status": "observed",
+      "status": "suppressed",
       "notified_at": null,
-      "suppressed_reason": null
+      "suppressed_reason": "baseline"
     },
     "7e92856e801bbc67": {
       "source_id": "appinn",
@@ -106,10 +107,10 @@
       "link": "https://www.appinn.com/google-ai-pro-black-friday-2026/",
       "published": "2026-11-21T19:14:41+08:00",
       "first_seen": "2026-11-21T19:58:57+08:00",
-      "last_seen": "2026-11-22T06:56:00+08:00",
-      "status": "observed",
+      "last_seen": "2026-11-22T12:59:21+08:00",
+      "status": "suppressed",
       "notified_at": null,
-      "suppressed_reason": null
+      "suppressed_reason": "baseline"
     },
     "146f70ce9a3829e7": {
       "source_id": "appinn",
@@ -119,10 +120,10 @@
       "link": "https://www.appinn.com/dettato/",
       "published": "2026-11-21T14:24:51+08:00",
       "first_seen": "2026-11-21T19:58:57+08:00",
-      "last_seen": "2026-11-22T06:56:00+08:00",
-      "status": "observed",
+      "last_seen": "2026-11-22T12:59:21+08:00",
+      "status": "suppressed",
       "notified_at": null,
-      "suppressed_reason": null
+      "suppressed_reason": "baseline"
     },
     "72770d4c61909653": {
       "source_id": "ruanyifeng",
@@ -132,10 +133,10 @@
       "link": "http://www.ruanyifeng.com/blog/2026/11/weekly-issue-420.html",
       "published": "2026-11-20T08:07:30+08:00",
       "first_seen": "2026-11-21T19:58:57+08:00",
-      "last_seen": "2026-11-22T06:56:00+08:00",
-      "status": "observed",
+      "last_seen": "2026-11-22T12:59:21+08:00",
+      "status": "suppressed",
       "notified_at": null,
-      "suppressed_reason": null
+      "suppressed_reason": "baseline"
     },
     "e67d843487a66672": {
       "source_id": "ithome",
@@ -146,9 +147,9 @@
       "published": "2026-11-21T20:36:00+08:00",
       "first_seen": "2026-11-21T21:09:42+08:00",
       "last_seen": "2026-11-21T21:09:42+08:00",
-      "status": "observed",
+      "status": "suppressed",
       "notified_at": null,
-      "suppressed_reason": null
+      "suppressed_reason": "baseline"
     },
     "8f80442dfe2a3602": {
       "source_id": "ithome",
@@ -159,9 +160,9 @@
       "published": "2026-11-21T20:24:50+08:00",
       "first_seen": "2026-11-21T21:09:42+08:00",
       "last_seen": "2026-11-21T21:09:42+08:00",
-      "status": "observed",
+      "status": "suppressed",
       "notified_at": null,
-      "suppressed_reason": null
+      "suppressed_reason": "baseline"
     },
     "6c7167eea3a2091a": {
       "source_id": "solidot",
@@ -172,9 +173,9 @@
       "published": "2026-11-21T19:09:59+08:00",
       "first_seen": "2026-11-21T21:09:42+08:00",
       "last_seen": "2026-11-21T22:32:56+08:00",
-      "status": "observed",
+      "status": "suppressed",
       "notified_at": null,
-      "suppressed_reason": null
+      "suppressed_reason": "baseline"
     },
     "eab6b3a22ceac0ea": {
       "source_id": "solidot",
@@ -185,9 +186,9 @@
       "published": "2026-11-21T18:48:33+08:00",
       "first_seen": "2026-11-21T21:09:42+08:00",
       "last_seen": "2026-11-21T22:32:56+08:00",
-      "status": "observed",
+      "status": "suppressed",
       "notified_at": null,
-      "suppressed_reason": null
+      "suppressed_reason": "baseline"
     },
     "05c2a5e28bc3d860": {
       "source_id": "ithome",
@@ -198,9 +199,9 @@
       "published": "2026-11-21T21:53:01+08:00",
       "first_seen": "2026-11-21T22:32:56+08:00",
       "last_seen": "2026-11-21T22:32:56+08:00",
-      "status": "observed",
+      "status": "suppressed",
       "notified_at": null,
-      "suppressed_reason": null
+      "suppressed_reason": "baseline"
     },
     "cda86e09189b91f2": {
       "source_id": "ithome",
@@ -211,9 +212,9 @@
       "published": "2026-11-21T21:32:51+08:00",
       "first_seen": "2026-11-21T22:32:56+08:00",
       "last_seen": "2026-11-21T22:32:56+08:00",
-      "status": "observed",
+      "status": "suppressed",
       "notified_at": null,
-      "suppressed_reason": null
+      "suppressed_reason": "baseline"
     },
     "1ab3ed2ffe95dd45": {
       "source_id": "ithome",
@@ -224,9 +225,9 @@
       "published": "2026-11-21T22:47:34+08:00",
       "first_seen": "2026-11-21T23:42:27+08:00",
       "last_seen": "2026-11-21T23:54:26+08:00",
-      "status": "observed",
+      "status": "suppressed",
       "notified_at": null,
-      "suppressed_reason": null
+      "suppressed_reason": "baseline"
     },
     "7fcbeb3387770e51": {
       "source_id": "ithome",
@@ -237,9 +238,9 @@
       "published": "2026-11-21T22:26:35+08:00",
       "first_seen": "2026-11-21T23:42:27+08:00",
       "last_seen": "2026-11-21T23:42:27+08:00",
-      "status": "observed",
+      "status": "suppressed",
       "notified_at": null,
-      "suppressed_reason": null
+      "suppressed_reason": "baseline"
     },
     "b48ca13a8c5c1a52": {
       "source_id": "solidot",
@@ -249,10 +250,10 @@
       "link": "https://www.solidot.org/story?sid=85955",
       "published": "2026-11-21T22:40:48+08:00",
       "first_seen": "2026-11-21T23:42:27+08:00",
-      "last_seen": "2026-11-22T06:56:00+08:00",
-      "status": "observed",
+      "last_seen": "2026-11-22T12:59:21+08:00",
+      "status": "suppressed",
       "notified_at": null,
-      "suppressed_reason": null
+      "suppressed_reason": "baseline"
     },
     "ee726ae731d6eb06": {
       "source_id": "solidot",
@@ -262,10 +263,10 @@
       "link": "https://www.solidot.org/story?sid=85954",
       "published": "2026-11-21T22:25:45+08:00",
       "first_seen": "2026-11-21T23:42:27+08:00",
-      "last_seen": "2026-11-22T06:56:00+08:00",
-      "status": "observed",
+      "last_seen": "2026-11-22T12:59:21+08:00",
+      "status": "suppressed",
       "notified_at": null,
-      "suppressed_reason": null
+      "suppressed_reason": "baseline"
     },
     "24f652cfa0c13284": {
       "source_id": "ithome",
@@ -276,9 +277,9 @@
       "published": "2026-11-21T23:43:31+08:00",
       "first_seen": "2026-11-21T23:47:30+08:00",
       "last_seen": "2026-11-22T06:56:00+08:00",
-      "status": "observed",
+      "status": "suppressed",
       "notified_at": null,
-      "suppressed_reason": null
+      "suppressed_reason": "baseline"
     },
     "70d07a1304e167c9": {
       "source_id": "ithome",
@@ -289,9 +290,9 @@
       "published": "2026-11-21T23:25:36+08:00",
       "first_seen": "2026-11-21T23:47:30+08:00",
       "last_seen": "2026-11-21T23:54:26+08:00",
-      "status": "observed",
+      "status": "suppressed",
       "notified_at": null,
-      "suppressed_reason": null
+      "suppressed_reason": "baseline"
     },
     "2a49cc88f81bec55": {
       "source_id": "ithome",
@@ -302,21 +303,60 @@
       "published": "2026-11-22T00:00:08+08:00",
       "first_seen": "2026-11-22T06:56:00+08:00",
       "last_seen": "2026-11-22T06:56:00+08:00",
-      "status": "observed",
+      "status": "suppressed",
       "notified_at": null,
-      "suppressed_reason": null
+      "suppressed_reason": "baseline"
+    },
+    "29e4355c51fe151b": {
+      "source_id": "sspai",
+      "source_name": "少数派",
+      "category": "科技资讯",
+      "title": "从深圳到上海，少数派的共创故事还在继续",
+      "link": "https://sspai.com/post/119318",
+      "published": "2026-11-22T09:05:44+08:00",
+      "first_seen": "2026-11-22T12:59:21+08:00",
+      "last_seen": "2026-11-22T12:59:21+08:00",
+      "status": "suppressed",
+      "notified_at": null,
+      "suppressed_reason": "baseline"
+    },
+    "5709f18e31879d69": {
+      "source_id": "ithome",
+      "source_name": "IT之家",
+      "category": "科技资讯",
+      "title": "33.99 万元起：全新雷克萨斯 ES 纯电版上市",
+      "link": "https://www.ithome.com/1/030/564.htm",
+      "published": "2026-11-22T12:29:56+08:00",
+      "first_seen": "2026-11-22T12:59:21+08:00",
+      "last_seen": "2026-11-22T12:59:21+08:00",
+      "status": "suppressed",
+      "notified_at": null,
+      "suppressed_reason": "baseline"
+    },
+    "7b15518b73333b05": {
+      "source_id": "ithome",
+      "source_name": "IT之家",
+      "category": "科技资讯",
+      "title": "无需游戏引擎！马斯克称特斯拉 FSD v15 实景视图仅动用 AI4 芯片一个 TRIP 加速器一半算力",
+      "link": "https://www.ithome.com/1/030/563.htm",
+      "published": "2026-11-22T12:18:50+08:00",
+      "first_seen": "2026-11-22T12:59:21+08:00",
+      "last_seen": "2026-11-22T12:59:21+08:00",
+      "status": "suppressed",
+      "notified_at": null,
+      "suppressed_reason": "baseline"
     }
   },
   "sources": {
     "sspai": {
       "consecutive_failures": 0,
-      "last_success_at": "2026-11-22T06:56:00+08:00",
+      "last_success_at": "2026-11-22T12:59:21+08:00",
       "last_failure_at": "2026-11-21T23:47:30+08:00",
       "last_alert_at": "2026-11-21T23:47:44+08:00",
       "alert_active": false,
       "status": "ok",
       "last_error": null,
-      "last_attempt_at": "2026-11-22T06:56:00+08:00",
+      "last_attempt_at": "2026-11-22T12:59:21+08:00",
       "alert_open": false,
       "last_status": "ok",
       "alert_last_attempt_at": "2026-11-21T23:47:44+08:00",
@@ -324,13 +364,13 @@
     },
     "ithome": {
       "consecutive_failures": 0,
-      "last_success_at": "2026-11-22T06:56:00+08:00",
+      "last_success_at": "2026-11-22T12:59:21+08:00",
       "last_failure_at": null,
       "last_alert_at": null,
       "alert_active": false,
       "status": "ok",
       "last_error": null,
-      "last_attempt_at": "2026-11-22T06:56:00+08:00",
+      "last_attempt_at": "2026-11-22T12:59:21+08:00",
       "alert_open": false,
       "last_status": "ok",
       "alert_last_attempt_at": null,
@@ -338,13 +378,13 @@
     },
     "solidot": {
       "consecutive_failures": 0,
-      "last_success_at": "2026-11-22T06:56:00+08:00",
+      "last_success_at": "2026-11-22T12:59:21+08:00",
       "last_failure_at": null,
       "last_alert_at": null,
       "alert_active": false,
       "status": "ok",
       "last_error": null,
-      "last_attempt_at": "2026-11-22T06:56:00+08:00",
+      "last_attempt_at": "2026-11-22T12:59:21+08:00",
       "alert_open": false,
       "last_status": "ok",
       "alert_last_attempt_at": null,
@@ -352,13 +392,13 @@
     },
     "appinn": {
       "consecutive_failures": 0,
-      "last_success_at": "2026-11-22T06:56:00+08:00",
+      "last_success_at": "2026-11-22T12:59:21+08:00",
       "last_failure_at": null,
       "last_alert_at": null,
       "alert_active": false,
       "status": "ok",
       "last_error": null,
-      "last_attempt_at": "2026-11-22T06:56:00+08:00",
+      "last_attempt_at": "2026-11-22T12:59:21+08:00",
       "alert_open": false,
       "last_status": "ok",
       "alert_last_attempt_at": null,
@@ -366,13 +406,13 @@
     },
     "ruanyifeng": {
       "consecutive_failures": 0,
-      "last_success_at": "2026-11-22T06:56:00+08:00",
+      "last_success_at": "2026-11-22T12:59:21+08:00",
       "last_failure_at": null,
       "last_alert_at": null,
       "alert_active": false,
       "status": "ok",
       "last_error": null,
-      "last_attempt_at": "2026-11-22T06:56:00+08:00",
+      "last_attempt_at": "2026-11-22T12:59:21+08:00",
       "alert_open": false,
       "last_status": "ok",
       "alert_last_attempt_at": null,
@@ -380,10 +420,15 @@
     }
   },
   "last_run": {
-    "at": "2026-11-22T06:56:00+08:00",
-    "run_url": "https://github.com/1lnmlnm2/daily-digest/actions/runs/44959240665",
-    "push_mode": "off",
-    "baseline_established": false
+    "at": "2026-11-22T12:59:21+08:00",
+    "run_url": "https://github.com/1lnmlnm2/daily-digest/actions/runs/44987389869",
+    "event": "workflow_dispatch",
+    "manual_dispatch": true,
+    "push_mode": "on",
+    "baseline_established": true,
+    "baseline_blocked": false,
+    "baseline_blockers": [],
+    "baseline_waiting_manual": false
   },
   "last_alert": {
     "at": "2026-11-21T23:47:44+08:00",

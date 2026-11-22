@@ -1,8 +1,44 @@
 {
   "date": "2026-11-22",
-  "updated_at": "2026-11-22T06:56:00+08:00",
-  "count": 1,
+  "updated_at": "2026-11-22T12:59:21+08:00",
+  "count": 4,
   "items": [
+    {
+      "id": "5709f18e31879d69",
+      "source_id": "ithome",
+      "source_name": "IT之家",
+      "category": "科技资讯",
+      "title": "33.99 万元起：全新雷克萨斯 ES 纯电版上市",
+      "link": "https://www.ithome.com/1/030/564.htm",
+      "summary": "IT之家 11 月 22 日消息，全新雷克萨斯 ES 纯电版今日正式上市，提供 2 种车型， 定价 33.99 万元起。该车采用宁德时代三元锂离子电芯 ，具备“交互式模拟手动换挡系统 IMD”。现阶段订车可享 5 年 0 息、8 年 / 16 万公里内电池免费保修、10 年三电保修、赠送充电桩等权益。     IT之家…",
+      "author": "",
+      "published": "2026-11-22T12:29:56+08:00",
+      "first_collected_at": "2026-11-22T12:59:21+08:00"
+    },
+    {
+      "id": "7b15518b73333b05",
+      "source_id": "ithome",
+      "source_name": "IT之家",
+      "category": "科技资讯",
+      "title": "无需游戏引擎！马斯克称特斯拉 FSD v15 实景视图仅动用 AI4 芯片一个 TRIP 加速器一半算力",
+      "link": "https://www.ithome.com/1/030/563.htm",
+      "summary": "IT之家 11 月 22 日消息， 特斯拉今日宣布在美国市场推出 FSD v15 ，带来了全新可视化界面 ——“Tesla Reality View”（特斯拉实景视图）。     随后全新的“Tesla Reality View”迅速引发网友热议。博主 @旌旗超智能 分析，特斯拉是在硬件劣势的情况做了 3D 高斯全场景…",
+      "author": "",
+      "published": "2026-11-22T12:18:50+08:00",
+      "first_collected_at": "2026-11-22T12:59:21+08:00"
+    },
+    {
+      "id": "29e4355c51fe151b",
+      "source_id": "sspai",
+      "source_name": "少数派",
+      "category": "科技资讯",
+      "title": "从深圳到上海，少数派的共创故事还在继续",
+      "link": "https://sspai.com/post/119318",
+      "summary": "11月20日，2026虹桥国际科技周在上海举行。作为聚焦科技创新、产业协作与未来趋势的交流平台，本届科技周汇聚了来自不同领域的创新者、创业者与行业观察者。少数派也在现场带来了主题论坛分享，与参与者一起",
+      "author": "侧脸君",
+      "published": "2026-11-22T09:05:44+08:00",
+      "first_collected_at": "2026-11-22T12:59:21+08:00"
+    },
     {
       "id": "2a49cc88f81bec55",
       "source_id": "ithome",
