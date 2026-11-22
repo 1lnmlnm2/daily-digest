@@ -7,17 +7,21 @@ fetch.py —— M3 抓取入口：多源抓取 → 过滤 → 状态 → 归档 
 1. 所有过滤规则集中到 scripts/core.py（纯函数），这里只负责联网、落盘、状态维护。
 2. 五个源各自独立：日期窗口 → 关键词 → 单源限额，单源失败不会影响其他源。
 3. 新增 data/state.json：记录每个文章的稳定 ID 和处理状态，保证手动重复运行
-   不会重复归档、重复推送；升级后的第一次运行只建立基线，不推历史文章。
+   不会重复归档、重复推送；baseline=false 时，只有手动 workflow_dispatch
+   且五源全健康的第一次运行会建立基线，不推历史文章。
 4. 新增 data/archive/YYYY-MM-DD.json：按文章发布日期归档，同一天重复运行按
    ID 合并去重，不会重复增加条目。
 5. 失败保底继续保留：单源失败沿用上一次成功的数据，页面标「缓存」。
 
 阶段 2 的推送开关由 config/sources.yml 的 push_mode 控制：
     "off" → 只抓取、归档、写状态（状态为 observed），notify.py 会直接跳过
-    "on"  → 第一次运行只建立基线（把已有条目标 suppressed），之后只推新增
+    "on"  → baseline=false 时仍不推送；手动基线成功后，才只推真正新增
 
 运行方式：
     python scripts/fetch.py
+
+注意：正式基线只认 GITHUB_EVENT_NAME=workflow_dispatch；schedule 等事件
+即使 push_mode=on 且五源健康，也只记录 baseline_waiting_manual，不建立基线。
 """
 
 from __future__ import annotations
@@ -440,11 +444,12 @@ def register_items(
 
 def apply_baseline(state: dict, now: datetime) -> int:
     """
-    正式首次 push_mode=on 时建立基线：
+    手动 workflow_dispatch 且全员健康时建立基线：
       - 把此前所有 observed / pending 条目转成 suppressed(baseline)；
       - notified / suppressed 保持原状态，不重置；
       - 已建立过基线时直接返回 0，幂等。
     这样首次开启推送不会把历史文章集中推出去，off 期间的条目也不会在恢复后补推。
+    本函数只负责状态转换；是否允许调用由 main() 的事件门禁和健康门禁决定。
     """
     baseline = state.setdefault("baseline", {"established": False, "established_at": None})
     if baseline.get("established"):
@@ -462,6 +467,58 @@ def apply_baseline(state: dict, now: datetime) -> int:
     baseline["established_at"] = _now_iso(now)
     baseline["suppressed_count"] = changed
     return changed
+
+
+def baseline_health_blockers(results: list[dict], state: dict, sources: list[dict]) -> list[str]:
+    """
+    正式基线前置条件：所有启用来源本次必须全部健康。
+
+    任一来源出现以下情况，都返回非空阻断原因，调用方不得执行 apply_baseline：
+      - 抓取失败、超时、返回空或解析失败（result["ok"] 为 false）；
+      - 使用缓存保底（result["stale"] 为 true）；
+      - source_failed 或 source_cached 不为 0；
+      - state 中该来源 last_status 不是 ok，或连续失败计数不为 0；
+      - 结果集合与启用来源集合不一致。
+
+    只有返回空列表时，才允许把 observed/pending 批量转成 suppressed(baseline)。
+    """
+    blockers: list[str] = []
+    expected_ids = [str(item.get("id") or "") for item in sources]
+    result_ids = [str(result.get("id") or "") for result in results]
+    missing_ids = sorted(set(expected_ids) - set(result_ids))
+    extra_ids = sorted(set(result_ids) - set(expected_ids))
+
+    if missing_ids:
+        blockers.append("缺少来源结果：" + ", ".join(missing_ids))
+    if extra_ids:
+        blockers.append("出现未启用来源结果：" + ", ".join(extra_ids))
+    if len(results) != len(sources):
+        blockers.append(f"来源结果数量不一致：{len(results)}/{len(sources)}")
+
+    failed = 0
+    cached = 0
+    for result in results:
+        source_id = str(result.get("id") or "")
+        if not result.get("ok"):
+            failed += 1
+            blockers.append(f"{source_id}: 抓取未成功（{result.get('error') or '未知原因'}）")
+        if result.get("stale"):
+            cached += 1
+            blockers.append(f"{source_id}: 使用缓存保底")
+
+        health = (state.get("sources") or {}).get(source_id) or {}
+        if health.get("last_status") != "ok":
+            blockers.append(f"{source_id}: last_status={health.get('last_status')!r}")
+        if int(health.get("consecutive_failures") or 0) != 0:
+            blockers.append(
+                f"{source_id}: consecutive_failures={health.get('consecutive_failures')}"
+            )
+
+    if failed:
+        blockers.append(f"source_failed={failed}")
+    if cached:
+        blockers.append(f"source_cached={cached}")
+    return blockers
 
 
 def pending_items(state: dict) -> list[dict]:
@@ -676,6 +733,9 @@ def main(now: datetime | None = None) -> int:
     push_mode = str(settings.get("push_mode", "off")).strip().lower()
     push_enabled = push_mode == "on"
     baseline_established = bool(state["baseline"].get("established"))
+    # 正式基线只允许由手动 workflow_dispatch 触发；schedule 等其他事件一律只等待。
+    event_name = str(os.environ.get("GITHUB_EVENT_NAME") or "").strip().lower() or "unknown"
+    manual_dispatch = event_name == "workflow_dispatch"
 
     previous_data = load_previous_data()
     previous_map = {
@@ -740,12 +800,32 @@ def main(now: datetime | None = None) -> int:
         results.append(result)
 
     # ---------- 正式首次基线 ----------
+    # 1. 只有手动 workflow_dispatch 才有资格建立基线；schedule / 其他事件只等待。
+    # 2. 手动运行时还要做全员健康检查，只有 5 个启用来源全部成功、无失败、无缓存、
+    #    last_status 全为 ok，才允许写基线。健康检查必须在 apply_baseline 之前。
     baseline_this_run = False
+    baseline_blocked = False
+    baseline_waiting_manual = False
+    baseline_blockers: list[str] = []
     if push_enabled and not state["baseline"].get("established"):
-        changed = apply_baseline(state, now)
-        baseline_this_run = True
-        baseline_established = True
-        log(f"首次 push_mode=on：已建立基线，抑制 {changed} 条历史条目，本次不推送")
+        if not manual_dispatch:
+            baseline_waiting_manual = True
+            log(
+                f"非手动运行（event={event_name}）：baseline 尚未建立，"
+                "跳过建立基线，记录 baseline_waiting_manual"
+            )
+        else:
+            baseline_blockers = baseline_health_blockers(results, state, sources)
+            if baseline_blockers:
+                baseline_blocked = True
+                log("手动基线运行：来源未全部健康，跳过建立基线，baseline 保持 false")
+                for blocker in baseline_blockers:
+                    log(f"  - {blocker}")
+            else:
+                changed = apply_baseline(state, now)
+                baseline_this_run = True
+                baseline_established = True
+                log(f"手动基线运行：已建立基线，抑制 {changed} 条历史条目，本次不推送")
 
     # ---------- 全站限额 ----------
     total_max = int(settings.get("total_max_items") or DEFAULT_TOTAL_MAX_ITEMS)
@@ -769,22 +849,41 @@ def main(now: datetime | None = None) -> int:
         result["item_count"] = len(result["items"])
 
     # ---------- 待推送 ----------
+    # baseline 未建立时，普通推送必须严格为 0：不展示 pending、不生成候选、不调用 notify。
     pending = pending_items(state)
-    if not push_enabled:
-        push_reason = "push_mode_off"
-    elif baseline_this_run:
+    push_allowed = bool(
+        push_enabled
+        and baseline_established
+        and not baseline_blocked
+        and not baseline_waiting_manual
+    )
+    if baseline_this_run:
         push_reason = "baseline_established"
+    elif baseline_blocked:
+        push_reason = "baseline_blocked_unhealthy"
+    elif baseline_waiting_manual:
+        push_reason = "baseline_waiting_manual"
+    elif not baseline_established:
+        push_reason = "baseline_not_established"
+    elif not push_enabled:
+        push_reason = "push_mode_off"
     elif not pending:
         push_reason = "no_new_items"
     else:
         push_reason = "ok"
 
+    push_pending = pending if push_allowed else []
     push_payload = {
-        "enabled": push_enabled,
+        "enabled": push_allowed,
         "mode": push_mode,
+        "event": event_name,
+        "manual_dispatch": manual_dispatch,
         "baseline_established": bool(state["baseline"].get("established")),
         "baseline_established_this_run": baseline_this_run,
-        "new_count": len(pending) if push_enabled else 0,
+        "baseline_blocked": baseline_blocked,
+        "baseline_blockers": baseline_blockers,
+        "baseline_waiting_manual": baseline_waiting_manual,
+        "new_count": len(pending) if push_allowed else 0,
         "reason": push_reason,
         "items": [
             {
@@ -795,7 +894,7 @@ def main(now: datetime | None = None) -> int:
                 "category": item["category"],
                 "published": item["published"],
             }
-            for item in pending[:10]
+            for item in push_pending[:10]
         ],
     }
 
@@ -828,8 +927,13 @@ def main(now: datetime | None = None) -> int:
     state["last_run"] = {
         "at": _now_iso(now),
         "run_url": build_run_url(),
+        "event": event_name,
+        "manual_dispatch": manual_dispatch,
         "push_mode": push_mode,
         "baseline_established": bool(state["baseline"].get("established")),
+        "baseline_blocked": baseline_blocked,
+        "baseline_blockers": baseline_blockers,
+        "baseline_waiting_manual": baseline_waiting_manual,
     }
 
     # ---------- 展示数据 ----------
@@ -862,6 +966,8 @@ def main(now: datetime | None = None) -> int:
         "generated_at": now.isoformat(timespec="seconds"),
         "generated_at_utc": now.astimezone(timezone.utc).isoformat(timespec="seconds"),
         "run_url": build_run_url(),
+        "event": event_name,
+        "manual_dispatch": manual_dispatch,
         "tz_offset": int(settings.get("timezone_offset") or DEFAULT_UTC_OFFSET),
         "push": push_payload,
         "settings": {
@@ -897,10 +1003,16 @@ def main(now: datetime | None = None) -> int:
             len(results), ok_count, failed_count, stale_count, len(display_items), push_new_count
         )
     )
-    if not push_enabled:
+    if baseline_this_run:
+        log("本次为手动基线运行：历史文章只归档，不推送")
+    elif baseline_blocked:
+        log("手动基线被阻断：来源未全部健康，baseline 保持 false，普通推送 0，等待人工处理")
+    elif baseline_waiting_manual:
+        log("非手动运行且 baseline=false：不建立基线，普通推送 0，等待手动基线")
+    elif not baseline_established:
+        log("baseline 尚未建立：普通推送 0，等待手动基线")
+    elif not push_enabled:
         log("push_mode=off 过渡期：只归档与写状态，不推送普通内容")
-    elif baseline_this_run:
-        log("本次为首次基线运行：历史文章只归档，不推送")
     elif not pending:
         log("没有新增内容，普通推送将跳过")
     log(f"数据已写入：{DATA_PATH}")
