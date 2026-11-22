@@ -11,13 +11,14 @@ notify.py —— 只推送本轮真正新增的文章摘要到 Server 酱（微�
                         未配置时不会报错，只打印「跳过推送」。
     SITE_URL            可选。页面地址；不填则按 GitHub 仓库信息自动推断。
 
-推送规则（阶段 3）：
-    1. push_mode=off 或 new_count=0 → 直接跳过，不调用 Server 酱，不改状态。
-    2. 只从 data/state.json 中 status=pending 的条目生成消息，不再拿页面上的旧文章凑数。
-    3. 消息包含真实新增数量、最多 3 条新增标题和页面链接。
-    4. 每次运行最多只发起一次普通内容推送；失败就保留 pending，下一次运行再试。
-    5. 只有 Server 酱明确返回成功，才把本轮全部 pending 标成 notified 并写入 notified_at。
-    6. 日志绝不出现完整 SendKey；所有错误文本都会先经过 mask_secret()。
+推送规则（阶段 3 + 阶段 6）：
+    1. baseline.established 不是 true → 直接跳过，不调用 Server 酱，不改状态。
+    2. push_mode=off 或 new_count=0 → 直接跳过，不调用 Server 酱，不改状态。
+    3. 只从 data/state.json 中 status=pending 的条目生成消息，不再拿页面上的旧文章凑数。
+    4. 消息包含真实新增数量、最多 3 条新增标题和页面链接。
+    5. 每次运行最多只发起一次普通内容推送；失败就保留 pending，下一次运行再试。
+    6. 只有 Server 酱明确返回成功，才把本轮全部 pending 标成 notified 并写入 notified_at。
+    7. 日志绝不出现完整 SendKey；所有错误文本都会先经过 mask_secret()。
 """
 
 from __future__ import annotations
@@ -231,6 +232,13 @@ def main() -> int:
     state = load_json(STATE_PATH)
     if not isinstance(state, dict):
         log(f"找不到或无法读取 {STATE_PATH.name}，跳过推送（pending 不会被标记）")
+        return 0
+
+    # 阶段 6：baseline 未建立时，普通内容推送必须严格为 0。
+    # 这是独立于 fetch 的最终闸门：即使 push_mode=on、latest 里还有候选，也绝不调用 SendKey。
+    baseline = state.get("baseline") or {}
+    if baseline.get("established") is not True:
+        log("baseline 尚未建立，跳过普通推送（不调用 Server 酱、不标记 notified）")
         return 0
 
     # 过渡期 / 无新增守卫：绝不调用推送，也绝不修改状态。
