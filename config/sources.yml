@@ -53,7 +53,7 @@ settings:
   # "off" = 过渡期：只抓取、归档，不推送任何普通内容（用于上线多源、建立基线之前）
   # "on"  = 正式：只有真正新增的文章才推送；on 的第一次运行只建立基线，不推送历史
   # 注意：必须带引号，否则 YAML 会把 off/on 当成布尔值
-  push_mode: "off"
+  push_mode: "on"
   # 连续失败多少次才发维护告警（第一次失败只记录，不发送）
   # 告警开关在下方独立的 alerts.enabled 控制，不受 push_mode 影响。
   alert_after_failures: 2
