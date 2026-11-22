@@ -1,8 +1,68 @@
 {
   "date": "2026-11-22",
-  "updated_at": "2026-11-22T12:59:21+08:00",
-  "count": 4,
+  "updated_at": "2026-11-23T06:57:54+08:00",
+  "count": 9,
   "items": [
+    {
+      "id": "47da92f01ab4985a",
+      "source_id": "solidot",
+      "source_name": "Solidot 奇客",
+      "category": "科技资讯",
+      "title": "Anthropic 到 2028 年使用的电力 98% 来自化石燃料",
+      "link": "https://www.solidot.org/story?sid=85959",
+      "summary": "美国的 AI 数据中心越来越依赖自己的发电设施供电，而这些发电设施基本上绝大多数使用化石燃料。目前规划中的数据中心发电设施装机容量高达 177 GW——足以满足美国 65% 家庭的用电需求。研究人员调查了刚刚上市的 AI 公司 Anthropic 的用电需求。他们发现 Anthropic 未在美国承诺使用任何可再生能源…",
+      "author": "",
+      "published": "2026-11-22T23:32:03+08:00",
+      "first_collected_at": "2026-11-23T06:57:54+08:00"
+    },
+    {
+      "id": "31a7a5b674a1ca25",
+      "source_id": "ithome",
+      "source_name": "IT之家",
+      "category": "科技资讯",
+      "title": "美国初创企业公布 AI 自研 CPU 架构 Frostbite，能效是传统处理器的 4.59 倍",
+      "link": "https://www.ithome.com/1/030/717.htm",
+      "summary": "IT之家 11 月 22 日消息，美国加利福尼亚州帕洛阿尔托的初创公司 Architect Labs 在一篇研究博客中宣布，其人工智能系统已经自主发现、设计并验证了一款名为 Frostbite 的通用 CPU。这款处理器采用全新的指令集，从底层开始重新设计，试图摆脱传统 CPU 的部分架构限制。     在 25 项工…",
+      "author": "",
+      "published": "2026-11-22T23:15:55+08:00",
+      "first_collected_at": "2026-11-23T06:57:54+08:00"
+    },
+    {
+      "id": "1901d261592394e0",
+      "source_id": "appinn",
+      "source_name": "小众软件",
+      "category": "实用工具",
+      "title": "《GTA 6》已出现早期 PC 开源移植项目：Leonida",
+      "link": "https://www.appinn.com/gta-6-pc-port-leonida/",
+      "summary": "《GTA 6》还没登陆 PC，已经有人开始研究，如何让 Xbox Series 版本直接在 Windows 电脑上运行。 此前《赛尔代传说·时之笛》的开发者最近放出了一个名为 Leonida 的开源项",
+      "author": "青小蛙",
+      "published": "2026-11-22T21:26:10+08:00",
+      "first_collected_at": "2026-11-23T06:57:54+08:00"
+    },
+    {
+      "id": "7e4b3e0da38dddb3",
+      "source_id": "solidot",
+      "source_name": "Solidot 奇客",
+      "category": "科技资讯",
+      "title": "Waymo 无人驾驶出租车因旧金山洪水而陷入困境",
+      "link": "https://www.solidot.org/story?sid=85958",
+      "summary": "无人驾驶汽车暂时还无法应付洪水淹没道路的情况：今年早些时候 Waymo 的无人驾驶出租车因亚特兰大的洪水而受困；本周旧金山遭遇强降雨，多处街道被淹，这也导致了多辆 Waymo 汽车受困。Golden Gate Park Panhandle \n旁的 Oak 街有两条车道被淹，积水从井盖涌出，Waymo 汽车停在了井盖前，…",
+      "author": "",
+      "published": "2026-11-22T20:01:39+08:00",
+      "first_collected_at": "2026-11-23T06:57:54+08:00"
+    },
+    {
+      "id": "24de6c0469dde407",
+      "source_id": "appinn",
+      "source_name": "小众软件",
+      "category": "实用工具",
+      "title": "Stullensimulator – 一个认真到离谱的三明治模拟器",
+      "link": "https://www.appinn.com/stullensimulator/",
+      "summary": "Stullensimulator 是一个德国开发者制作的免费网页小游戏，专门模拟一件事：往一片面包上涂酱、放食材，制作开放式三明治。@Appinn 开发者还说：涂一片面包。仅此而已。 听起来非常无聊，",
+      "author": "青小蛙",
+      "published": "2026-11-22T19:38:34+08:00",
+      "first_collected_at": "2026-11-23T06:57:54+08:00"
+    },
     {
       "id": "5709f18e31879d69",
       "source_id": "ithome",

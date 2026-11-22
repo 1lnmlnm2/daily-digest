@@ -6,7 +6,7 @@
     "established_at": "2026-11-22T12:59:21+08:00",
     "suppressed_count": 26
   },
-  "updated_at": "2026-11-22T12:59:21+08:00",
+  "updated_at": "2026-11-23T06:58:11+08:00",
   "items": {
     "ddc942c524c1112b": {
       "source_id": "sspai",
@@ -16,7 +16,7 @@
       "link": "https://sspai.com/post/119291",
       "published": "2026-11-21T12:00:00+08:00",
       "first_seen": "2026-11-21T19:58:57+08:00",
-      "last_seen": "2026-11-22T12:59:21+08:00",
+      "last_seen": "2026-11-23T06:57:54+08:00",
       "status": "suppressed",
       "notified_at": null,
       "suppressed_reason": "baseline"
@@ -29,7 +29,7 @@
       "link": "https://sspai.com/post/119337",
       "published": "2026-11-20T17:54:01+08:00",
       "first_seen": "2026-11-21T19:58:57+08:00",
-      "last_seen": "2026-11-22T12:59:21+08:00",
+      "last_seen": "2026-11-23T06:57:54+08:00",
       "status": "suppressed",
       "notified_at": null,
       "suppressed_reason": "baseline"
@@ -133,7 +133,7 @@
       "link": "http://www.ruanyifeng.com/blog/2026/11/weekly-issue-420.html",
       "published": "2026-11-20T08:07:30+08:00",
       "first_seen": "2026-11-21T19:58:57+08:00",
-      "last_seen": "2026-11-22T12:59:21+08:00",
+      "last_seen": "2026-11-23T06:57:54+08:00",
       "status": "suppressed",
       "notified_at": null,
       "suppressed_reason": "baseline"
@@ -315,7 +315,7 @@
       "link": "https://sspai.com/post/119318",
       "published": "2026-11-22T09:05:44+08:00",
       "first_seen": "2026-11-22T12:59:21+08:00",
-      "last_seen": "2026-11-22T12:59:21+08:00",
+      "last_seen": "2026-11-23T06:57:54+08:00",
       "status": "suppressed",
       "notified_at": null,
       "suppressed_reason": "baseline"
@@ -345,18 +345,96 @@
       "status": "suppressed",
       "notified_at": null,
       "suppressed_reason": "baseline"
+    },
+    "bbe46aa8c80ea9fc": {
+      "source_id": "ithome",
+      "source_name": "IT之家",
+      "category": "科技资讯",
+      "title": "古尔曼：苹果准备在明年 2 月至 3 月 iOS 27.4 周期中推出入门级 iPad、iPhone 18e 和全新 MacBook Neo",
+      "link": "https://www.ithome.com/1/030/719.htm",
+      "published": "2026-11-23T06:42:26+08:00",
+      "first_seen": "2026-11-23T06:57:54+08:00",
+      "last_seen": "2026-11-23T06:57:54+08:00",
+      "status": "notified",
+      "notified_at": "2026-11-23T06:58:11+08:00",
+      "suppressed_reason": null
+    },
+    "31a7a5b674a1ca25": {
+      "source_id": "ithome",
+      "source_name": "IT之家",
+      "category": "科技资讯",
+      "title": "美国初创企业公布 AI 自研 CPU 架构 Frostbite，能效是传统处理器的 4.59 倍",
+      "link": "https://www.ithome.com/1/030/717.htm",
+      "published": "2026-11-22T23:15:55+08:00",
+      "first_seen": "2026-11-23T06:57:54+08:00",
+      "last_seen": "2026-11-23T06:57:54+08:00",
+      "status": "notified",
+      "notified_at": "2026-11-23T06:58:11+08:00",
+      "suppressed_reason": null
+    },
+    "47da92f01ab4985a": {
+      "source_id": "solidot",
+      "source_name": "Solidot 奇客",
+      "category": "科技资讯",
+      "title": "Anthropic 到 2028 年使用的电力 98% 来自化石燃料",
+      "link": "https://www.solidot.org/story?sid=85959",
+      "published": "2026-11-22T23:32:03+08:00",
+      "first_seen": "2026-11-23T06:57:54+08:00",
+      "last_seen": "2026-11-23T06:57:54+08:00",
+      "status": "notified",
+      "notified_at": "2026-11-23T06:58:11+08:00",
+      "suppressed_reason": null
+    },
+    "7e4b3e0da38dddb3": {
+      "source_id": "solidot",
+      "source_name": "Solidot 奇客",
+      "category": "科技资讯",
+      "title": "Waymo 无人驾驶出租车因旧金山洪水而陷入困境",
+      "link": "https://www.solidot.org/story?sid=85958",
+      "published": "2026-11-22T20:01:39+08:00",
+      "first_seen": "2026-11-23T06:57:54+08:00",
+      "last_seen": "2026-11-23T06:57:54+08:00",
+      "status": "notified",
+      "notified_at": "2026-11-23T06:58:11+08:00",
+      "suppressed_reason": null
+    },
+    "1901d261592394e0": {
+      "source_id": "appinn",
+      "source_name": "小众软件",
+      "category": "实用工具",
+      "title": "《GTA 6》已出现早期 PC 开源移植项目：Leonida",
+      "link": "https://www.appinn.com/gta-6-pc-port-leonida/",
+      "published": "2026-11-22T21:26:10+08:00",
+      "first_seen": "2026-11-23T06:57:54+08:00",
+      "last_seen": "2026-11-23T06:57:54+08:00",
+      "status": "notified",
+      "notified_at": "2026-11-23T06:58:11+08:00",
+      "suppressed_reason": null
+    },
+    "24de6c0469dde407": {
+      "source_id": "appinn",
+      "source_name": "小众软件",
+      "category": "实用工具",
+      "title": "Stullensimulator – 一个认真到离谱的三明治模拟器",
+      "link": "https://www.appinn.com/stullensimulator/",
+      "published": "2026-11-22T19:38:34+08:00",
+      "first_seen": "2026-11-23T06:57:54+08:00",
+      "last_seen": "2026-11-23T06:57:54+08:00",
+      "status": "notified",
+      "notified_at": "2026-11-23T06:58:11+08:00",
+      "suppressed_reason": null
     }
   },
   "sources": {
     "sspai": {
       "consecutive_failures": 0,
-      "last_success_at": "2026-11-22T12:59:21+08:00",
+      "last_success_at": "2026-11-23T06:57:54+08:00",
       "last_failure_at": "2026-11-21T23:47:30+08:00",
       "last_alert_at": "2026-11-21T23:47:44+08:00",
       "alert_active": false,
       "status": "ok",
       "last_error": null,
-      "last_attempt_at": "2026-11-22T12:59:21+08:00",
+      "last_attempt_at": "2026-11-23T06:57:54+08:00",
       "alert_open": false,
       "last_status": "ok",
       "alert_last_attempt_at": "2026-11-21T23:47:44+08:00",
@@ -364,13 +442,13 @@
     },
     "ithome": {
       "consecutive_failures": 0,
-      "last_success_at": "2026-11-22T12:59:21+08:00",
+      "last_success_at": "2026-11-23T06:57:54+08:00",
       "last_failure_at": null,
       "last_alert_at": null,
       "alert_active": false,
       "status": "ok",
       "last_error": null,
-      "last_attempt_at": "2026-11-22T12:59:21+08:00",
+      "last_attempt_at": "2026-11-23T06:57:54+08:00",
       "alert_open": false,
       "last_status": "ok",
       "alert_last_attempt_at": null,
@@ -378,13 +456,13 @@
     },
     "solidot": {
       "consecutive_failures": 0,
-      "last_success_at": "2026-11-22T12:59:21+08:00",
+      "last_success_at": "2026-11-23T06:57:54+08:00",
       "last_failure_at": null,
       "last_alert_at": null,
       "alert_active": false,
       "status": "ok",
       "last_error": null,
-      "last_attempt_at": "2026-11-22T12:59:21+08:00",
+      "last_attempt_at": "2026-11-23T06:57:54+08:00",
       "alert_open": false,
       "last_status": "ok",
       "alert_last_attempt_at": null,
@@ -392,13 +470,13 @@
     },
     "appinn": {
       "consecutive_failures": 0,
-      "last_success_at": "2026-11-22T12:59:21+08:00",
+      "last_success_at": "2026-11-23T06:57:54+08:00",
       "last_failure_at": null,
       "last_alert_at": null,
       "alert_active": false,
       "status": "ok",
       "last_error": null,
-      "last_attempt_at": "2026-11-22T12:59:21+08:00",
+      "last_attempt_at": "2026-11-23T06:57:54+08:00",
       "alert_open": false,
       "last_status": "ok",
       "alert_last_attempt_at": null,
@@ -406,13 +484,13 @@
     },
     "ruanyifeng": {
       "consecutive_failures": 0,
-      "last_success_at": "2026-11-22T12:59:21+08:00",
+      "last_success_at": "2026-11-23T06:57:54+08:00",
       "last_failure_at": null,
       "last_alert_at": null,
       "alert_active": false,
       "status": "ok",
       "last_error": null,
-      "last_attempt_at": "2026-11-22T12:59:21+08:00",
+      "last_attempt_at": "2026-11-23T06:57:54+08:00",
       "alert_open": false,
       "last_status": "ok",
       "alert_last_attempt_at": null,
@@ -420,10 +498,10 @@
     }
   },
   "last_run": {
-    "at": "2026-11-22T12:59:21+08:00",
-    "run_url": "https://github.com/1lnmlnm2/daily-digest/actions/runs/44987389869",
-    "event": "workflow_dispatch",
-    "manual_dispatch": true,
+    "at": "2026-11-23T06:57:54+08:00",
+    "run_url": "https://github.com/1lnmlnm2/daily-digest/actions/runs/45080588405",
+    "event": "schedule",
+    "manual_dispatch": false,
     "push_mode": "on",
     "baseline_established": true,
     "baseline_blocked": false,
@@ -438,5 +516,10 @@
     ],
     "reason": "ok",
     "run_url": "https://github.com/1lnmlnm2/daily-digest/actions/runs/44921031669"
+  },
+  "last_notify": {
+    "at": "2026-11-23T06:58:11+08:00",
+    "count": 6,
+    "reason": "ok"
   }
 }
