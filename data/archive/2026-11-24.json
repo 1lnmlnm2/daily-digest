@@ -1,0 +1,31 @@
+{
+  "date": "2026-11-24",
+  "updated_at": "2026-11-24T07:09:28+08:00",
+  "count": 2,
+  "items": [
+    {
+      "id": "bcd76e1728c2f362",
+      "source_id": "ithome",
+      "source_name": "IT之家",
+      "category": "科技资讯",
+      "title": "马斯克承认 AI 研发落后对手：出租 SpaceXSI 算力比自研 Grok 更赚钱",
+      "link": "https://www.ithome.com/1/031/246.htm",
+      "summary": "IT之家 11 月 24 日消息，据《纽约时报》当地时间 11 月 23 日报道，SpaceX 首席执行官埃隆・马斯克近日向员工表示，公司在人工智能（AI）研发方面正落后于 Anthropic、OpenAI 等竞争对手，因此，与其将数据中心算力全部用于自研 AI 产品，不如出租给竞争对手，以获得更高的商业回报。  三名…",
+      "author": "",
+      "published": "2026-11-24T07:00:34+08:00",
+      "first_collected_at": "2026-11-24T07:09:28+08:00"
+    },
+    {
+      "id": "579c94819b92d4fe",
+      "source_id": "ithome",
+      "source_name": "IT之家",
+      "category": "科技资讯",
+      "title": "三星 Galaxy Z Fold9 Ultra 等 3 款折叠手机影像规格曝光，预估主摄沿用前代方案",
+      "link": "https://www.ithome.com/1/031/244.htm",
+      "summary": "IT之家 11 月 24 日消息，科技媒体 sammyguru 于 11 月 21 日发布博文，报道称基于供应链与贸易数据库中的早期记录， 三星 Galaxy Z Flip9、Galaxy Z Fold9、Galaxy Z Fold9 Ultra 三款折叠手机的影像规模浮出水面。   根据贸易数据库记录的信息，三星 G…",
+      "author": "",
+      "published": "2026-11-24T06:55:06+08:00",
+      "first_collected_at": "2026-11-24T07:09:28+08:00"
+    }
+  ]
+}
