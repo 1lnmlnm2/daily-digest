@@ -1,0 +1,31 @@
+{
+  "date": "2026-11-25",
+  "updated_at": "2026-11-25T07:11:33+08:00",
+  "count": 2,
+  "items": [
+    {
+      "id": "646e431c65033792",
+      "source_id": "ithome",
+      "source_name": "IT之家",
+      "category": "科技资讯",
+      "title": "NASA 两项火星探测任务因故障暂停：毅力号通信异常、奥德赛号剩余肼燃料仅够维持一两个月",
+      "link": "https://www.ithome.com/1/031/908.htm",
+      "summary": "IT之家 11 月 25 日消息，NASA 确认，其两项火星探测任务在近几周相继出现技术故障，已暂停科学探测工作。受影响的是“毅力号”火星车与“奥德赛号”轨道探测器，两者均超出原设计寿命运行。     “毅力号”的问题始于 10 月 30 日。当日，火星车主通信系统中的一台超高频（UHF）无线电设备启动后，未能向车载计…",
+      "author": "",
+      "published": "2026-11-25T07:00:58+08:00",
+      "first_collected_at": "2026-11-25T07:11:33+08:00"
+    },
+    {
+      "id": "d57f9c696e66fb9f",
+      "source_id": "ithome",
+      "source_name": "IT之家",
+      "category": "科技资讯",
+      "title": "CDPR：已经和索尼 PlayStation 达成《巫师 4》游戏营销合作",
+      "link": "https://www.ithome.com/1/031/907.htm",
+      "summary": "IT之家 11 月 25 日消息，据游戏媒体 IGN 今天报道，开发商 CD Projekt Red 在 2026 财年第三季度报告中确认，公司已经与索尼 PlayStation 达成《巫师 4》营销合作，未来这款游戏的宣传活动可能即将升温。     CD Projekt Red 首席财务官 Piotr Nielubo…",
+      "author": "",
+      "published": "2026-11-25T06:58:03+08:00",
+      "first_collected_at": "2026-11-25T07:11:33+08:00"
+    }
+  ]
+}
