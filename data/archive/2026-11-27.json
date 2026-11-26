@@ -1,0 +1,31 @@
+{
+  "date": "2026-11-27",
+  "updated_at": "2026-11-27T07:13:43+08:00",
+  "count": 2,
+  "items": [
+    {
+      "id": "62c3d0dfa8a452e4",
+      "source_id": "ithome",
+      "source_name": "IT之家",
+      "category": "科技资讯",
+      "title": "主播在视频里放火狐 Firefox 浏览器官方链接，竟被谷歌标记“垃圾信息”",
+      "link": "https://www.ithome.com/1/033/139.htm",
+      "summary": "IT之家 11 月 27 日消息，科技媒体 NeoWin 昨日（11 月 26 日）发布博文，报道称谷歌旗下视频平台 YouTube 近日将一条指向 Mozilla Firefox 官方网站的链接， 判定为违反“垃圾信息、欺骗性行为和诈骗政策”的内容并予以移除 ，引发外界对平台自动审核机制和内容治理透明度争议。  该事…",
+      "author": "",
+      "published": "2026-11-27T07:10:31+08:00",
+      "first_collected_at": "2026-11-27T07:13:43+08:00"
+    },
+    {
+      "id": "47fa9b55dbe42f22",
+      "source_id": "ithome",
+      "source_name": "IT之家",
+      "category": "科技资讯",
+      "title": "GPT-6.2 额度突然不耐用了？OpenAI 承认计费出错，修复后 Astra 消耗速度加快 40%、Sol 加快 25%",
+      "link": "https://www.ithome.com/1/033/138.htm",
+      "summary": "IT之家 11 月 27 日消息，OpenAI 已紧急修复 GPT-6.2 上线初期的一项计费错误 —— 此前该问题导致大多数用户使用 GPT-6.2 Astra 和 Sol 时，消耗的套餐额度按折扣价进行了计算。     OpenAI Codex 与 ChatGPT 负责人 Thibault Sottiaux（Tib…",
+      "author": "",
+      "published": "2026-11-27T06:59:06+08:00",
+      "first_collected_at": "2026-11-27T07:13:43+08:00"
+    }
+  ]
+}
