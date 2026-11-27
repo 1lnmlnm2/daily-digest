@@ -1,0 +1,43 @@
+{
+  "date": "2026-11-28",
+  "updated_at": "2026-11-28T07:11:48+08:00",
+  "count": 3,
+  "items": [
+    {
+      "id": "53c6dd923200ab9d",
+      "source_id": "ithome",
+      "source_name": "IT之家",
+      "category": "科技资讯",
+      "title": "马斯克 SpaceX 拓展卫星直连手机业务，有意收购美国 Anterix 900 MHz 频谱",
+      "link": "https://www.ithome.com/1/033/776.htm",
+      "summary": "IT之家 11 月 28 日消息，据彭博社当地时间 11 月 27 日报道，美国无线频谱公司 Anterix 正考虑大规模出售其持有的 900 MHz 无线频谱资产，而马斯克旗下 SpaceX 已表达对这一频段的兴趣。  随着 SpaceX 拓展卫星直连终端（Direct-to-Device，D2D）业务，双方可能围绕…",
+      "author": "",
+      "published": "2026-11-28T06:53:40+08:00",
+      "first_collected_at": "2026-11-28T07:11:48+08:00"
+    },
+    {
+      "id": "017c147fd9a5c338",
+      "source_id": "ithome",
+      "source_name": "IT之家",
+      "category": "科技资讯",
+      "title": "画面像电影：《荒野大镖客 2》游戏非官方 DLSS 5 后惊艳玩家，但掉 31% 帧率",
+      "link": "https://www.ithome.com/1/033/775.htm",
+      "summary": "IT之家 11 月 28 日消息，YouTube 频道 MxBenchmarkPC 在最新一期视频中， 对比显示经过玩家 MOD 启用的英伟达 DLSS 5 神经渲染技术，可大幅改善《荒野大镖客 2》的光照效果，画面几乎具备电影质感，但同时带来明显的性能损耗。   该频道主播在英伟达 GeForce RTX 5080…",
+      "author": "",
+      "published": "2026-11-28T06:49:52+08:00",
+      "first_collected_at": "2026-11-28T07:11:48+08:00"
+    },
+    {
+      "id": "06247ea74d59d873",
+      "source_id": "solidot",
+      "source_name": "Solidot 奇客",
+      "category": "科技资讯",
+      "title": "Kimi 向科学家提供最高 2 万美元 API 免费额度",
+      "link": "https://www.solidot.org/story?sid=86015",
+      "summary": "Kimi 大模型开发商月之暗面宣布了 Kimi for Science 项目，欢迎自然科学、工程学及相关交叉学科领域的研究人员加入。月之暗面表示，“科学始终源于人类的好奇心、严谨的探索精神，以及对未知世界的不懈追求。一个有价值的科学假设，往往需要经过大量的文献调研、数据分析和反复验证。而一次意料之外的发现，也可能成为下…",
+      "author": "",
+      "published": "2026-11-28T00:14:48+08:00",
+      "first_collected_at": "2026-11-28T07:11:48+08:00"
+    }
+  ]
+}
